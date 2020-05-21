@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo目录分析</title>
-    <url>/2020/04/25/hexo%E7%9B%AE%E5%BD%95%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>１．.deploy_git:　这个目录是执行 hexo d 命令 后生成的,主要存放部署的信息.</p>
-<p>２．node_modules:　这个目录存放的是一些插件包</p>
-<p>３．public :　这个目录是执行 hexo g后生成的, hexo会将”/blog/source/“ 下面的.md后缀的文件编译为.html后缀的文件,存放在”/blog/public/ “ 路径下</p>
-<a id="more"></a>
-
-<p>４．scaffolds:　用来存放模板文件。模板文件的正文部分一般为空，一般在模板文件顶部有一个区域 ( 以 — 分隔的区域) 称作Front-matter,在这里配置的变量主要有title(即文章标题), date(即文章创建日期),comment(是否开启评论), tags(文章标签), categories(文章所属分类)等. 当你新建文章时，Hexo 会根据 scaffold 来建立文件，也就是说会在你创建的每个文件顶部自动加上模板文件中配置的这些内容.</p>
-<p>５．source:　存放你的文章(.md后缀的文件)</p>
-<p>６．static:　这个目录是我自己创建的，专门用来存放图片的</p>
-<p>７．themes:　这个目录是存放主题的(默认主题是landscape, 目前使用最多的是next主题)</p>
-<p>８．.gitignore:　这个文件和git有关, 在这个文件里面可以配置哪些文件不被提交(例如: 配置 *.log ,那么在hexo d命令的时候, 任何以.log为后缀的文件将不会被提交到github)</p>
-<p>９．_admin-config.yml:　这个文件是安装了hexo 后台管理插件后生成的,这里暂时不作介绍,后面再说</p>
-<p>１０．_config.yml:　这个文件是hexo的核心配置文件(也称站点配置文件)</p>
-<p>１１．_config.yml.back.yml:　这个文件是我自己创建的,是站点配置文件的备份. 以防哪一天老眼昏花把内容改错了,到时可以恢复.</p>
-<p>１２．package.json:　应用程序的信息。EJS, Stylus 和 Markdown renderer 已默认安装，您可以自由移除。</p>
-<p>１３．db.json：</p>
-<p>１４．package-lock.json:</p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WEB API笔记</title>
     <url>/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/</url>
     <content><![CDATA[<h1 id="Web-API"><a href="#Web-API" class="headerlink" title="Web API"></a>Web API</h1><blockquote>
@@ -225,6 +201,30 @@
       <categories>
         <category>搭建博客</category>
       </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo目录分析</title>
+    <url>/2020/04/25/hexo%E7%9B%AE%E5%BD%95%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>１．.deploy_git:　这个目录是执行 hexo d 命令 后生成的,主要存放部署的信息.</p>
+<p>２．node_modules:　这个目录存放的是一些插件包</p>
+<p>３．public :　这个目录是执行 hexo g后生成的, hexo会将”/blog/source/“ 下面的.md后缀的文件编译为.html后缀的文件,存放在”/blog/public/ “ 路径下</p>
+<a id="more"></a>
+
+<p>４．scaffolds:　用来存放模板文件。模板文件的正文部分一般为空，一般在模板文件顶部有一个区域 ( 以 — 分隔的区域) 称作Front-matter,在这里配置的变量主要有title(即文章标题), date(即文章创建日期),comment(是否开启评论), tags(文章标签), categories(文章所属分类)等. 当你新建文章时，Hexo 会根据 scaffold 来建立文件，也就是说会在你创建的每个文件顶部自动加上模板文件中配置的这些内容.</p>
+<p>５．source:　存放你的文章(.md后缀的文件)</p>
+<p>６．static:　这个目录是我自己创建的，专门用来存放图片的</p>
+<p>７．themes:　这个目录是存放主题的(默认主题是landscape, 目前使用最多的是next主题)</p>
+<p>８．.gitignore:　这个文件和git有关, 在这个文件里面可以配置哪些文件不被提交(例如: 配置 *.log ,那么在hexo d命令的时候, 任何以.log为后缀的文件将不会被提交到github)</p>
+<p>９．_admin-config.yml:　这个文件是安装了hexo 后台管理插件后生成的,这里暂时不作介绍,后面再说</p>
+<p>１０．_config.yml:　这个文件是hexo的核心配置文件(也称站点配置文件)</p>
+<p>１１．_config.yml.back.yml:　这个文件是我自己创建的,是站点配置文件的备份. 以防哪一天老眼昏花把内容改错了,到时可以恢复.</p>
+<p>１２．package.json:　应用程序的信息。EJS, Stylus 和 Markdown renderer 已默认安装，您可以自由移除。</p>
+<p>１３．db.json：</p>
+<p>１４．package-lock.json:</p>
+]]></content>
       <tags>
         <tag>hexo</tag>
       </tags>
