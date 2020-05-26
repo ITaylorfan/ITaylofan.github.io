@@ -266,6 +266,27 @@
 <li>生成静态文件：<code>hexo g</code> 生成完成后点开RSS按钮可以看到：<img src="/2020/04/25/%E7%BB%99hexo%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8F%92%E4%BB%B6/5.png" class="" title="运行效果"></li>
 <li>使用该功能：打开QQ邮箱之类的，填入自己的博客地址 <img src="/2020/04/25/%E7%BB%99hexo%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8F%92%E4%BB%B6/6.png" class="" title="QQ邮箱"><img src="/2020/04/25/%E7%BB%99hexo%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8F%92%E4%BB%B6/7.png" class="" title="QQ邮箱"></li>
 </ol>
+<h1 id="添加评论功能"><a href="#添加评论功能" class="headerlink" title="添加评论功能"></a>添加评论功能</h1><ol>
+<li><p>这里我使用的是Valine（一款快速、简洁且高效的无后端评论系统）</p>
+</li>
+<li><p>我们的评论系统其实是放在Leancloud上的，因此首先需要去注册一个账号 <a href="https://www.leancloud.cn/" target="_blank" rel="noopener" title="LeanCloud点我注册">LeanCloud点我注册</a></p>
+</li>
+<li><p>注册完以后需要创建一个应用，名字可以随便起，然后 <strong>进入应用</strong>-&gt;<strong>设置</strong>-&gt;<strong>应用key</strong><br>获取你的appid 和 appkey 如图所示：</p>
+<img src="/2020/04/25/%E7%BB%99hexo%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8F%92%E4%BB%B6/9.png" class="" title="appid和appkey">
+</li>
+<li><p>拿到你的appid和appkey之后，打开主题配置文件 搜索 valine，填入appid 和 appkey<br>这是我的主题配置文件：</p>
+<img src="/2020/04/25/%E7%BB%99hexo%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8F%92%E4%BB%B6/8.png" class="" title="主题配置文件">
+</li>
+<li><p>最后！记得在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去（我的博客地址）</p>
+<img src="/2020/04/25/%E7%BB%99hexo%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8F%92%E4%BB%B6/10.png" class="" title="我的博客地址">
+<p>刷新一下~ 就可以看到评论框了。<br>效果展示：</p>
+<img src="/2020/04/25/%E7%BB%99hexo%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8F%92%E4%BB%B6/11.png" class="" title="效果展示">
+
+
+
+
+</li>
+</ol>
 ]]></content>
       <tags>
         <tag>hexo</tag>
