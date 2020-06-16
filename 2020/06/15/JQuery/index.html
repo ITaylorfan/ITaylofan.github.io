@@ -112,6 +112,7 @@
 <p>学习目标：</p>
 <p>能够说出什么是 jQuery<br>能够说出 jQuery 的优点<br>能够简单使用 jQuery<br>能够说出 DOM 对象和 jQuery 对象的区别<br>能够写出常用的 jQuery 选择器<br>能够操作 jQuery 样式<br>能够写出常用的 jQuery 动画 </p>
 </blockquote>
+<a id="more"></a>
 <h2 id="1-1-jQuery-介绍"><a href="#1-1-jQuery-介绍" class="headerlink" title="1.1. jQuery 介绍"></a>1.1. jQuery 介绍</h2><h3 id="1-1-1-JavaScript-库"><a href="#1-1-1-JavaScript-库" class="headerlink" title="1.1.1 JavaScript 库"></a>1.1.1 JavaScript 库</h3><p>​    JavaScript库：即 library，是一个封装好的特定的集合（方法和函数）。从封装一大堆函数的角度理解库，就是在这个库中，封装了很多预先定义好的函数在里面，比如动画animate、hide、show，比如获取元素等。</p>
 <blockquote>
 <p>简单理解： 就是一个JS 文件，里面对我们原生js代码进行了封装，存放到里面。这样我们可以快速高效的使用这些封装好的功能了。</p>
@@ -133,7 +134,8 @@
 </ul>
 <img src="/2020/06/15/JQuery/jQuery%E6%A6%82%E8%BF%B0.jpg" class="" width="1550731974575">
 
-<p>  <img src="images/jQuery%E6%A6%82%E8%BF%B0.jpg" alt="jQuery概述"></p>
+
+
 <h3 id="1-1-3-jQuery的优点"><a href="#1-1-3-jQuery的优点" class="headerlink" title="1.1.3 jQuery的优点"></a>1.1.3 jQuery的优点</h3><ol>
 <li>轻量级。核心文件才几十kb，不会影响页面加载速度。</li>
 <li>跨浏览器兼容，基本兼容了现在主流的浏览器。</li>
@@ -182,7 +184,8 @@
 <p>注意：</p>
 <p>只有 jQuery 对象才能使用 jQuery 方法，DOM 对象则使用原生的 JavaScirpt 方法。</p>
 </blockquote>
-<p><img src="images/jQuery%E5%AF%B9%E8%B1%A1%E5%92%8CDOM%E5%AF%B9%E8%B1%A1.png" alt="jQuery对象和DOM对象"></p>
+<img src="/2020/06/15/JQuery/jQuery%E5%AF%B9%E8%B1%A1%E5%92%8CDOM%E5%AF%B9%E8%B1%A1.png" class="" title="jQuery对象和DOM对象">
+
 <h3 id="1-2-6-jQuery-对象和-DOM-对象转换"><a href="#1-2-6-jQuery-对象和-DOM-对象转换" class="headerlink" title="1.2.6.  jQuery 对象和 DOM 对象转换"></a>1.2.6.  jQuery 对象和 DOM 对象转换</h3><p>​    DOM 对象与 jQuery 对象之间是可以相互转换的。因为原生js 比 jQuery 更大，原生的一些属性和方法 jQuery没有给我们封装. 要想使用这些属性和方法需要把jQuery对象转换为DOM对象才能使用。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.DOM对象转换成jQuery对象，方法只有一种</span></span><br><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>);  <span class="comment">// 获取DOM对象</span></span><br><span class="line"><span class="keyword">var</span> jQueryObject = $(box);  <span class="comment">// 把DOM对象转换为 jQuery 对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.jQuery 对象转换为 DOM 对象有两种方法：</span></span><br><span class="line"><span class="comment">//   2.1 jQuery对象[索引值]</span></span><br><span class="line"><span class="keyword">var</span> domObject1 = $(<span class="string">'div'</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">//   2.2 jQuery对象.get(索引值)</span></span><br><span class="line"><span class="keyword">var</span> domObject2 = $(<span class="string">'div'</span>).get(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
@@ -190,19 +193,25 @@
 <h2 id="1-3-jQuery-选择器"><a href="#1-3-jQuery-选择器" class="headerlink" title="1.3. jQuery 选择器"></a>1.3. jQuery 选择器</h2><p>​    原生 JS 获取元素方式很多，很杂，而且兼容性情况不一致，因此 jQuery 给我们做了封装，使获取元素统一标准。</p>
 <h3 id="1-3-1-基础选择器"><a href="#1-3-1-基础选择器" class="headerlink" title="1.3.1. 基础选择器"></a>1.3.1. 基础选择器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"选择器"</span>)   <span class="comment">//  里面选择器直接写 CSS 选择器即可，但是要加引号</span></span><br></pre></td></tr></table></figure>
 
-<p>​    <img src="images/%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8.png" alt="基础选择器"></p>
+<p>​</p>
+<img src="/2020/06/15/JQuery/%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8.png" class="" title="基础选择器">
+
 <h3 id="1-3-2-层级选择器"><a href="#1-3-2-层级选择器" class="headerlink" title="1.3.2. 层级选择器"></a>1.3.2. 层级选择器</h3><p>​    层级选择器最常用的两个分别为：后代选择器和子代选择器。</p>
-<p>​    <img src="images/%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8.png" alt="层级选择器"></p>
+<p>​</p>
+<img src="/2020/06/15/JQuery/%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8.png" class="" title="层级选择器">
+
 <p><strong>基础选择器和层级选择器案例代码</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;我是div&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div class="nav"&gt;我是nav div&lt;/</span>div&gt;</span><br><span class="line">    &lt;p&gt;我是p&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;我是ul 的&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;我是ul 的&lt;<span class="regexp">/li&gt;        </span></span><br><span class="line"><span class="regexp">        &lt;li&gt;我是ul 的&lt;/</span>li&gt;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        $(function() &#123;</span></span><br><span class="line"><span class="regexp">            console.log($(".nav"));</span></span><br><span class="line"><span class="regexp">            console.log($("ul li"));</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="1-3-3-筛选选择器"><a href="#1-3-3-筛选选择器" class="headerlink" title="1.3.3. 筛选选择器"></a>1.3.3. 筛选选择器</h3><p>​    筛选选择器，顾名思义就是在所有的选项中选择满足条件的进行筛选选择。常见如下 :</p>
-<p><img src="images/%E7%AD%9B%E9%80%89%E9%80%89%E6%8B%A9%E5%99%A8.png" alt="筛选选择器"></p>
+<img src="/2020/06/15/JQuery/%E7%AD%9B%E9%80%89%E9%80%89%E6%8B%A9%E5%99%A8.png" class="" title="筛选选择器">
+
 <p><strong>案例代码</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ol&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"ul li:first"</span>).css(<span class="string">"color"</span>, <span class="string">"red"</span>);</span><br><span class="line">            $(<span class="string">"ul li:eq(2)"</span>).css(<span class="string">"color"</span>, <span class="string">"blue"</span>);</span><br><span class="line">            $(<span class="string">"ol li:odd"</span>).css(<span class="string">"color"</span>, <span class="string">"skyblue"</span>);</span><br><span class="line">            $(<span class="string">"ol li:even"</span>).css(<span class="string">"color"</span>, <span class="string">"pink"</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
 
 <p>另:  jQuery中还有一些筛选方法，类似DOM中的通过一个节点找另外一个节点，父、子、兄以外有所加强。</p>
-<p><img src="images/relation.png" alt="筛选方法"></p>
+<img src="/2020/06/15/JQuery/relation.png" class="" title="筛选方法">
+
 <p>偏重于记忆，演示代码略。</p>
 <h3 id="1-3-4-知识铺垫"><a href="#1-3-4-知识铺垫" class="headerlink" title="1.3.4 知识铺垫"></a>1.3.4 知识铺垫</h3><ul>
 <li>jQuery 设置样式</li>
@@ -253,9 +262,14 @@
 </blockquote>
 <h3 id="1-5-1-显示隐藏"><a href="#1-5-1-显示隐藏" class="headerlink" title="1.5.1. 显示隐藏"></a>1.5.1. 显示隐藏</h3><p>​    显示隐藏动画，常见有三个方法：show() / hide() / toggle() ;</p>
 <p>​    语法规范如下:</p>
-<p><img src="images/show.png" alt="show"></p>
-<p><img src="images/hide.png" alt="hide"></p>
-<p><img src="images/toggle.png" alt="toggle"></p>
+<img src="/2020/06/15/JQuery/show.png" class="" title="show">
+
+
+<img src="/2020/06/15/JQuery/hide.png" class="" title="hide">
+
+
+<img src="/2020/06/15/JQuery/toggle.png" class="" title="toggle">
+
 <p><strong>代码演示</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;显示&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button&gt;隐藏&lt;/</span>button&gt;</span><br><span class="line">    &lt;button&gt;切换&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;&lt;/</span>div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="string">"button"</span>).eq(<span class="number">0</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                $(<span class="string">"div"</span>).show(<span class="number">1000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    alert(<span class="number">1</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;)</span><br><span class="line">            $(<span class="string">"button"</span>).eq(<span class="number">1</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                $(<span class="string">"div"</span>).hide(<span class="number">1000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    alert(<span class="number">1</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;)</span><br><span class="line">            $(<span class="string">"button"</span>).eq(<span class="number">2</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">              $(<span class="string">"div"</span>).toggle(<span class="number">1000</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="comment">// 一般情况下，我们都不加参数直接显示隐藏就可以了</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
 
