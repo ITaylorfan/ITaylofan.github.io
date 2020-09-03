@@ -1388,4 +1388,143 @@
         <tag>前端</tag>
       </tags>
   </entry>
+  <entry>
+    <title>vue-cli书城项目的一些笔记</title>
+    <url>/2020/09/03/vue-cli%E4%B9%A6%E5%9F%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="Vue书城项目的一些笔记"><a href="#Vue书城项目的一些笔记" class="headerlink" title="Vue书城项目的一些笔记"></a>Vue书城项目的一些笔记</h1><h2 id="1-Vuecli项目创建"><a href="#1-Vuecli项目创建" class="headerlink" title="1.Vuecli项目创建"></a>1.Vuecli项目创建</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue create vue-imooc-ebook --通过vue-cli创建项目</span><br><span class="line">npm run serve --本地运行服务</span><br><span class="line">cnpm run build  --打包</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-开发环境和生产环境的配置"><a href="#2-开发环境和生产环境的配置" class="headerlink" title="2.开发环境和生产环境的配置"></a>2.开发环境和生产环境的配置</h2><p>打包后 直接打开index.html 会报错–找不到路径<br>在根目录添加配置文件  <strong>vue.config.js</strong></p>
+<p>配置文件代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    <span class="comment">//禁用ESlint</span></span><br><span class="line">    lintOnSave: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 根据环境更改路径名</span></span><br><span class="line">    publicPath:process.env.NODE_ENV ===<span class="string">"production"</span> ? <span class="string">"./"</span>:<span class="string">"/"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-导入epubjs包"><a href="#3-导入epubjs包" class="headerlink" title="3.导入epubjs包"></a>3.导入epubjs包</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm i --save epubjs</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-在-eslintrc-js-中的rules-加入-指令’indent’-‘off’-以关闭缩进判断"><a href="#4-在-eslintrc-js-中的rules-加入-指令’indent’-‘off’-以关闭缩进判断" class="headerlink" title="4. 在 .eslintrc.js 中的rules 加入 指令’indent’: ‘off’  以关闭缩进判断"></a>4. 在 .eslintrc.js 中的rules 加入 指令’indent’: ‘off’  以关闭缩进判断</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">rules: &#123;</span><br><span class="line">    <span class="string">'no-console'</span>: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'warn'</span> : <span class="string">'off'</span>,</span><br><span class="line">    <span class="string">'no-debugger'</span>: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'warn'</span> : <span class="string">'off'</span>,</span><br><span class="line">    <span class="string">'indent'</span>: <span class="string">'off'</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-安装sass"><a href="#5-安装sass" class="headerlink" title="5.安装sass"></a>5.安装sass</h2><p>-dev 可以把sass放在”devDependencies”中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm i --save-dev node-sass sass-loader</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-rem适配"><a href="#6-rem适配" class="headerlink" title="6.rem适配"></a>6.rem适配</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//基准值 html 的 fontSize 最大设置为50px</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>,()=&gt;&#123;</span><br><span class="line">  <span class="keyword">const</span> html=<span class="built_in">document</span>.querySelector(<span class="string">"html"</span>);</span><br><span class="line">  <span class="keyword">let</span> fontSize=<span class="built_in">window</span>.innerWidth/<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//设置fontSize上限为50px</span></span><br><span class="line">  fontSize=fontSize &gt; <span class="number">50</span>? <span class="number">50</span>:fontSize; </span><br><span class="line">  html.style.fontSize=fontSize+<span class="string">"px"</span>;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//子项目字体设置rem单位</span></span><br><span class="line">$ratio: <span class="number">375</span>/<span class="number">10</span>;</span><br><span class="line">@<span class="function"><span class="keyword">function</span> <span class="title">px2rem</span>(<span class="params">$px</span>)</span>&#123;</span><br><span class="line">    @<span class="keyword">return</span> $px / $ratio+rem;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//$px 为px单位的字体大小 转换为rem</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-安装vue远程调试工具"><a href="#7-安装vue远程调试工具" class="headerlink" title="7.安装vue远程调试工具"></a>7.安装vue远程调试工具</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm i -g @vue&#x2F;devtools</span><br></pre></td></tr></table></figure>
+
+<p>启动工具</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue-devtools</span><br></pre></td></tr></table></figure>
+
+<p>然后根据提示在index.html中引入script文件</p>
+<h2 id="8-配置NGINX服务器"><a href="#8-配置NGINX服务器" class="headerlink" title="8.配置NGINX服务器"></a>8.配置NGINX服务器</h2><blockquote>
+<p>nginx指令<br>需要在cmd下执行<br>nginx   运行<br>nginx -t 验证配置文件是否正确<br>nginx -s stop 停止</p>
+</blockquote>
+<p><strong>在根目录下的 conf文件夹中的nginx.conf 中配置</strong></p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment">#配置自己的服务</span></span><br><span class="line"> server&#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">8081</span>;    <span class="comment">#端口号</span></span><br><span class="line">	<span class="attribute">server_name</span> resource;   <span class="comment">#服务器名</span></span><br><span class="line">	<span class="attribute">root</span> ../resource;    <span class="comment">#放置静态文件</span></span><br><span class="line">	<span class="attribute">autoindex</span> <span class="literal">on</span>;     <span class="comment">#获取文件下标</span></span><br><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">		<span class="attribute">add_header</span> Access-Control-Allow-Origin *;  <span class="comment">#支持跨域</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">add_header</span> Cache-Control <span class="string">"no-cache, must-revalidate"</span>;   <span class="comment">#禁用缓存</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="9-环境变量配置"><a href="#9-环境变量配置" class="headerlink" title="9.环境变量配置"></a>9.环境变量配置</h2><blockquote>
+<p>在根目录下创建 .env.development 文件<br>VUE_APP_RES_URL=<a href="http://192.168.X.X:8081" target="_blank" rel="noopener">http://192.168.X.X:8081</a><br>需要以VUE_APP_开头</p>
+<p>使用时: process.env.VUE_APP_RES_URL</p>
+</blockquote>
+<p><strong>配置完成后 需要重启项目</strong></p>
+<h2 id="10-使用localStorage库缓存信息"><a href="#10-使用localStorage库缓存信息" class="headerlink" title="10.使用localStorage库缓存信息"></a>10.使用localStorage库缓存信息</h2><p><strong>安装localstorage库</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm i --save web-storage-cache</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用：</strong></p>
+<blockquote>
+<p>在utils文件夹中创建 localstorage.js<br>//导入<br>import Storage from “web-storage-cache”</p>
+<p>//实例化<br>const localStorage=new Storage()</p>
+</blockquote>
+<h2 id="11-安装i18n多国语言插件"><a href="#11-安装i18n多国语言插件" class="headerlink" title="11.安装i18n多国语言插件"></a>11.安装i18n多国语言插件</h2><p><strong>安装插件</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm i --save vue-i18n</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用</strong></p>
+<blockquote>
+<p>在html中插值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#123;$t(&quot;book.selectFont&quot;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>获取i18n的 当前设定语言</p>
+</blockquote>
+<p><code>this.$i18n.locale</code></p>
+<h2 id="12-CSS小技巧"><a href="#12-CSS小技巧" class="headerlink" title="12.CSS小技巧"></a>12.CSS小技巧</h2><p><strong>文字上方有一片空白</strong><br><strong>可以给最大的父容器设置 font-size:0</strong><br><strong>就可以清除空白</strong></p>
+<h2 id="13-对文本超出的处理"><a href="#13-对文本超出的处理" class="headerlink" title="13.对文本超出的处理"></a>13.对文本超出的处理</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>;  <span class="comment">/*弹性盒子布局的老式写法*/</span></span><br><span class="line"><span class="selector-tag">box-orient</span><span class="selector-pseudo">:vertical</span> ;  <span class="comment">/*子元素垂直排列*/</span></span><br><span class="line"><span class="selector-tag">line-clamp</span>: 2;   <span class="comment">/*设置显示文本行数 需要结合 其他属性 display: -webkit-box; box-orient；*/</span> <span class="selector-tag">text-overflow</span>；</span><br><span class="line"></span><br><span class="line"> <span class="selector-tag">white-space</span>: <span class="selector-tag">normal</span>;  <span class="comment">/*空白处理 默认自动换行*/</span></span><br><span class="line"><span class="selector-tag">word-break</span>: <span class="selector-tag">keep-all</span>;  <span class="comment">/*设置文本换行处  保留完整单词*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="14-树形结构拆成一维数组"><a href="#14-树形结构拆成一维数组" class="headerlink" title="14.树形结构拆成一维数组"></a>14.树形结构拆成一维数组</h2><p><strong>运用 扩展运算符…  合并运算函数 concat</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [].concat(...array.map(<span class="function"><span class="params">item</span>=&gt;</span>[].concat(item,...flatten(item.subitems))))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="15-二维数组降维"><a href="#15-二维数组降维" class="headerlink" title="15.二维数组降维"></a>15.二维数组降维</h2><p><strong>二维数组降维方法：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//两个数组合并</span></span><br><span class="line"><span class="keyword">const</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> b=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log([].concat(a,b))  <span class="comment">//成功合并两个数组</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c=[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]  <span class="comment">//将二维数组拆分为一维数组</span></span><br><span class="line"><span class="built_in">console</span>.log([].concat.apply([],c))  <span class="comment">//  完成</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="16-Vue事件修饰符"><a href="#16-Vue事件修饰符" class="headerlink" title="16.Vue事件修饰符"></a>16.Vue事件修饰符</h2><blockquote>
+<p>vue修饰符<br>.exact  严格限定<br><strong>@keyup.enter.exact=”函数名” 只有按下enter键触发 组合键不触发</strong></p>
+</blockquote>
+<p><strong>不允许点击  @click.prevent</strong></p>
+<h2 id="17-Vue的触摸事件"><a href="#17-Vue的触摸事件" class="headerlink" title="17.Vue的触摸事件"></a>17.Vue的触摸事件</h2><p><strong>触摸事件</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@touchmove&#x3D;&quot;move&quot; @touchend&#x3D;&quot;moveEnd&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="18-Vue监听事件"><a href="#18-Vue监听事件" class="headerlink" title="18.Vue监听事件"></a>18.Vue监听事件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;vue 监听 需要监听的变量名为函数名</span><br><span class="line">watch:&#123;   </span><br><span class="line">      变量名(val)&#123;</span><br><span class="line"></span><br><span class="line">       &#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="19-用css画一个三角形"><a href="#19-用css画一个三角形" class="headerlink" title="19.用css画一个三角形"></a>19.用css画一个三角形</h2><p><strong>把宽高设为0 边框宽度放大</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 0;</span><br><span class="line">   <span class="selector-tag">height</span>: 0;</span><br><span class="line">   <span class="selector-tag">border-width</span>: <span class="selector-tag">px2rem</span>(50) <span class="selector-tag">px2rem</span>(10) <span class="selector-tag">px2rem</span>(10) <span class="selector-tag">px2rem</span>(10);</span><br><span class="line">   <span class="selector-tag">border-style</span>: <span class="selector-tag">solid</span>;</span><br><span class="line">   <span class="selector-tag">border-color</span>: <span class="selector-tag">rgb</span>(0, 0, 0) <span class="selector-tag">rgb</span>(0, 0, 0) <span class="selector-tag">transparent</span> <span class="selector-tag">rgb</span>(0, 0, 0);</span><br></pre></td></tr></table></figure>
+
+<h2 id="20-正则表达式"><a href="#20-正则表达式" class="headerlink" title="20.正则表达式"></a>20.正则表达式</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;!.*&#x2F;   表示匹配!后面的所有内容</span><br><span class="line">&#x2F;.*!&#x2F;   表示匹配!前面的所有内容</span><br><span class="line">&#x2F;\)$&#x2F;  以)号结尾</span><br><span class="line">^ 限定开始位置</span><br></pre></td></tr></table></figure>
+
+<h2 id="21-用于JS计算真实像素-自适应"><a href="#21-用于JS计算真实像素-自适应" class="headerlink" title="21.用于JS计算真实像素  自适应"></a>21.用于JS计算真实像素  自适应</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">realPx</span>(<span class="params">px</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">const</span> maxWidth = <span class="built_in">window</span>.innerWidth &gt; <span class="number">500</span> ? <span class="number">500</span> : <span class="built_in">window</span>.innerWidth  <span class="comment">//最大值为500 是因为app.vue中 缩放为最大50px</span></span><br><span class="line">   <span class="keyword">return</span> px * (maxWidth / <span class="number">375</span>)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="22-鼠标适配"><a href="#22-鼠标适配" class="headerlink" title="22.鼠标适配"></a>22.鼠标适配</h2><blockquote>
+<p>适配移动端<br>用鼠标事件</p>
+<p>鼠标按下事件<br>@mousedown.left=”onMouseEnter”    .left 限定只能按鼠标左键<br>鼠标移动事件<br>@mousemove.left=”onMouseMove”<br>鼠标松开事件<br>@mouseup.left=”onMouseEnd”</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.-鼠标进入</span></span><br><span class="line"><span class="comment">//2.-鼠标进入后的移动</span></span><br><span class="line"><span class="comment">//3.-鼠标从移动状态松手</span></span><br><span class="line"><span class="comment">//4.-鼠标还原</span></span><br><span class="line">onMouseEnter(e)&#123;</span><br><span class="line">    <span class="comment">//console.log("enter",e)</span></span><br><span class="line">    <span class="keyword">this</span>.mouseState=<span class="number">1</span>   <span class="comment">//标记状态</span></span><br><span class="line">    <span class="keyword">this</span>.mouseStartTime=e.timeStamp   <span class="comment">//记录点击时间</span></span><br><span class="line">    e.preventDefault()  <span class="comment">//组织默认事件</span></span><br><span class="line">    e.stopPropagation()	<span class="comment">//组织冒泡</span></span><br><span class="line">&#125;,</span><br><span class="line">onMouseMove(e)&#123;</span><br><span class="line">    <span class="comment">//鼠标一进入内容区就会触发move事件           </span></span><br><span class="line">    <span class="comment">//处理不同状态 只对2状态进行操作</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.mouseState===<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.mouseState=<span class="number">2</span></span><br><span class="line">        <span class="comment">//console.log("move",e)</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.mouseState===<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> offsetY=<span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.firstOffsetY)&#123;</span><br><span class="line">            offsetY=e.clientY-<span class="keyword">this</span>.firstOffsetY</span><br><span class="line">            <span class="keyword">this</span>.setOffsetY(offsetY)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.firstOffsetY=e.clientY</span><br><span class="line">        &#125;</span><br><span class="line">        e.preventDefault()</span><br><span class="line">        e.stopPropagation()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">onMouseEnd(e)&#123;</span><br><span class="line">    <span class="comment">//console.log("end",e)</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.mouseState===<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.setOffsetY(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">this</span>.firstOffsetY=<span class="literal">null</span></span><br><span class="line">        <span class="keyword">this</span>.mouseState=<span class="number">3</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;  <span class="comment">//表示按下去 没有滑动直接松开了</span></span><br><span class="line">        <span class="keyword">this</span>.mouseState=<span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> time=e.timeStamp-<span class="keyword">this</span>.mouseStartTime  <span class="comment">//计算点击开始和结束的时间间隔</span></span><br><span class="line">    <span class="keyword">if</span>(time&lt;<span class="number">100</span>)&#123;</span><br><span class="line">        <span class="comment">//忽略掉小移动</span></span><br><span class="line">        <span class="keyword">this</span>.mouseState=<span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">    e.preventDefault()</span><br><span class="line">    e.stopPropagation()</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="23-Vue-template注意点"><a href="#23-Vue-template注意点" class="headerlink" title="23.Vue template注意点"></a>23.Vue template注意点</h2><p><strong>在模板 template中引入 别的组件时，组件外层必须有个div</strong></p>
+<h2 id="24-异步更新DOM-this-nextTick-方法"><a href="#24-异步更新DOM-this-nextTick-方法" class="headerlink" title="24.异步更新DOM  this.$nextTick( )方法"></a>24.异步更新DOM  this.$nextTick( )方法</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在DOM渲染完成后 执行回调</span></span><br><span class="line"><span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">//调用子组件 HotSeachList.vue的reset()方法</span></span><br><span class="line">      <span class="keyword">this</span>.$refs.hotSearch.reset()</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="25-CSS小技巧：绝对定位居中"><a href="#25-CSS小技巧：绝对定位居中" class="headerlink" title="25.CSS小技巧：绝对定位居中"></a>25.CSS小技巧：绝对定位居中</h2><blockquote>
+<p>position:absolute 也可以使用 margin:auto来设置居中</p>
+</blockquote>
+<p><strong>只需设置:</strong>  </p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 0;</span><br><span class="line"><span class="selector-tag">left</span>: 0;</span><br><span class="line"><span class="selector-tag">right</span>: 0;</span><br><span class="line"><span class="selector-tag">bottom</span>: 0;</span><br><span class="line"><span class="selector-tag">margin</span>: <span class="selector-tag">auto</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="26-CSS翻转动画特效"><a href="#26-CSS翻转动画特效" class="headerlink" title="26.CSS翻转动画特效"></a>26.CSS翻转动画特效</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">transform-orgin:left    //设置元素基点 即设置旋转轴在左边</span><br><span class="line">backface-visibility: hidden;  //背面隐藏 360度旋转时到背面会隐藏</span><br></pre></td></tr></table></figure>
+
+<h2 id="27-在Sass中使用for循环"><a href="#27-在Sass中使用for循环" class="headerlink" title="27.在Sass中使用for循环"></a>27.在Sass中使用for循环</h2><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> to length(<span class="variable">$moves</span>)&#123;</span><br><span class="line">     &amp;<span class="selector-pseudo">:nth-child</span>(#&#123;<span class="variable">$i</span>&#125;)&#123;</span><br><span class="line">     <span class="keyword">@include</span> move(<span class="variable">$i</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="28-Mock-js代替原生XMLRequest"><a href="#28-Mock-js代替原生XMLRequest" class="headerlink" title="28.Mock.js代替原生XMLRequest"></a>28.Mock.js代替原生XMLRequest</h2><p>安装 <code>cnpm i mockjs  --save-dev</code>   </p>
+<p>简写 <code>cnpm i mockjs --D</code></p>
+<p><strong>在main.js中引入mockjs</strong></p>
+<p><strong>注意点：mock 不支持blob对象  支持txt文本</strong></p>
+<h2 id="29-安装axios"><a href="#29-安装axios" class="headerlink" title="29.安装axios"></a>29.安装axios</h2><p><code>cnpm i axios --save</code></p>
+<h2 id="30-Vue路由跳转"><a href="#30-Vue路由跳转" class="headerlink" title="30.Vue路由跳转"></a>30.Vue路由跳转</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.$router.push(&#123;</span><br><span class="line">    path:&quot;&#x2F;store&#x2F;deatil&quot;,        &#x2F;&#x2F;路径</span><br><span class="line">    query:&#123;  		       &#x2F;&#x2F;参数</span><br><span class="line">    fileName:book.fileName,</span><br><span class="line">    category:book.category</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;back()方法  router返回上一级</span><br><span class="line">this.$router.go(-1)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;指定跳转</span><br><span class="line">this.$router.push(&quot;&#x2F;store&#x2F;shelf&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="31-对原本有的方法进行扩展"><a href="#31-对原本有的方法进行扩展" class="headerlink" title="31.对原本有的方法进行扩展"></a>31.对原本有的方法进行扩展</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.pushWithoutDuplicate =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">        <span class="keyword">const</span> arg=<span class="built_in">arguments</span>[i]</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.indexOf(arg)===<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>.push(arg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。</span></span><br><span class="line"><span class="comment">//不匹配返回-1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="32-安装create-api"><a href="#32-安装create-api" class="headerlink" title="32.安装create-api"></a>32.安装create-api</h2><p><strong>安装</strong></p>
+<p><code>cnpm i -S vue-create-api</code></p>
+<p><strong>配置</strong></p>
+<p><strong>1.在utils文件夹中创建相应js文件</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import CreateAPI from &quot;vue-create-api&quot;</span><br><span class="line">import Vue from &quot;vue&quot;</span><br><span class="line">import Toast from &quot;..&#x2F;components&#x2F;common&#x2F;Toast&quot;</span><br><span class="line"></span><br><span class="line">Vue.use(CreateAPI)</span><br><span class="line"></span><br><span class="line">Vue.createAPI(Toast,true)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.在main.js中导入创建的js文件</strong></p>
+<p><strong>3.使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$createToast(&#123;</span><br><span class="line">     $props:&#123;</span><br><span class="line">     text:<span class="string">"hello imooc"</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;).show()</span><br></pre></td></tr></table></figure>
+
+<p><strong>tip：如果报错 需要添加name属性  可以在组件中添加name属性</strong><br><strong>或者 Vue.createAPI(Vue,Toast)</strong></p>
+<h2 id="33-安装-localforage-库"><a href="#33-安装-localforage-库" class="headerlink" title="33.安装 localforage 库"></a>33.安装 localforage 库</h2><p><strong>开源的 对indexDB操作的一个库</strong></p>
+<p><code>cnpm i -S localforage</code></p>
+<h2 id="34-分页算法"><a href="#34-分页算法" class="headerlink" title="34.分页算法"></a>34.分页算法</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//钩子函数  异步调用</span></span><br><span class="line"><span class="keyword">this</span>.book.ready.then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line"><span class="comment">//分页算法 750字一页根据页面宽度 和字体大小 加字减字                         </span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.book.locations.generate(<span class="number">750</span>*(<span class="built_in">window</span>.innerWidth/<span class="number">375</span>*(getFontSize(<span class="keyword">this</span>.fileName)/<span class="number">16</span>))</span><br><span class="line">&#125;).then(<span class="function"><span class="params">locations</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(locations)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
 </search>
