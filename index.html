@@ -80,6 +80,78 @@
     
     
     
+    <article id="post-JSP学生信息管理系统的一些笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/12/08/JSP%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/"
+    >JSP学生信息管理系统的一些笔记</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/12/08/JSP%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-12-08T01:05:48.000Z" itemprop="datePublished">2020-12-08</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="JSP学生信息管理系统笔记"><a href="#JSP学生信息管理系统笔记" class="headerlink" title="JSP学生信息管理系统笔记"></a>JSP学生信息管理系统笔记</h1><h2 id="1-css文件变化，而jsp页面无变化问题"><a href="#1-css文件变化，而jsp页面无变化问题" class="headerlink" title="1.css文件变化，而jsp页面无变化问题"></a>1.css文件变化，而jsp页面无变化问题</h2><p><strong>清除浏览器缓存，谷歌Ctrl+F5，或者直接设置中清除。</strong></p>
+<h2 id="2-使用cookie实现登录页面记住我功能"><a href="#2-使用cookie实现登录页面记住我功能" class="headerlink" title="2.使用cookie实现登录页面记住我功能"></a>2.使用cookie实现登录页面记住我功能</h2><p><strong>servlet页面</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建cookie</span></span><br><span class="line"><span class="comment">//将用户名和密码加入cookie   cookie保存多个值的方法 不能放数组 只能String类型</span></span><br><span class="line">String data=account+<span class="string">","</span>+passWord;</span><br><span class="line">Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">"remember"</span>,data);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 判断remeber 是否被选中</span></span><br><span class="line"><span class="keyword">if</span> (isChecked != <span class="keyword">null</span> &amp;&amp; isChecked.equals(<span class="string">"on"</span>)) &#123;</span><br><span class="line">	<span class="comment">// "yes" 勾选了 ==&gt; 设置有效时间为 一周</span></span><br><span class="line">	cookie.setMaxAge(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">// null 没勾选 ==&gt; 设置cookie的有效时间为0</span></span><br><span class="line">	cookie.setMaxAge(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 3 将cookie添加到response</span></span><br><span class="line">response.addCookie(cookie);</span><br><span class="line">response.sendRedirect(<span class="string">"success.jsp"</span>);</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/12/08/JSP%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/">阅读更多...</a>
+      
+      
+      <!-- reward 打赏按钮-->
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-数据库课程设计的一些笔记" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -749,79 +821,6 @@
 </blockquote>
       
       <a class="article-more-link" href="/2020/06/15/JQuery/">阅读更多...</a>
-      
-      
-      <!-- reward 打赏按钮-->
-      
-    </div>
-    
-    
-      <!-- copyright 版权声明-->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-H5H5-API笔记-1" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/"
-    >WEB API笔记</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/" class="article-date">
-  <time datetime="2020-05-20T14:47:15.000Z" itemprop="datePublished">2020-05-20</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="Web-API"><a href="#Web-API" class="headerlink" title="Web API"></a>Web API</h1><blockquote>
-<p>学习目标：</p>
-<p>能够通过ID来获取元素<br>能够通过标签名来获取元素<br>能够通过class来获取元素<br>能够通过选择器来获取元素<br>能够获取body和html元素<br>能够给元素注册事件<br>能够修改元素的内容<br>能够区分innerText和innerHTML的区别<br>能够修改像div这类普通元素的属性<br>能够修改表单元素的属性<br>能够修改元素的样式属性</p>
-</blockquote>
-      
-      <a class="article-more-link" href="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/">阅读更多...</a>
       
       
       <!-- reward 打赏按钮-->
