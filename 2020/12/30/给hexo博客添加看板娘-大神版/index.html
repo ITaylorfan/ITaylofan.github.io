@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    我的第一篇文章 |  ITaylorfan的博客
+    给hexo博客添加看板娘(大神版) |  ITaylorfan的博客
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -47,7 +47,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-我的第一篇文章" class="article article-type-post" itemscope
+  <article id="post-给hexo博客添加看板娘-大神版" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -55,7 +55,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  我的第一篇文章
+  给hexo博客添加看板娘(大神版)
 </h1>
  
 
@@ -64,14 +64,10 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/23/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="article-date">
-  <time datetime="2020-04-23T14:42:28.000Z" itemprop="datePublished">2020-04-23</time>
+      <a href="/2020/12/30/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98-%E5%A4%A7%E7%A5%9E%E7%89%88/" class="article-date">
+  <time datetime="2020-12-30T01:40:21.000Z" itemprop="datePublished">2020-12-30</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">搭建博客</a>
-  </div>
-
       
       
 <div class="word_count">
@@ -79,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数:</span>
-            <span class="post-count">148</span>
+            <span class="post-count">310</span>
         </span>
     </span>
 
@@ -113,7 +109,35 @@
       
 
       
-      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>老早就想着建一个属于自己的小网站，无奈云服务器要花钱，所以就上网找有没有不花钱搭建网站的方法。然后就遇到了hexo+github搭建个人博客这个方法，确实一分钱都不用花，只要花点时间。首先感谢博客园的这个老铁<a href="https://www.cnblogs.com/lubians/p/12181619.html" target="_blank" rel="noopener">鲁边</a>,大部分都是按照他的步骤来的，虽然省略了一些细节，但影响不大。如果你们也想做一个属于自己的博客网站可以参考他的步骤来做。</p>
+      <h1 id="给hexo博客添加看板娘"><a href="#给hexo博客添加看板娘" class="headerlink" title="给hexo博客添加看板娘"></a>给hexo博客添加看板娘</h1><blockquote>
+<p>我添加的是大神版，功能齐全(能说话，能换装)</p>
+</blockquote>
+<h2 id="1-下载大神的项目"><a href="#1-下载大神的项目" class="headerlink" title="1.下载大神的项目"></a>1.下载大神的项目</h2><p><strong>下载</strong> <a href="https://github.com/stevenjoezhang/live2d-widget" target="_blank" rel="noopener">张书樵大神的项目</a>，<strong>解压到本地博客目录的 <code>themes/next/source</code> 下，修改文件夹名为 <code>live2d-widget</code>，修改项目中的 <code>autoload.js</code> 文件，如下：</strong><br><strong>将</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> live2d_path = <span class="string">"https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/"</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>改为</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> live2d_path = <span class="string">"/live2d-widget/"</span>;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<img src="/2020/12/30/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98-%E5%A4%A7%E7%A5%9E%E7%89%88/%E7%9C%8B%E6%9D%BF%E5%A8%981.png" class="" title="看板娘1">
+
+<h2 id="2-在主题的主布局文件中引入"><a href="#2-在主题的主布局文件中引入" class="headerlink" title="2.在主题的主布局文件中引入"></a>2.在主题的主布局文件中引入</h2><p><strong>我的路径为/themes/hexo-theme-ayer/layout/layout.ejs</strong></p>
+<p><strong>在此文件中新增内容：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/live2d-widget/autoload.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-在主题的配置文件中配置"><a href="#3-在主题的配置文件中配置" class="headerlink" title="3.在主题的配置文件中配置"></a>3.在主题的配置文件中配置</h2><p><strong>在_config.yml文件中，新增如下内容：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">live2d: </span><br><span class="line"> enable: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-自定义看板娘大小、位置、格式、文本内容等"><a href="#4-自定义看板娘大小、位置、格式、文本内容等" class="headerlink" title="4.自定义看板娘大小、位置、格式、文本内容等"></a>4.自定义看板娘大小、位置、格式、文本内容等</h2><p><strong>可以找到 live2d-weight文件夹下的</strong> <code>waifu-tips.js</code> 、 <code>waifu-tips.json</code> <strong>和</strong> <code>waifu.css</code> <strong>进行修改</strong></p>
+<h2 id="5-注意"><a href="#5-注意" class="headerlink" title="5.注意"></a>5.注意</h2><p><strong>如果你的看板娘没有右侧的小菜单，请引入如下文件：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>我的是在主布局文件</strong><code>layout.ejs</code><strong>中进行添加的</strong></p>
+<p><strong>我的</strong><code>layout.ejs</code><strong>文件如下</strong>：</p>
+<img src="/2020/12/30/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98-%E5%A4%A7%E7%A5%9E%E7%89%88/%E7%9C%8B%E6%9D%BF%E5%A8%982.png" class="" title="看板娘2">
+
+<p><strong>箭头所指即为我添加的内容</strong></p>
 
       
       <!-- reward 打赏按钮-->
@@ -182,7 +206,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2020/04/23/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2020/12/30/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98-%E5%A4%A7%E7%A5%9E%E7%89%88/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -200,15 +224,20 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/25/hexo%E7%9B%AE%E5%BD%95%E5%88%86%E6%9E%90/" class="article-nav-link">
+      <a href="/2020/12/30/%E6%8A%8Ahexo%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91-%E5%91%86%E6%96%B9%E6%B3%95/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            hexo目录分析
+            把hexo部署到阿里云(呆方法)
           
         </div>
       </a>
     
+    
+      <a href="/2020/12/08/JSP%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">JSP学生信息管理系统的一些笔记</div>
+      </a>
     
   </nav>
 
