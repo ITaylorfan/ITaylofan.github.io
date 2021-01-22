@@ -1959,18 +1959,16 @@
   <entry>
     <title>微信小程序项目(黑马优购)笔记</title>
     <url>/2021/01/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE-%E9%BB%91%E9%A9%AC%E4%BC%98%E8%B4%AD-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="微信小程序-黑马优购项目-笔记"><a href="#微信小程序-黑马优购项目-笔记" class="headerlink" title="微信小程序(黑马优购项目)笔记"></a>微信小程序(黑马优购项目)笔记</h1><blockquote>
-<p><a href="https://www.bilibili.com/video/BV1nE41117BQ?p=130" target="_blank" rel="noopener">微信小程序基础和黑马优购小项目视频</a></p>
+    <content><![CDATA[<blockquote>
+<p><a href="https://www.bilibili.com/video/BV1nE41117BQ?p=130" target="_blank" rel="noopener">微信小程序基础和黑马优购小项目视频(B站)</a></p>
 </blockquote>
 <h2 id="1-列式编程快捷键"><a href="#1-列式编程快捷键" class="headerlink" title="1. 列式编程快捷键"></a>1. 列式编程快捷键</h2><p><strong>按下鼠标滚轮选中多行，再按Ctrl+D匹配一段文字 以空格结尾</strong></p>
-<h2 id="2-原生css使用变量"><a href="#2-原生css使用变量" class="headerlink" title="2. 原生css使用变量"></a>2. 原生css使用变量</h2><ol>
-<li><h3 id="创建变量"><a href="#创建变量" class="headerlink" title="创建变量"></a>创建变量</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">page</span>&#123;</span><br><span class="line">  <span class="attribute">--themeColor</span>:<span class="number">#eb4450</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">page</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="built_in">var</span>(--themeColor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-原生css使用变量"><a href="#2-原生css使用变量" class="headerlink" title="2. 原生css使用变量"></a>2. 原生css使用变量</h2><h3 id="2-1创建变量"><a href="#2-1创建变量" class="headerlink" title="2.1创建变量"></a>2.1创建变量</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">page</span>&#123;</span><br><span class="line">  <span class="attribute">--themeColor</span>:<span class="number">#eb4450</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="2-2使用变量"><a href="#2-2使用变量" class="headerlink" title="2.2使用变量"></a>2.2使用变量</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">page</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="built_in">var</span>(--themeColor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
+<a id="more"></a>
+
 <h2 id="3-使用promise对象对小程序请求函数进行封装"><a href="#3-使用promise对象对小程序请求函数进行封装" class="headerlink" title="3.使用promise对象对小程序请求函数进行封装"></a>3.使用promise对象对小程序请求函数进行封装</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 封装请求方法</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Request=<span class="function"><span class="params">params</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        wx.request(&#123;</span><br><span class="line">            <span class="comment">//解构</span></span><br><span class="line">            ...params,</span><br><span class="line">            success: <span class="function">(<span class="params">result</span>)=&gt;</span>&#123;</span><br><span class="line">                resolve(result)</span><br><span class="line">            &#125;,</span><br><span class="line">            fail: <span class="function">(<span class="params">error</span>)=&gt;</span>&#123;</span><br><span class="line">                reject(error)</span><br><span class="line">            &#125;,</span><br><span class="line">            complete: <span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>调用</strong></p>
@@ -2047,6 +2045,44 @@
 <h3 id="2-小程序基础文档"><a href="#2-小程序基础文档" class="headerlink" title="2.小程序基础文档"></a>2.小程序基础文档</h3><p><a href="http://itaylorfan.top:8081/materials/weixin/weixin-base.pdf" target="_blank" rel="noopener">小程序基础文档</a></p>
 <h3 id="3-项目讲解文档"><a href="#3-项目讲解文档" class="headerlink" title="3.项目讲解文档"></a>3.项目讲解文档</h3><p><a href="http://itaylorfan.top:8081/materials/weixin/weixin-project%28shopping%29.pdf" target="_blank" rel="noopener">黑马优购小项目</a></p>
 <h3 id="4-本人代码地址"><a href="#4-本人代码地址" class="headerlink" title="4.本人代码地址"></a>4.本人代码地址</h3><p><a href="https://github.com/ITaylorfan/weixin-heimayougou" target="_blank" rel="noopener">项目代码</a></p>
+]]></content>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>uniapp练手项目黑马超市的一些笔记</title>
+    <url>/2021/01/22/uniapp%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E9%BB%91%E9%A9%AC%E8%B6%85%E5%B8%82%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a><!--uni-app  练手项目(黑马超市)的一些笔记--></h1><h2 id="1-Vue过滤器"><a href="#1-Vue过滤器" class="headerlink" title="1.Vue过滤器"></a>1.Vue过滤器</h2><h3 id="1-1使用局部过滤器"><a href="#1-1使用局部过滤器" class="headerlink" title="1.1使用局部过滤器"></a>1.1使用局部过滤器</h3><p><strong>HTML代码</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"bottom-text"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 在此处使用过滤器 默认把 | 左边的数据作为参数传给过滤器--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"time"</span>&gt;</span>发表时间：&#123;&#123;item.add_time | timeFilter&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"num"</span>&gt;</span>浏览次数：&#123;&#123;item.click&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p><strong>js代码</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自定义过滤器</span></span><br><span class="line">	filters:&#123;</span><br><span class="line">           <span class="comment">//过滤器名 传过来的参数</span></span><br><span class="line">		timeFilter(myDate)&#123;</span><br><span class="line">			<span class="keyword">const</span> date=<span class="keyword">new</span> <span class="built_in">Date</span>(myDate)</span><br><span class="line">			<span class="keyword">let</span> year=date.getFullYear()</span><br><span class="line">			<span class="keyword">let</span> month=(date.getMonth()+<span class="number">1</span>).toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">			<span class="comment">//padStart() ES2017新增方法 对字符串进行填充</span></span><br><span class="line">			<span class="keyword">let</span> Day=date.getDate().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">let</span> Hour=date.getHours().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">let</span> Min=date.getMinutes().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">let</span> Second=date.getSeconds().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> year+<span class="string">"-"</span>+month+<span class="string">"-"</span>+Day+<span class="string">" "</span>+Hour+<span class="string">":"</span>+Min+<span class="string">":"</span>+Second</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2使用全局过滤器"><a href="#1-2使用全局过滤器" class="headerlink" title="1.2使用全局过滤器"></a>1.2使用全局过滤器</h3><p><strong>在main.js文件中配置</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.filter(<span class="string">"timeFilter"</span>,myDate=&gt;&#123;</span><br><span class="line">	<span class="keyword">const</span> date=<span class="keyword">new</span> <span class="built_in">Date</span>(myDate)</span><br><span class="line">	<span class="keyword">let</span> year=date.getFullYear()</span><br><span class="line">	<span class="keyword">let</span> month=(date.getMonth()+<span class="number">1</span>).toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">	<span class="comment">//padStart() ES2017新增方法 对字符串进行填充</span></span><br><span class="line">	<span class="keyword">let</span> Day=date.getDate().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">let</span> Hour=date.getHours().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">let</span> Min=date.getMinutes().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">let</span> Second=date.getSeconds().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">return</span> year+<span class="string">"-"</span>+month+<span class="string">"-"</span>+Day+<span class="string">" "</span>+Hour+<span class="string">":"</span>+Min+<span class="string">":"</span>+Second</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-字符串填充方法-padStart"><a href="#2-字符串填充方法-padStart" class="headerlink" title="2.字符串填充方法 padStart()"></a>2.字符串填充方法 padStart()</h2><blockquote>
+<p>ES2017 引入了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。<code>padStart()</code>用于头部补全，<code>padEnd()</code>用于尾部补全。</p>
+</blockquote>
+<p><strong>此处对日期格式进行格式化，获取天数 只有一位数时前面补0</strong></p>
+<p><strong>注意：这是字符串方法，不要漏掉toString()</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> Day=date.getDate().toString().padStart(<span class="number">2</span>,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="附件："><a href="#附件：" class="headerlink" title="附件："></a>附件：</h2><h3 id="1-项目接口文档"><a href="#1-项目接口文档" class="headerlink" title="1.项目接口文档"></a>1.<a href="https://www.yuque.com/suanmeitang-lsuno/interface/eagkm0" target="_blank" rel="noopener">项目接口文档</a></h3><h3 id="2-项目材料-含项目服务器"><a href="#2-项目材料-含项目服务器" class="headerlink" title="2.项目材料(含项目服务器)"></a>2.<a href="https://github.com/ITaylorfan/uniapp-HeiMaShop-materials" target="_blank" rel="noopener">项目材料(含项目服务器)</a></h3><h3 id="3-部分截图"><a href="#3-部分截图" class="headerlink" title="3.部分截图"></a>3.部分截图</h3><img src="/2021/01/22/uniapp%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E9%BB%91%E9%A9%AC%E8%B6%85%E5%B8%82%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/uniapp%E6%88%AA%E5%9B%BE1.png" class="" title="uniapp截图1">
+
+<img src="/2021/01/22/uniapp%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E9%BB%91%E9%A9%AC%E8%B6%85%E5%B8%82%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/uniapp%E6%88%AA%E5%9B%BE2.png" class="" title="uniapp截图2">
+
+<img src="/2021/01/22/uniapp%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E9%BB%91%E9%A9%AC%E8%B6%85%E5%B8%82%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/uniapp%E6%88%AA%E5%9B%BE3.png" class="" title="uniapp截图3">
+
+<img src="/2021/01/22/uniapp%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E9%BB%91%E9%A9%AC%E8%B6%85%E5%B8%82%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/uniapp%E6%88%AA%E5%9B%BE4.png" class="" title="uniapp截图4">
+
 ]]></content>
       <tags>
         <tag>前端</tag>
