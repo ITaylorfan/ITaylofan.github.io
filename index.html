@@ -81,6 +81,76 @@
     
     
     
+    <article id="post-node学习笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/23/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+    >node学习笔记</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/02/23/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2021-02-23T13:28:15.000Z" itemprop="datePublished">2021-02-23</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="1-文件读写"><a href="#1-文件读写" class="headerlink" title="1.文件读写"></a>1.文件读写</h2><h3 id="1-1文件读取"><a href="#1-1文件读取" class="headerlink" title="1.1文件读取"></a>1.1文件读取</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载文件读写模块</span></span><br><span class="line"><span class="keyword">let</span> fs=<span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="comment">//文件不存在时报错</span></span><br><span class="line">fs.readFile(<span class="string">'hello1.txt'</span>, &#123;<span class="attr">encoding</span>:<span class="string">"utf-8"</span>,<span class="attr">flag</span>:<span class="string">"r"</span>&#125;,(err, data) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"这是hello1.txt的文件内容:"</span>+data);  <span class="comment">//没有设置编码返回 buffer</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2021/02/23/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">阅读更多...</a>
+      
+      
+      <!-- reward 打赏按钮-->
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-node爬虫笔记" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -716,76 +786,6 @@
 <p><strong>不用了 可以使用了下面的VantUI框架代替</strong></p>
       
       <a class="article-more-link" href="/2020/09/12/Ala%E5%B0%8F%E5%8C%BA%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/">阅读更多...</a>
-      
-      
-      <!-- reward 打赏按钮-->
-      
-    </div>
-    
-    
-      <!-- copyright 版权声明-->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-vue-cli书城项目的一些笔记" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/09/03/vue-cli%E4%B9%A6%E5%9F%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/"
-    >vue-cli书城项目的一些笔记</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/09/03/vue-cli%E4%B9%A6%E5%9F%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-09-03T07:35:33.000Z" itemprop="datePublished">2020-09-03</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="Vue书城项目的一些笔记"><a href="#Vue书城项目的一些笔记" class="headerlink" title="Vue书城项目的一些笔记"></a>Vue书城项目的一些笔记</h1><h2 id="1-Vuecli项目创建"><a href="#1-Vuecli项目创建" class="headerlink" title="1.Vuecli项目创建"></a>1.Vuecli项目创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vue create vue-imooc-ebook --通过vue-cli创建项目</span><br><span class="line">npm run serve --本地运行服务</span><br><span class="line">cnpm run build  --打包</span><br></pre></td></tr></table></figure>
-      
-      <a class="article-more-link" href="/2020/09/03/vue-cli%E4%B9%A6%E5%9F%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/">阅读更多...</a>
       
       
       <!-- reward 打赏按钮-->
