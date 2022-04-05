@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Java" />
+   
+  <meta name="description" content="本站是ITaylorfan的个人博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Ala小区练手项目的一些笔记 |  ITaylorfan的博客
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/TS-10-21.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ITaylorfan的博客" type="application/atom+xml">
+</head>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-Ala小区练手项目的一些笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Ala小区练手项目的一些笔记
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/09/12/Ala%E5%B0%8F%E5%8C%BA%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-09-12T00:25:15.000Z" itemprop="datePublished">2020-09-12</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数:</span>
+            <span class="post-count">1.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长 ≈</span>
+            <span class="post-count">5 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="VueCli项目阿拉小区笔记"><a href="#VueCli项目阿拉小区笔记" class="headerlink" title="VueCli项目阿拉小区笔记"></a>VueCli项目阿拉小区笔记</h1><h2 id="1-创建项目报错"><a href="#1-创建项目报错" class="headerlink" title="1.创建项目报错"></a>1.创建项目报错</h2><blockquote>
+<p>Warning: name can no longer contain capital letters</p>
+</blockquote>
+<p><strong>项目名不能有大写</strong></p>
+<h2 id="2-安装font-awesome"><a href="#2-安装font-awesome" class="headerlink" title="2.安装font-awesome"></a>2.安装font-awesome</h2><p><code>cnpm -i font-awesome</code></p>
+<p><strong>不用了 可以使用了下面的VantUI框架代替</strong></p>
+<a id="more"></a>
+
+<h2 id="3-安装Vant前端框架"><a href="#3-安装Vant前端框架" class="headerlink" title="3.安装Vant前端框架"></a>3.安装Vant前端框架</h2><h3 id="3-1-全局安装"><a href="#3-1-全局安装" class="headerlink" title="3.1.全局安装"></a>3.1.全局安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i vant -S</span><br></pre></td></tr></table></figure>
+
+<p><strong>在main.js中配置</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'vant/lib/index.css'</span></span><br><span class="line">Vue.use(Vant)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-2-部分安装，按需使用官网推荐"><a href="#3-2-部分安装，按需使用官网推荐" class="headerlink" title="3.2.部分安装，按需使用官网推荐"></a>3.2.部分安装，按需使用官网推荐</h3><h4 id="3-2-1安装插件"><a href="#3-2-1安装插件" class="headerlink" title="3.2.1安装插件"></a>3.2.1安装插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i babel-plugin-import -D</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-2配置babel"><a href="#3-2-2配置babel" class="headerlink" title="3.2.2配置babel"></a>3.2.2配置babel</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  presets: [</span><br><span class="line">    <span class="string">'@vue/app'</span></span><br><span class="line">  ],</span><br><span class="line">  plugins: [</span><br><span class="line">    [<span class="string">"import"</span>, &#123;</span><br><span class="line">      libraryName: <span class="string">'vant'</span>,</span><br><span class="line">      libraryDirectory: <span class="string">'es'</span>,</span><br><span class="line">      style: <span class="literal">true</span></span><br><span class="line">    &#125;,<span class="string">"vant"</span>]</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-3main-js引入需要用到的插件"><a href="#3-2-3main-js引入需要用到的插件" class="headerlink" title="3.2.3main.js引入需要用到的插件"></a>3.2.3main.js引入需要用到的插件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">"vant"</span>;</span><br><span class="line">Vue.use(Button);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-4模板中使用"><a href="#3-2-4模板中使用" class="headerlink" title="3.2.4模板中使用"></a>3.2.4模板中使用</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">"primary"</span>&gt;</span>主要按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="坑"><a href="#坑" class="headerlink" title="!!!坑"></a>!!!坑</h4><p><strong>1.运行项目警告: “export ‘DropdownItem’ was not found in ‘vant’诸如此类…</strong></p>
+<p>查询到解决方式升级本地版本，升级命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vant@2.10.6</span><br><span class="line"></span><br><span class="line">//2.10.6是版本号，每次用官网上面最新的版本号</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2.字体图标显示为方框</strong></p>
+<p><strong>引入reset.css文件重置了所有样式，所以字体图标无法正常显示</strong></p>
+<h2 id="4-安装mockjs模拟后台接口"><a href="#4-安装mockjs模拟后台接口" class="headerlink" title="4.安装mockjs模拟后台接口"></a>4.安装mockjs模拟后台接口</h2><h3 id="4-1安装"><a href="#4-1安装" class="headerlink" title="4.1安装"></a>4.1安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i mockjs  --save-dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i mockjs --D</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2在src目录下新建mock文件夹，创建index-js文件"><a href="#4-2在src目录下新建mock文件夹，创建index-js文件" class="headerlink" title="4.2在src目录下新建mock文件夹，创建index.js文件"></a>4.2在src目录下新建mock文件夹，创建index.js文件</h3><p>在index.js文件下导入<code>import Mock from &quot;mockjs&quot;</code></p>
+<h3 id="4-3在main-js中引入"><a href="#4-3在main-js中引入" class="headerlink" title="4.3在main.js中引入:"></a>4.3在main.js中引入:</h3><p><code>import &quot;./mock&quot;;</code></p>
+<h3 id="4-4模拟数据"><a href="#4-4模拟数据" class="headerlink" title="4.4模拟数据"></a>4.4模拟数据</h3><p><strong>在mock文件夹下新建一个js文件放置下面的数据</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    <span class="string">"error_code"</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="string">"msg"</span>:<span class="string">"获取成功"</span>,</span><br><span class="line">    <span class="string">"data"</span>:[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"id"</span>:<span class="number">1</span>,</span><br><span class="line">            <span class="string">"title"</span>:<span class="string">"抗疫:本小区实行全面封锁"</span>,</span><br><span class="line">            <span class="string">"content"</span>:<span class="string">"新冠肺炎疫情，在一段时间的好转后，似乎出现死灰复燃的现象"</span>,</span><br><span class="line">            <span class="string">"imageUrl"</span>:<span class="string">`<span class="subst">$&#123;process.env.VUE_APP_RES_URL&#125;</span>/Ala/ala1.jpg`</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最后在index.js文件中引入该文件</strong></p>
+<h2 id="5-安装axios"><a href="#5-安装axios" class="headerlink" title="5.安装axios"></a>5.安装axios</h2><h3 id="5-1安装"><a href="#5-1安装" class="headerlink" title="5.1安装"></a>5.1安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i axios --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2导入"><a href="#5-2导入" class="headerlink" title="5.2导入"></a>5.2导入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">"axios"</span></span><br><span class="line"><span class="comment">//在Vue原型加入axios</span></span><br><span class="line">Vue.prototype.$axios = axios</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3使用"><a href="#5-3使用" class="headerlink" title="5.3使用"></a>5.3使用</h3><p>注意axios对象的调用<code>this.$axios</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getInfo()&#123;          <span class="keyword">this</span>.$axios.get(<span class="string">`<span class="subst">$&#123;process.env.VUE_APP_BASE_URL&#125;</span>/Ala/info`</span>).then(<span class="function"><span class="params">response</span>=&gt;</span>&#123;</span><br><span class="line">               <span class="built_in">console</span>.log(response)</span><br><span class="line">           &#125;,error=&gt;&#123;</span><br><span class="line"></span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="技巧相关"><a href="#技巧相关" class="headerlink" title="技巧相关"></a>技巧相关</h2><h2 id="1-flex布局中超出文字显示省略号"><a href="#1-flex布局中超出文字显示省略号" class="headerlink" title="1.flex布局中超出文字显示省略号"></a>1.flex布局中超出文字显示省略号</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.title</span>&#123;</span><br><span class="line">            <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">            <span class="attribute">display</span>: flex;</span><br><span class="line">            <span class="attribute">font-size</span>: <span class="built_in">px2rem</span>(<span class="number">20</span>);</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">0</span>;    <span class="comment">/*容易忽略的重要点*/</span></span><br><span class="line">            span&#123;  </span><br><span class="line">                <span class="selector-tag">flex</span><span class="selector-pseudo">:1</span>;  </span><br><span class="line">                <span class="selector-tag">white-space</span>: <span class="selector-tag">nowrap</span>;</span><br><span class="line">          <span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line">          <span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="配置Express服务器以连接MYSQL"><a href="#配置Express服务器以连接MYSQL" class="headerlink" title="配置Express服务器以连接MYSQL"></a>配置Express服务器以连接MYSQL</h2><h3 id="安装Express服务器相关依赖"><a href="#安装Express服务器相关依赖" class="headerlink" title="安装Express服务器相关依赖"></a>安装Express服务器相关依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express mysql body-parser</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-在项目根目录下新建server文件夹放置Express服务器相关文件-非src目录"><a href="#1-在项目根目录下新建server文件夹放置Express服务器相关文件-非src目录" class="headerlink" title="1.在项目根目录下新建server文件夹放置Express服务器相关文件(非src目录)"></a>1.在项目根目录下新建server文件夹放置Express服务器相关文件(非src目录)</h3><h4 id="1-1-db-js文件用来添加mysql配置"><a href="#1-1-db-js文件用来添加mysql配置" class="headerlink" title="1.1 db.js文件用来添加mysql配置"></a>1.1 db.js文件用来添加mysql配置</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据库连接配置</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mysql: &#123;</span><br><span class="line">        host: <span class="string">'localhost'</span>,</span><br><span class="line">        user: <span class="string">'root'</span>,</span><br><span class="line">        password: <span class="string">'123456'</span>,</span><br><span class="line">        database: <span class="string">'chat'</span>, <span class="comment">//数据库名</span></span><br><span class="line">        port: <span class="string">'3306'</span>   <span class="comment">//端口</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-index-js—-Express服务器入口文件"><a href="#1-2-index-js—-Express服务器入口文件" class="headerlink" title="1.2 index.js—-Express服务器入口文件"></a>1.2 index.js—-Express服务器入口文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node 后端服务器</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> userApi = <span class="built_in">require</span>(<span class="string">'./api/userApi'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"> </span><br><span class="line">app.use(bodyParser.json());</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;<span class="attr">extended</span>: <span class="literal">false</span>&#125;));</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 后端api路由</span></span><br><span class="line">app.use(<span class="string">'/api/user'</span>, userApi);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 监听端口</span></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'success listen at port:3000......'</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-sqlMap-js—-SQL语句映射文件，以供api逻辑调用"><a href="#1-3-sqlMap-js—-SQL语句映射文件，以供api逻辑调用" class="headerlink" title="1.3 sqlMap.js—-SQL语句映射文件，以供api逻辑调用"></a>1.3 sqlMap.js—-SQL语句映射文件，以供api逻辑调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SQL语句映射文件，以供api逻辑调用</span></span><br><span class="line"><span class="comment">// sql语句</span></span><br><span class="line"><span class="keyword">var</span> sqlMap = &#123;</span><br><span class="line">    <span class="comment">// 用户</span></span><br><span class="line">    user: &#123;</span><br><span class="line">        add: <span class="string">'insert into user(id, name, age) values (0, ?, ?)'</span>,</span><br><span class="line">        getInfo:<span class="string">"select * from book"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">module</span>.exports = sqlMap;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-在server文件夹下新建api文件夹-在api文件夹下新建userApi-js-—-测试用api示例"><a href="#1-4-在server文件夹下新建api文件夹-在api文件夹下新建userApi-js-—-测试用api示例" class="headerlink" title="1.4 在server文件夹下新建api文件夹 在api文件夹下新建userApi.js —- 测试用api示例"></a>1.4 在server文件夹下新建api文件夹 在api文件夹下新建userApi.js —- 测试用api示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试用api示例</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> models = <span class="built_in">require</span>(<span class="string">'../db'</span>);</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.Router();</span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"><span class="keyword">var</span> $sql = <span class="built_in">require</span>(<span class="string">'../sqlMap'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; request, response &#125; = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 连接数据库</span></span><br><span class="line"><span class="keyword">var</span> conn = mysql.createConnection(models.mysql);</span><br><span class="line"> </span><br><span class="line">conn.connect();</span><br><span class="line"><span class="keyword">var</span> jsonWrite = <span class="function"><span class="keyword">function</span>(<span class="params">res, ret</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> ret === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">            code: <span class="string">'1'</span>,</span><br><span class="line">            msg: <span class="string">'操作失败'</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.json(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 增加用户接口</span></span><br><span class="line">router.post(<span class="string">'/addUser'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> sql = $sql.user.add;</span><br><span class="line">    <span class="keyword">var</span> params = req.body;</span><br><span class="line">    <span class="built_in">console</span>.log(params);</span><br><span class="line">    conn.query(sql, [params.username, params.age], <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(err);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            jsonWrite(res, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//用户查询数据的接口</span></span><br><span class="line">router.get(<span class="string">"/getInfo"</span>,(request,response)=&gt;&#123;</span><br><span class="line">    <span class="keyword">var</span> sql=$sql.user.getInfo</span><br><span class="line">    conn.query(sql,<span class="function"><span class="keyword">function</span>(<span class="params">err,result</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(err)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(result)&#123;</span><br><span class="line">            <span class="comment">//jsonWrite函数为上面的自定义函数</span></span><br><span class="line">            jsonWrite(response,result)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+
+<p><strong>文件夹结构如下</strong></p>
+<img src="/2020/09/12/Ala%E5%B0%8F%E5%8C%BA%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/server%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9B%AE%E5%BD%95.png" class="" title="文件夹目录">
+
+<h4 id="1-5调用"><a href="#1-5调用" class="headerlink" title="1.5调用"></a>1.5调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getInfo2()&#123;</span><br><span class="line">            <span class="keyword">this</span>.$axios.get(<span class="string">`/api/user/getInfo`</span>).then(<span class="function"><span class="params">response</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(response)</span><br><span class="line">            &#125;,error=&gt;&#123;</span><br><span class="line"></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-6运行服务器"><a href="#1-6运行服务器" class="headerlink" title="1.6运行服务器"></a>1.6运行服务器</h4><p><strong>在server文件夹下</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node index</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/09/12/Ala%E5%B0%8F%E5%8C%BA%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/express%E6%9C%8D%E5%8A%A1%E5%99%A8.png" class="" title="express服务器">
+
+<p><strong>出现上面一句话表示服务器已成功运行！</strong></p>
+<h2 id="GIT相关"><a href="#GIT相关" class="headerlink" title="GIT相关"></a>GIT相关</h2><h3 id="报错fatal-not-a-git-repository-or-any-of-the-parent-directories-git"><a href="#报错fatal-not-a-git-repository-or-any-of-the-parent-directories-git" class="headerlink" title="报错fatal: not a git repository (or any of the parent directories): .git"></a>报错fatal: not a git repository (or any of the parent directories): .git</h3><p><strong>只需初始化一下就好，执行</strong>： <code>git init</code></p>
+<h3 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h3><p><code>$ git remote add origin https://github.com/ITaylorfan/ALa.git</code></p>
+<h3 id="2-拉取远程仓库内容"><a href="#2-拉取远程仓库内容" class="headerlink" title="2.拉取远程仓库内容"></a>2.拉取远程仓库内容</h3><p><strong>远程仓库不为空时？</strong></p>
+<p><code>$ git pull --rebase origin master</code></p>
+<h3 id="3-推送源代码到远程仓库"><a href="#3-推送源代码到远程仓库" class="headerlink" title="3.推送源代码到远程仓库"></a>3.推送源代码到远程仓库</h3><p><code>$ git push origin master</code></p>
+
+      
+      <!-- reward 打赏按钮-->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyrights： </strong>
+              版权归作者所有。如需商业转载，请与作者联系以获得授权。非商业性转载请注明出处。
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2020/09/12/Ala%E5%B0%8F%E5%8C%BA%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/09/18/JSP%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            JSP实训笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/09/03/vue-cli%E4%B9%A6%E5%9F%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">vue-cli书城项目的一些笔记</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'IUPFYr9b7ardBDF78isygkav-gzGzoHsz',
+        app_key: 'SX7yhiWLzh7seYDtIzHyJOfH',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> ITaylorfan
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_black">鄂ICP备2020023396号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+      <li>
+       <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+      </li>
+    </ul>
+
+   
+   <!-- 统计网站运行时间 -->
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/23/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+	if(snum==60){
+	    snum=0;
+	  }
+
+	if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/TS-10-21-2.jpg" alt="ITaylorfan的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/hexo/">hexo</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%85%B6%E4%BB%96">其他</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/me">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WeChat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1815389717&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Java" />
+   
+  <meta name="description" content="本站是ITaylorfan的个人博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    微信小程序项目(黑马优购)笔记 |  ITaylorfan的博客
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/TS-10-21.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ITaylorfan的博客" type="application/atom+xml">
+</head>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-微信小程序项目-黑马优购-笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  微信小程序项目(黑马优购)笔记
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/01/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE-%E9%BB%91%E9%A9%AC%E4%BC%98%E8%B4%AD-%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2021-01-05T15:08:57.000Z" itemprop="datePublished">2021-01-05</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长 ≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <blockquote>
+<p><a href="https://www.bilibili.com/video/BV1nE41117BQ?p=130" target="_blank" rel="noopener">微信小程序基础和黑马优购小项目视频(B站)</a></p>
+</blockquote>
+<h2 id="1-列式编程快捷键"><a href="#1-列式编程快捷键" class="headerlink" title="1. 列式编程快捷键"></a>1. 列式编程快捷键</h2><p><strong>按下鼠标滚轮选中多行，再按Ctrl+D匹配一段文字 以空格结尾</strong></p>
+<h2 id="2-原生css使用变量"><a href="#2-原生css使用变量" class="headerlink" title="2. 原生css使用变量"></a>2. 原生css使用变量</h2><h3 id="2-1创建变量"><a href="#2-1创建变量" class="headerlink" title="2.1创建变量"></a>2.1创建变量</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">page</span>&#123;</span><br><span class="line">  <span class="attribute">--themeColor</span>:<span class="number">#eb4450</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2使用变量"><a href="#2-2使用变量" class="headerlink" title="2.2使用变量"></a>2.2使用变量</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">page</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="built_in">var</span>(--themeColor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="3-使用promise对象对小程序请求函数进行封装"><a href="#3-使用promise对象对小程序请求函数进行封装" class="headerlink" title="3.使用promise对象对小程序请求函数进行封装"></a>3.使用promise对象对小程序请求函数进行封装</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 封装请求方法</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Request=<span class="function"><span class="params">params</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        wx.request(&#123;</span><br><span class="line">            <span class="comment">//解构</span></span><br><span class="line">            ...params,</span><br><span class="line">            success: <span class="function">(<span class="params">result</span>)=&gt;</span>&#123;</span><br><span class="line">                resolve(result)</span><br><span class="line">            &#125;,</span><br><span class="line">            fail: <span class="function">(<span class="params">error</span>)=&gt;</span>&#123;</span><br><span class="line">                reject(error)</span><br><span class="line">            &#125;,</span><br><span class="line">            complete: <span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>调用</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Request(&#123; <span class="attr">url</span>: <span class="string">"https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata"</span> &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">success</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        swiperData: success.data.message</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;, error =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-VSCode快捷小技巧"><a href="#4-VSCode快捷小技巧" class="headerlink" title="4.VSCode快捷小技巧"></a>4.VSCode快捷小技巧</h2><p><strong>快速敲出1到100 100行view</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view&#123;$&#125;*100</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-使用微信小程序本地缓存"><a href="#5-使用微信小程序本地缓存" class="headerlink" title="5.使用微信小程序本地缓存"></a>5.使用微信小程序本地缓存</h2><p><strong>存放</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存放进缓存中去 这是同步方法 key value</span></span><br><span class="line">     wx.setStorageSync(<span class="string">"cates"</span>,&#123;<span class="attr">time</span>:<span class="built_in">Date</span>.now(),<span class="attr">data</span>:res.data.message&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>取出来</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//key</span></span><br><span class="line"><span class="keyword">const</span> Cates=wx.getStorageSync(<span class="string">"cates"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-使用es7的-async和await简化promise调用"><a href="#6-使用es7的-async和await简化promise调用" class="headerlink" title="6.使用es7的 async和await简化promise调用"></a>6.使用es7的 async和await简化promise调用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法名前记得加关键字 </span></span><br><span class="line"><span class="keyword">async</span> getCategoriesData() &#123;</span><br><span class="line">  <span class="comment">// 使用ES7的async 和 await 来简化上面 then 代码</span></span><br><span class="line">  <span class="comment">// res的值为then中的res</span></span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> Request(&#123; <span class="attr">url</span>: <span class="string">"/categories"</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>res得到的是成功的结果，如果需要用到错误的信息 则可以使用 try{}catch(error){}进行捕获</p>
+</blockquote>
+<h2 id="7-使用拓展运算符…进行数组拼接"><a href="#7-使用拓展运算符…进行数组拼接" class="headerlink" title="7.使用拓展运算符…进行数组拼接"></a>7.使用拓展运算符…进行数组拼接</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用...运算符解决数组拼接 将新获取的goodList和页面data中的goodList进行拼接</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      goodList:[...this.data.goodList,...goodList]</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-处理多条请求的小技巧"><a href="#8-处理多条请求的小技巧" class="headerlink" title="8.处理多条请求的小技巧"></a>8.处理多条请求的小技巧</h2><blockquote>
+<p>需求：在页面发送请求时，显示正在加载的提示，待所有请求完成时(无论成功与否)关闭正在加载的提示</p>
+</blockquote>
+<p><strong>在请求封装文件中声明全局变量</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明全局变量用于计算请求次数</span></span><br><span class="line"><span class="keyword">let</span> ajaxTimes=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>在请求方法内进行请求次数统计</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Request=<span class="function"><span class="params">params</span>=&gt;</span>&#123;</span><br><span class="line">    ajaxTimes++   <span class="comment">//次数统计</span></span><br><span class="line">    wx.showLoading(&#123;</span><br><span class="line">        title:<span class="string">"加载中"</span> ,</span><br><span class="line">        mask: <span class="literal">true</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>每完成一个请求就把请求次数减一，待减到0时，即可关闭加载中</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">complete: <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">             ajaxTimes--</span><br><span class="line">             <span class="keyword">if</span>(ajaxTimes===<span class="number">0</span>)&#123;</span><br><span class="line">                 <span class="comment">//关闭正在加载的提示  解决 所有请求完成再关闭的小问题</span></span><br><span class="line">                 wx.hideLoading()</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-控制台花式打印"><a href="#9-控制台花式打印" class="headerlink" title="9.控制台花式打印"></a>9.控制台花式打印</h2><p><strong>%c相当于占位符，后面的样式对应每个%c后面的内容</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`%c 总页数为 : %c <span class="subst">$&#123;<span class="keyword">this</span>.totalPage&#125;</span> `</span>,<span class="string">'background: #606060; color: #fff; border-radius: 3px 0 0 3px;'</span>,<span class="string">'background: #1475B2; color: #fff; border-radius: 0 3px 3px 0;'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果预览1：</strong></p>
+<p><img src="http://itaylorfan.top:8081/blogs/12-30/huashidayinyulan1.png" alt="花式打印预览1"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`%c 没有下一页了!`</span>,<span class="string">'background: red; color: #fff;'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果预览2：</strong></p>
+<p><img src="http://itaylorfan.top:8081/blogs/12-30/huashidayinyulan2.png" alt="花式打印预览2"></p>
+<h2 id="10-VSCode使用-emmet语法中的lorem快速生成一段话"><a href="#10-VSCode使用-emmet语法中的lorem快速生成一段话" class="headerlink" title="10.VSCode使用 emmet语法中的lorem快速生成一段话"></a>10.VSCode使用 emmet语法中的lorem快速生成一段话</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lorem   <span class="comment">/*根据提示敲下回车 直接生成一段话 以供调试*/</span></span><br><span class="line">lorem3  <span class="comment">/*生成三个单词 3可以为任意数字*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="11-CSS清除浮动"><a href="#11-CSS清除浮动" class="headerlink" title="11.CSS清除浮动"></a>11.CSS清除浮动</h2><p><strong>使用伪元素清除浮动</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 清除浮动 */</span></span><br><span class="line"><span class="selector-class">.tab-bar</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"020"</span>;   <span class="comment">/*看不见的空格*/</span></span><br><span class="line">    <span class="attribute">display</span>: block; </span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>; </span><br><span class="line">    <span class="attribute">clear</span>: both; </span><br><span class="line">    <span class="attribute">visibility</span>: hidden;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="12-CSS单行省略和多行省略"><a href="#12-CSS单行省略和多行省略" class="headerlink" title="12.CSS单行省略和多行省略"></a>12.CSS单行省略和多行省略</h2><p><strong>单行省略</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*单行省略*/</span></span><br><span class="line"><span class="comment">/* 让文字一行显示 超出显示省略号 */</span></span><br><span class="line"><span class="comment">/* 超出显示省略号 */</span></span><br><span class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</span><br><span class="line"><span class="comment">/* 空格也不换行 */</span></span><br><span class="line"><span class="selector-tag">white-space</span>: <span class="selector-tag">nowrap</span>;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>多行省略</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">word-break</span>: <span class="selector-tag">break-all</span>;  <span class="comment">/*单词截取为完整单词*/</span></span><br><span class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>; 		</span><br><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>;    <span class="comment">/*盒式布局*/</span></span><br><span class="line"><span class="selector-tag">-webkit-line-clamp</span>: 2;   <span class="comment">/*保留两行*/</span></span><br><span class="line"><span class="selector-tag">-webkit-box-orient</span>: <span class="selector-tag">vertical</span>;  <span class="comment">/*内容竖直排列*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="13-防抖和节流"><a href="#13-防抖和节流" class="headerlink" title="13.防抖和节流"></a>13.防抖和节流</h2><p><a href="https://www.baidu.com/link?url=42hneVrsF_8fYv5flehyqJMCmIWdY2D_SGw4CT3WRko1CujnImtslY1tT1JZxWuBZVbbgrLspu-T6EIlF6QuTa&wd=&eqid=929d0f7800006cbb000000055ff47fd7" target="_blank" rel="noopener">防抖与节流</a></p>
+<h3 id="13-1防抖"><a href="#13-1防抖" class="headerlink" title="13.1防抖"></a>13.1防抖</h3><blockquote>
+<p><strong>防抖一般用于搜索框</strong>，防止每输入一个字符就发送一次请求</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局定时器</span></span><br><span class="line">Timer:<span class="number">-1</span>,   </span><br><span class="line"><span class="comment">// 防抖处理 阻止过多请求  原本每输入一个字符就会触发查询函数</span></span><br><span class="line">clearTimeout(<span class="keyword">this</span>.Timer)   <span class="comment">//清除上一次的定时器</span></span><br><span class="line"><span class="keyword">this</span>.Timer=setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;  <span class="comment">//重新设置定时器</span></span><br><span class="line"><span class="keyword">this</span>.getQueryList(query)  <span class="comment">//调用发送请求函数</span></span><br><span class="line">&#125;, <span class="number">1000</span>)  </span><br><span class="line"><span class="comment">//所以当用户输入停止时才触发查询函数</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="13-2节流"><a href="#13-2节流" class="headerlink" title="13.2节流"></a>13.2节流</h3><blockquote>
+<p>节流一般用于下拉刷新和下拉加载中</p>
+</blockquote>
+<h2 id="报错相关"><a href="#报错相关" class="headerlink" title="报错相关"></a>报错相关</h2><h3 id="1-不在以下-request-合法域名列表中"><a href="#1-不在以下-request-合法域名列表中" class="headerlink" title="1. 不在以下 request 合法域名列表中"></a>1. 不在以下 request 合法域名列表中</h3><blockquote>
+<p>点击微信开发者工具右上角的详情-&gt;本地设置-&gt;不校验合法域名</p>
+</blockquote>
+<blockquote>
+<p>或者去<a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">微信公众平台</a>中 ，开发管理-&gt;开发设置-&gt;服务器域名 中添加请求地址域名的白名单  </p>
+</blockquote>
+<h2 id="2-微信开发者工具右上角的上传按钮消失"><a href="#2-微信开发者工具右上角的上传按钮消失" class="headerlink" title="2.微信开发者工具右上角的上传按钮消失"></a>2.微信开发者工具右上角的上传按钮消失</h2><blockquote>
+<p><strong>检查微信开放平台中的APPID与微信开发者工具的APPID是否相同</strong></p>
+<p>复制微信开放平台中的APPID到微信开发者工具即可解决问题</p>
+</blockquote>
+<h2 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h2><h3 id="1-接口文档"><a href="#1-接口文档" class="headerlink" title="1.接口文档"></a>1.接口文档</h3><p><a href="https://www.showdoc.com.cn/128719739414963?page_id=2513235043485226" target="_blank" rel="noopener">接口文档</a></p>
+<h3 id="2-小程序基础文档"><a href="#2-小程序基础文档" class="headerlink" title="2.小程序基础文档"></a>2.小程序基础文档</h3><p><a href="http://itaylorfan.top:8081/materials/weixin/weixin-base.pdf" target="_blank" rel="noopener">小程序基础文档</a></p>
+<h3 id="3-项目讲解文档"><a href="#3-项目讲解文档" class="headerlink" title="3.项目讲解文档"></a>3.项目讲解文档</h3><p><a href="http://itaylorfan.top:8081/materials/weixin/weixin-project%28shopping%29.pdf" target="_blank" rel="noopener">黑马优购小项目</a></p>
+<h3 id="4-本人代码地址"><a href="#4-本人代码地址" class="headerlink" title="4.本人代码地址"></a>4.本人代码地址</h3><p><a href="https://github.com/ITaylorfan/weixin-heimayougou" target="_blank" rel="noopener">项目代码</a></p>
+
+      
+      <!-- reward 打赏按钮-->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyrights： </strong>
+              版权归作者所有。如需商业转载，请与作者联系以获得授权。非商业性转载请注明出处。
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2021/01/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE-%E9%BB%91%E9%A9%AC%E4%BC%98%E8%B4%AD-%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2021/01/22/uniapp%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E9%BB%91%E9%A9%AC%E8%B6%85%E5%B8%82%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            uniapp练手项目黑马超市的一些笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/12/30/%E6%8A%8Ahexo%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91-%E5%91%86%E6%96%B9%E6%B3%95/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">把hexo部署到阿里云(呆方法)</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'IUPFYr9b7ardBDF78isygkav-gzGzoHsz',
+        app_key: 'SX7yhiWLzh7seYDtIzHyJOfH',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> ITaylorfan
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_black">鄂ICP备2020023396号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+      <li>
+       <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+      </li>
+    </ul>
+
+   
+   <!-- 统计网站运行时间 -->
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/23/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+	if(snum==60){
+	    snum=0;
+	  }
+
+	if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/TS-10-21-2.jpg" alt="ITaylorfan的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/hexo/">hexo</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%85%B6%E4%BB%96">其他</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/me">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WeChat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1815389717&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>

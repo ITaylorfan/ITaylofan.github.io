@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Java" />
+   
+  <meta name="description" content="本站是ITaylorfan的个人博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    JSP实训笔记 |  ITaylorfan的博客
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/TS-10-21.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ITaylorfan的博客" type="application/atom+xml">
+</head>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-JSP实训笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  JSP实训笔记
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/09/18/JSP%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-09-18T14:35:54.000Z" itemprop="datePublished">2020-09-18</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数:</span>
+            <span class="post-count">3.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长 ≈</span>
+            <span class="post-count">16 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="JSP的一些笔记"><a href="#JSP的一些笔记" class="headerlink" title="JSP的一些笔记"></a>JSP的一些笔记</h1><h2 id="1-输出对象"><a href="#1-输出对象" class="headerlink" title="1.输出对象"></a>1.输出对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out.print(<span class="string">"&lt;h1&gt;哈哈哈哈哈&lt;/h1&gt;"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-重定向"><a href="#2-重定向" class="headerlink" title="2.重定向"></a>2.重定向</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.sendRedirect(<span class="string">"./index2.jsp"</span>);</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="3-JSP常用内置对象"><a href="#3-JSP常用内置对象" class="headerlink" title="3.JSP常用内置对象"></a>3.JSP常用内置对象</h2><h3 id="1-response-响应对象"><a href="#1-response-响应对象" class="headerlink" title="1.response(响应对象)"></a>1.response(响应对象)</h3><h3 id="2-request-http请求对象"><a href="#2-request-http请求对象" class="headerlink" title="2.request(http请求对象)"></a>2.request(http请求对象)</h3><h3 id="3-Session-会话对象"><a href="#3-Session-会话对象" class="headerlink" title="3.Session(会话对象)"></a>3.Session(会话对象)</h3><h2 id="4-服务端页面接收表单传过来的参数"><a href="#4-服务端页面接收表单传过来的参数" class="headerlink" title="4.服务端页面接收表单传过来的参数"></a>4.服务端页面接收表单传过来的参数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置中文编码防止乱码</span></span><br><span class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">String acc=request.getParameter(<span class="string">"account"</span>);</span><br><span class="line">String password=request.getParameter(<span class="string">"password"</span>);</span><br><span class="line">String student=request.getParameter(<span class="string">"student"</span>);</span><br><span class="line">String age=request.getParameter(<span class="string">"age"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-JDBC连接mysql"><a href="#5-JDBC连接mysql" class="headerlink" title="5.JDBC连接mysql"></a>5.JDBC连接mysql</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hgy.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSetMetaData;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">jdbctest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//加载驱动</span></span><br><span class="line">		String driverStr=<span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//数据库连接</span></span><br><span class="line">		String dataBaseUrl=<span class="string">"jdbc:mysql://localhost:3306/chat"</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//用户名</span></span><br><span class="line">		String account=<span class="string">"root"</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//密码</span></span><br><span class="line">		String password=<span class="string">"123456"</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//创建连接对象 需要异常处理</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Connection connection=DriverManager.getConnection(dataBaseUrl, account, password);</span><br><span class="line">			<span class="comment">//创建命令对象</span></span><br><span class="line">			PreparedStatement pStatement=connection.prepareStatement(<span class="string">"select * from book"</span>);</span><br><span class="line">			<span class="comment">//执行命令集合 获取sql语句执行结果</span></span><br><span class="line">			ResultSet rSet=pStatement.executeQuery();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//获取字段列数</span></span><br><span class="line">			ResultSetMetaData rMetaData=rSet.getMetaData();</span><br><span class="line">			<span class="keyword">int</span> ColumnNumber=rMetaData.getColumnCount();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//打印结果 next()方法获取 下一个结果 如果为末尾返回false</span></span><br><span class="line">			<span class="keyword">while</span>(rSet.next())&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=ColumnNumber;i++)&#123;</span><br><span class="line">					<span class="comment">//将每列打印出来</span></span><br><span class="line">					System.out.print(rSet.getString(i)+<span class="string">" "</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-servlet的基本使用"><a href="#6-servlet的基本使用" class="headerlink" title="6.servlet的基本使用"></a>6.servlet的基本使用</h2><h3 id="6-1新建一个servlet文件"><a href="#6-1新建一个servlet文件" class="headerlink" title="6.1新建一个servlet文件"></a>6.1新建一个servlet文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hgy.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.hgy.entity.Book;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Servlet implementation class select</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/select"</span>)  <span class="comment">//这个应该是监听的路径</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">select</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">       </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> HttpServlet#HttpServlet()</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">select</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"><span class="comment">//		response.getWriter().append("Served at: ").append(request.getContextPath());</span></span><br><span class="line">		</span><br><span class="line">		List&lt;Book&gt; books =<span class="keyword">new</span> ArrayList&lt;Book&gt;();</span><br><span class="line">		books.add(<span class="keyword">new</span> Book(<span class="number">104</span>, <span class="string">"三体"</span>, <span class="number">95</span>, <span class="string">"中国人民出版社"</span>));</span><br><span class="line">		books.add(<span class="keyword">new</span> Book(<span class="number">105</span>, <span class="string">"上海堡垒"</span>, <span class="number">50</span>, <span class="string">"中国人民出版社"</span>));</span><br><span class="line">		books.add(<span class="keyword">new</span> Book(<span class="number">106</span>, <span class="string">"龙族"</span>,<span class="number">60</span>, <span class="string">"中国人民出版社"</span>));</span><br><span class="line">		books.add(<span class="keyword">new</span> Book(<span class="number">107</span>, <span class="string">"神印王座"</span>, <span class="number">66</span>, <span class="string">"中国人民出版社"</span>));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//利用会话保存员工记录</span></span><br><span class="line">		HttpSession session=request.getSession();</span><br><span class="line">		session.setAttribute(<span class="string">"Books"</span>, books);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//跳转指定的jsp</span></span><br><span class="line">		response.sendRedirect(<span class="string">"Book_servlet.jsp"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2重定向跳转后的页面Book-servlet-jsp"><a href="#6-2重定向跳转后的页面Book-servlet-jsp" class="headerlink" title="6.2重定向跳转后的页面Book_servlet.jsp"></a>6.2重定向跳转后的页面Book_servlet.jsp</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="meta">@page</span> <span class="keyword">import</span>=<span class="string">"com.hgy.entity.Book"</span>%&gt;</span><br><span class="line">&lt;%<span class="meta">@page</span> <span class="keyword">import</span>=<span class="string">"java.util.List"</span>%&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%</span><br><span class="line"><span class="comment">//获取信息 打印</span></span><br><span class="line">	List&lt;Book&gt; books=(List&lt;Book&gt;) session.getAttribute(<span class="string">"Books"</span>);</span><br><span class="line">	<span class="keyword">for</span>(Book bs:books)&#123;</span><br><span class="line">		%&gt;</span><br><span class="line">		&lt;div&gt;&lt;%=bs.getTitle() %&gt;&lt;/div&gt;</span><br><span class="line">		&lt;% </span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3调用上面创建的servlet"><a href="#6-3调用上面创建的servlet" class="headerlink" title="6.3调用上面创建的servlet"></a>6.3调用上面创建的servlet</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"select"</span>&gt;跳转到servlet&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-servlet和jdbc一起使用"><a href="#7-servlet和jdbc一起使用" class="headerlink" title="7.servlet和jdbc一起使用"></a>7.servlet和jdbc一起使用</h2><h3 id="7-1-封装好的JDBC类，直接调用方法"><a href="#7-1-封装好的JDBC类，直接调用方法" class="headerlink" title="7.1 封装好的JDBC类，直接调用方法"></a>7.1 封装好的JDBC类，直接调用方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hgy.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 这是jdbc封装好的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">jdbc</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Connection con;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> PreparedStatement ps;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ResultSet rs;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">			con = DriverManager.getConnection(<span class="string">"jdbc:mysql://localhost:3306/chat"</span>,<span class="string">"root"</span>,<span class="string">"123456"</span>);</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//增删改 </span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String sql)</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ps = con.prepareStatement(sql);</span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//查询</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ResultSet <span class="title">query</span><span class="params">(String sql)</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ps = con.prepareStatement(sql);</span><br><span class="line">			rs = ps.executeQuery();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> rs;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-servlet文件"><a href="#7-2-servlet文件" class="headerlink" title="7.2 servlet文件"></a>7.2 servlet文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hgy.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSetMetaData;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.hgy.entity.Book;</span><br><span class="line"><span class="keyword">import</span> com.hgy.jdbc.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Servlet implementation class jdbcSelect</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/jdbcSelect"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">jdbcSelect</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">       </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> HttpServlet#HttpServlet()</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">jdbcSelect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"><span class="comment">//		response.getWriter().append("Served at: ").append(request.getContextPath());</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="comment">//新建一个list容器</span></span><br><span class="line">			List&lt;Book&gt; books =<span class="keyword">new</span> ArrayList&lt;Book&gt;();</span><br><span class="line">			<span class="comment">//创建一个SQL语句</span></span><br><span class="line">			String sql = <span class="string">"select * from book"</span>;</span><br><span class="line">            <span class="comment">//调用封装好的JDBC类中的方法</span></span><br><span class="line">			ResultSet rs=jdbc.query(sql);</span><br><span class="line">            </span><br><span class="line">			<span class="comment">//获取字段列数</span></span><br><span class="line">			ResultSetMetaData rMetaData=rs.getMetaData();</span><br><span class="line">			<span class="keyword">int</span> ColumnNumber=rMetaData.getColumnCount();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">                <span class="comment">//将获取到的数据库表内容加入到Book对象中</span></span><br><span class="line">				Book book = <span class="keyword">new</span> Book(rs.getInt(<span class="number">1</span>), rs.getString(<span class="number">2</span>),rs.getInt(<span class="number">3</span>),rs.getString(<span class="number">4</span>));</span><br><span class="line">                <span class="comment">//把book对象加入books容器</span></span><br><span class="line">				books.add(book);</span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line"><span class="comment">//					for(int i=1;i&lt;=ColumnNumber;i++)&#123;</span></span><br><span class="line"><span class="comment">//						//将每列打印出来</span></span><br><span class="line"><span class="comment">//						System.out.print(rs.getString(i)+" ");</span></span><br><span class="line"><span class="comment">//					&#125;</span></span><br><span class="line"><span class="comment">//					System.out.println();</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//利用会话保存员工记录</span></span><br><span class="line">			HttpSession session=request.getSession();</span><br><span class="line">			session.setAttribute(<span class="string">"Books2"</span>, books);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//跳转指定的jsp</span></span><br><span class="line">			response.sendRedirect(<span class="string">"Book_servlet2.jsp"</span>);</span><br><span class="line">		&#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			System.out.println(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3-跳转后的jsp页面"><a href="#7-3-跳转后的jsp页面" class="headerlink" title="7.3 跳转后的jsp页面"></a>7.3 跳转后的jsp页面</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="meta">@page</span> <span class="keyword">import</span>=<span class="string">"com.hgy.entity.Book"</span>%&gt;</span><br><span class="line">&lt;%<span class="meta">@page</span> <span class="keyword">import</span>=<span class="string">"java.util.List"</span>%&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;连接mysql和servlet&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">	table&#123;</span><br><span class="line">		width:<span class="number">500</span>px;</span><br><span class="line">		height:<span class="number">40</span>px;</span><br><span class="line">		border-collapse:collapse;	</span><br><span class="line">		background-image:linear-gradient(to right,orange,yellow);</span><br><span class="line">	&#125;</span><br><span class="line">	table td&#123;</span><br><span class="line">		border:<span class="number">1</span>px solid black;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;table&gt;</span><br><span class="line">&lt;% </span><br><span class="line">    <span class="comment">//创建一个list容器接收内容   按属性获取会话内容</span></span><br><span class="line">	List&lt;Book&gt; books2=(List&lt;Book&gt;) session.getAttribute(<span class="string">"Books2"</span>);</span><br><span class="line">	<span class="keyword">for</span>(Book bs:books2)&#123;</span><br><span class="line">		%&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getId() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getTitle() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getPrice() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getPublisher() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;/tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;% </span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-servlet和jdbc执行删除数据操作"><a href="#8-servlet和jdbc执行删除数据操作" class="headerlink" title="8.servlet和jdbc执行删除数据操作"></a>8.servlet和jdbc执行删除数据操作</h2><blockquote>
+<p>jdbc用上面封装好的</p>
+</blockquote>
+<h3 id="8-1-servlet文件-执行删除SQL语句"><a href="#8-1-servlet文件-执行删除SQL语句" class="headerlink" title="8.1 servlet文件,执行删除SQL语句"></a>8.1 servlet文件,执行删除SQL语句</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hgy.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.hgy.jdbc.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Servlet implementation class jdbcdelete</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/jdbcdelete"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">jdbcdelete</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">       </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">jdbcdelete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="comment">//response.getWriter().append("Served at: ").append(request.getContextPath());</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取传递过来的员工编号</span></span><br><span class="line">				String id = request.getParameter(<span class="string">"id"</span>);</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//执行删除命令</span></span><br><span class="line">				String sql = <span class="string">"delete from book where id="</span>+id;</span><br><span class="line">				jdbc.update(sql);</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//跳转 查询操作的servlet以更新数据</span></span><br><span class="line">				response.sendRedirect(<span class="string">"jdbcSelect"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-3-jsp页面-点击删除后跳转到执行删除操作的servlet文件"><a href="#8-3-jsp页面-点击删除后跳转到执行删除操作的servlet文件" class="headerlink" title="8.3 jsp页面 点击删除后跳转到执行删除操作的servlet文件"></a>8.3 jsp页面 点击删除后跳转到执行删除操作的servlet文件</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">&lt;% </span><br><span class="line">	List&lt;Book&gt; books2=(List&lt;Book&gt;) session.getAttribute(<span class="string">"Books2"</span>);</span><br><span class="line">	<span class="keyword">for</span>(Book bs:books2)&#123;</span><br><span class="line">		%&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getId() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getTitle() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getPrice() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getPublisher() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;a onclick="return confirm('是否确认删除')" href="jdbcdelete?id=&lt;%=bs.getId() %&gt;"&gt;删除&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">		&lt;/tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;% </span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-servlet和jdbc-执行插入数据操作"><a href="#9-servlet和jdbc-执行插入数据操作" class="headerlink" title="9. servlet和jdbc 执行插入数据操作"></a>9. servlet和jdbc 执行插入数据操作</h2><blockquote>
+<p>jdbc用上面封装好的</p>
+</blockquote>
+<h3 id="9-1-servlet页面-接收jsp页面传过来的表单值"><a href="#9-1-servlet页面-接收jsp页面传过来的表单值" class="headerlink" title="9.1 servlet页面 接收jsp页面传过来的表单值"></a>9.1 servlet页面 接收jsp页面传过来的表单值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hgy.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.hgy.jdbc.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Servlet implementation class jdbcInsert</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/jdbcInsert"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">jdbcInsert</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">       </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">jdbcInsert</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="comment">//response.getWriter().append("Served at: ").append(request.getContextPath());</span></span><br><span class="line">		</span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">		String id=request.getParameter(<span class="string">"id"</span>);</span><br><span class="line">		String bookName=request.getParameter(<span class="string">"bookName"</span>);</span><br><span class="line">		String price=request.getParameter(<span class="string">"price"</span>);</span><br><span class="line">		String publisher=request.getParameter(<span class="string">"publisher"</span>);</span><br><span class="line">		System.out.println(id+bookName+price+publisher);</span><br><span class="line">		<span class="comment">//执行插入命令 注意字符串拼接</span></span><br><span class="line">		String sql=<span class="string">"insert into book(id,bookname,price,publisher) values("</span>+id+<span class="string">","</span>+<span class="string">"'"</span>+bookName+<span class="string">"'"</span>+<span class="string">","</span>+price+<span class="string">","</span>+<span class="string">"'"</span>+publisher+<span class="string">"'"</span>+<span class="string">")"</span>;</span><br><span class="line">		<span class="comment">//System.out.println(sql);</span></span><br><span class="line">		jdbc.update(sql);</span><br><span class="line">		<span class="comment">//跳转查询操作</span></span><br><span class="line">		response.sendRedirect(<span class="string">"jdbcSelect"</span>);	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		doGet(request, response);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-2-jsp页面"><a href="#9-2-jsp页面" class="headerlink" title="9.2 jsp页面"></a>9.2 jsp页面</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"jdbcInsert"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">	ID&lt;input type=<span class="string">"text"</span> name=<span class="string">"id"</span>&gt;</span><br><span class="line">	书名&lt;input type=<span class="string">"text"</span> name=<span class="string">"bookName"</span>&gt;</span><br><span class="line">	价格&lt;input type=<span class="string">"text"</span> name=<span class="string">"price"</span>&gt;</span><br><span class="line">	出版社&lt;input type=<span class="string">"text"</span> name=<span class="string">"publisher"</span>&gt;</span><br><span class="line">	&lt;input type=<span class="string">"submit"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="10-servlet和jdbc执行指定查询操作"><a href="#10-servlet和jdbc执行指定查询操作" class="headerlink" title="10.servlet和jdbc执行指定查询操作"></a>10.servlet和jdbc执行指定查询操作</h2><blockquote>
+<p>jdbc用7.1中封装好的文件</p>
+</blockquote>
+<h3 id="10-1-jsp页面"><a href="#10-1-jsp页面" class="headerlink" title="10.1 jsp页面"></a>10.1 jsp页面</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;查询出版社&lt;/h1&gt;</span><br><span class="line">&lt;form action=<span class="string">"jdbcSelect2"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">	出版社&lt;input type=<span class="string">"text"</span> name=<span class="string">"publisher"</span>&gt;</span><br><span class="line">	&lt;input type=<span class="string">"submit"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 数据打印 --&gt;</span><br><span class="line">&lt;table&gt;</span><br><span class="line"> &lt;% </span><br><span class="line">	List&lt;Book2&gt; books2=(List&lt;Book2&gt;) session.getAttribute(<span class="string">"Book3"</span>);</span><br><span class="line">	<span class="keyword">for</span>(Book2 bs:books2)&#123;</span><br><span class="line">		%&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getId() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getTitle() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getPrice() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getPublisher() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getTid() %&gt;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;&lt;%=bs.getTypeName() %&gt;&lt;/td&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;/tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;% </span><br><span class="line">	&#125;</span><br><span class="line">%&gt; </span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-2-servlet文件"><a href="#10-2-servlet文件" class="headerlink" title="10.2 servlet文件"></a>10.2 servlet文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		doGet(request, response);</span><br><span class="line">					</span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">    	<span class="comment">//获取表单提交的值</span></span><br><span class="line">		String publisher=request.getParameter(<span class="string">"publisher"</span>);</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//创建一个list容器</span></span><br><span class="line">			List&lt;Book2&gt; books2=<span class="keyword">new</span> ArrayList&lt;Book2&gt;(); </span><br><span class="line">			String sql=<span class="string">"SELECT b.*,t.name FROM book2 b,booktype t WHERE b.tid=t.id and b.publisher like '%"</span>+publisher+<span class="string">"%'"</span>;</span><br><span class="line">			ResultSet rSet=jdbc.query(sql);</span><br><span class="line">			<span class="comment">//获取字段列数</span></span><br><span class="line">			ResultSetMetaData rMetaData=rSet.getMetaData();</span><br><span class="line">			<span class="keyword">int</span> ColumnNumber=rMetaData.getColumnCount();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span>(rSet.next())&#123;</span><br><span class="line">				Book2 Book2=<span class="keyword">new</span> Book2(rSet.getInt(<span class="number">1</span>), rSet.getString(<span class="number">2</span>), rSet.getInt(<span class="number">3</span>),rSet.getString(<span class="number">4</span>),rSet.getInt(<span class="number">5</span>), rSet.getString(<span class="number">6</span>));</span><br><span class="line">				books2.add(Book2);</span><br><span class="line">				</span><br><span class="line">                <span class="comment">//控制台打印数据库内容</span></span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=ColumnNumber;i++)&#123;</span><br><span class="line">					<span class="comment">//将每列打印出来</span></span><br><span class="line">					System.out.print(rSet.getString(i)+<span class="string">" "</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//将list容器添加到session会话中</span></span><br><span class="line">			HttpSession session=request.getSession();</span><br><span class="line">			session.setAttribute(<span class="string">"Book3"</span>, books2);</span><br><span class="line">			<span class="comment">//跳转</span></span><br><span class="line">			response.sendRedirect(<span class="string">"Book_servlet3.jsp"</span>);  <span class="comment">//这里的是10.1提交表单的jsp文件</span></span><br><span class="line">		&#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			System.out.println(e.getMessage());</span><br><span class="line">			System.out.println(<span class="string">"aaa"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-3-用到的数据库SQL语句"><a href="#10-3-用到的数据库SQL语句" class="headerlink" title="10.3 用到的数据库SQL语句"></a>10.3 用到的数据库SQL语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> book</span><br><span class="line">(</span><br><span class="line">	<span class="string">`id`</span> <span class="built_in">int</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	<span class="string">`title`</span> <span class="built_in">varchar</span>(<span class="number">50</span>),</span><br><span class="line">	<span class="string">`price`</span> <span class="built_in">INT</span>,</span><br><span class="line">	<span class="string">`publisher`</span> <span class="built_in">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">	<span class="string">`tid`</span> <span class="built_in">int</span></span><br><span class="line">) <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> = <span class="string">'utf8'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> BookType</span><br><span class="line">(</span><br><span class="line">	<span class="string">`id`</span> <span class="built_in">int</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	<span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">50</span>)</span><br><span class="line">) <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> = <span class="string">'utf8'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> booktype <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小说'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> booktype <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'教材'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> booktype <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'散文'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'三国演义'</span>,<span class="number">200</span>,<span class="string">'清华大学出版社'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'水浒传'</span>,<span class="number">280</span>,<span class="string">'武汉大学出版社'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'红楼梦'</span>,<span class="number">250</span>,<span class="string">'武汉大学出版社'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'西游记'</span>,<span class="number">300</span>,<span class="string">'清华大学出版社'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'C#面向对象程序设计'</span>,<span class="number">100</span>,<span class="string">'清华大学出版社'</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'C语言程序设计'</span>,<span class="number">100</span>,<span class="string">'清华大学出版社'</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'SQLServer数据库'</span>,<span class="number">100</span>,<span class="string">'清华大学出版社'</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'静态网页设计'</span>,<span class="number">100</span>,<span class="string">'北京大学出版社'</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'Java高级编程'</span>,<span class="number">100</span>,<span class="string">'北京大学出版社'</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'落花生'</span>,<span class="number">200</span>,<span class="string">'北京大学出版社'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小橘灯'</span>,<span class="number">300</span>,<span class="string">'清华大学出版社'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'我喜欢出发'</span>,<span class="number">100</span>,<span class="string">'武汉大学出版社'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'热爱生命'</span>,<span class="number">150</span>,<span class="string">'北京大学出版社'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'剪不断的情愫'</span>,<span class="number">180</span>,<span class="string">'清华大学出版社'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'嫁给幸福'</span>,<span class="number">200</span>,<span class="string">'北京大学出版社'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'围城'</span>,<span class="number">160</span>,<span class="string">'清华大学出版社'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'封神演义'</span>,<span class="number">300</span>,<span class="string">'北京大学出版社'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'官场现形记'</span>,<span class="number">260</span>,<span class="string">'武汉大学出版社'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'陌上花开'</span>,<span class="number">220</span>,<span class="string">'北京大学出版社'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'高等数学'</span>,<span class="number">190</span>,<span class="string">'武汉大学出版社'</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'大学语文'</span>,<span class="number">120</span>,<span class="string">'清华大学出版社'</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'流浪地球'</span>,<span class="number">100</span>,<span class="string">'北京大学出版社'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> book <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'亮剑'</span>,<span class="number">170</span>,<span class="string">'武汉大学出版社'</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="引入jstl标签"><a href="#引入jstl标签" class="headerlink" title="引入jstl标签"></a>引入jstl标签</h1><h2 id="1-放入jstl-1-2-jar包"><a href="#1-放入jstl-1-2-jar包" class="headerlink" title="1.放入jstl-1.2.jar包"></a>1.放入jstl-1.2.jar包</h2><blockquote>
+<p>WebContent-&gt;WEB-INF-&gt;lib文件夹下，右键jar文件 Build Path</p>
+</blockquote>
+<h2 id="2-头部引入-lt-taglib-uri-”http-java-sun-com-jsp-jstl-core-quot-prefix-”c”-gt"><a href="#2-头部引入-lt-taglib-uri-”http-java-sun-com-jsp-jstl-core-quot-prefix-”c”-gt" class="headerlink" title="2.头部引入&lt;%@ taglib uri=”http://java.sun.com/jsp/jstl/core&quot;  prefix=”c” %&gt;"></a>2.头部引入&lt;%@ taglib uri=”<a href="http://java.sun.com/jsp/jstl/core&quot;" target="_blank" rel="noopener">http://java.sun.com/jsp/jstl/core&quot;</a>  prefix=”c” %&gt;</h2><h1 id="Eclipse的一些设置"><a href="#Eclipse的一些设置" class="headerlink" title="Eclipse的一些设置"></a>Eclipse的一些设置</h1><h2 id="1-设置全局提示"><a href="#1-设置全局提示" class="headerlink" title="1.设置全局提示"></a>1.设置全局提示</h2><p><strong>上方工具栏Window-&gt;Preferences-&gt;Java-&gt;Editor-&gt;Content Assist</strong></p>
+<p><strong>在右边区域下方的 Auto activation triggers for Java: 的.后面加入26个字母 然后应用保存</strong></p>
+<h2 id="2-设置JSP默认编码"><a href="#2-设置JSP默认编码" class="headerlink" title="2.设置JSP默认编码"></a>2.设置JSP默认编码</h2><p><strong>上方工具栏Window-&gt;Preferences</strong></p>
+<p><strong>右上角搜索JSP</strong></p>
+<p><strong>然后点击Web目录下的JSP Files选项</strong> </p>
+<p><strong>右侧的Encoding中即可设置默认编码</strong></p>
+
+      
+      <!-- reward 打赏按钮-->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyrights： </strong>
+              版权归作者所有。如需商业转载，请与作者联系以获得授权。非商业性转载请注明出处。
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2020/09/18/JSP%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/11/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            数据库课程设计(Vue)的一些笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/09/12/Ala%E5%B0%8F%E5%8C%BA%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Ala小区练手项目的一些笔记</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'IUPFYr9b7ardBDF78isygkav-gzGzoHsz',
+        app_key: 'SX7yhiWLzh7seYDtIzHyJOfH',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> ITaylorfan
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_black">鄂ICP备2020023396号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+      <li>
+       <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+      </li>
+    </ul>
+
+   
+   <!-- 统计网站运行时间 -->
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/23/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+	if(snum==60){
+	    snum=0;
+	  }
+
+	if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/TS-10-21-2.jpg" alt="ITaylorfan的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/hexo/">hexo</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%85%B6%E4%BB%96">其他</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/me">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WeChat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1815389717&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>

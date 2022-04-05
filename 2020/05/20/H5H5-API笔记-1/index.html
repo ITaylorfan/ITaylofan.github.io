@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Java" />
+   
+  <meta name="description" content="本站是ITaylorfan的个人博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    WEB API笔记 |  ITaylorfan的博客
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/TS-10-21.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ITaylorfan的博客" type="application/atom+xml">
+</head>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-H5H5-API笔记-1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  WEB API笔记
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/" class="article-date">
+  <time datetime="2020-05-20T14:47:15.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数:</span>
+            <span class="post-count">3.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长 ≈</span>
+            <span class="post-count">13 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="Web-API"><a href="#Web-API" class="headerlink" title="Web API"></a>Web API</h1><blockquote>
+<p>学习目标：</p>
+<p>能够通过ID来获取元素<br>能够通过标签名来获取元素<br>能够通过class来获取元素<br>能够通过选择器来获取元素<br>能够获取body和html元素<br>能够给元素注册事件<br>能够修改元素的内容<br>能够区分innerText和innerHTML的区别<br>能够修改像div这类普通元素的属性<br>能够修改表单元素的属性<br>能够修改元素的样式属性</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-1-Web-API介绍"><a href="#1-1-Web-API介绍" class="headerlink" title="1.1. Web API介绍"></a>1.1. Web API介绍</h2><h3 id="1-1-1-API的概念"><a href="#1-1-1-API的概念" class="headerlink" title="1.1.1 API的概念"></a>1.1.1 API的概念</h3><p>API（Application Programming Interface，应用程序编程接口）是一些预先定义的函数，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又无需访问源码，无需理解其内部工作机制细节，只需直接调用使用即可。</p>
+<blockquote>
+<p>举例解释什么是API。</p>
+<p>例如，</p>
+<p>​    C语言中有一个函数 fopen()可以打开硬盘上的文件，这个函数对于我们来说，就是一个C语言提供的打开文件的工具。</p>
+<p>​    javascript中有一个函数alert()可以在页面弹一个提示框，这个函数就是js提供的一个弹框工具。</p>
+<p>这些工具（函数）由编程语言提供，内部的实现已经封装好了，我们只要学会灵活的使用这些工具即可。</p>
+</blockquote>
+<h3 id="1-1-2-Web-API的概念"><a href="#1-1-2-Web-API的概念" class="headerlink" title="1.1.2 Web  API的概念"></a>1.1.2 Web  API的概念</h3><p>​    Web API 是浏览器提供的一套操作浏览器功能和页面元素的 API ( BOM 和 DOM )。</p>
+<p>​    现阶段我们主要针对于浏览器讲解常用的 API , 主要针对浏览器做交互效果。比如我们想要浏览器弹出一个警示框， 直接使用 alert(‘弹出’)</p>
+<p>​    MDN 详细 API : <a href="https://developer.mozilla.org/zh-CN/docs/Web/API" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API</a></p>
+<p>​    此处的 Web API 特指浏览器提供的一系列API(很多函数或对象方法)，即操作网页的一系列工具。例如：操作html标签、操作页面地址的方法。</p>
+<h3 id="1-1-3-API-和-Web-API-总结"><a href="#1-1-3-API-和-Web-API-总结" class="headerlink" title="1.1.3 API 和 Web  API 总结"></a>1.1.3 API 和 Web  API 总结</h3><ol>
+<li><p>API 是为我们程序员提供的一个接口，帮助我们实现某种功能，我们会使用就可以了，不必纠结内部如何实现</p>
+</li>
+<li><p>Web API 主要是针对于浏览器提供的接口，主要针对于浏览器做交互效果。</p>
+</li>
+<li><p>Web API 一般都有输入和输出（函数的传参和返回值），Web API 很多都是方法（函数）</p>
+</li>
+<li><p>学习 Web API 可以结合前面学习内置对象方法的思路学习</p>
+</li>
+</ol>
+<h2 id="1-2-DOM-介绍"><a href="#1-2-DOM-介绍" class="headerlink" title="1.2. DOM 介绍"></a>1.2. DOM 介绍</h2><h3 id="1-2-1-什么是DOM"><a href="#1-2-1-什么是DOM" class="headerlink" title="1.2.1 什么是DOM"></a>1.2.1 什么是DOM</h3><p>​    文档对象模型（Document Object Model，简称DOM），是 <a href="https://baike.baidu.com/item/W3C" target="_blank" rel="noopener">W3C</a> 组织推荐的处理<a href="https://baike.baidu.com/item/%E5%8F%AF%E6%89%A9%E5%B1%95%E7%BD%AE%E6%A0%87%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">可扩展标记语言</a>（html或者xhtml）的标准<a href="https://baike.baidu.com/item/%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3" target="_blank" rel="noopener">编程接口</a>。</p>
+<p>​    W3C 已经定义了一系列的 DOM 接口，通过这些 DOM 接口可以改变网页的内容、结构和样式。</p>
+<blockquote>
+<p>DOM是W3C组织制定的一套处理 html和xml文档的规范，所有的浏览器都遵循了这套标准。</p>
+</blockquote>
+<h3 id="1-2-2-DOM树"><a href="#1-2-2-DOM树" class="headerlink" title="1.2.2. DOM树"></a>1.2.2. DOM树</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550731974575.png" class="" width="1550731974575">
+
+<p>DOM树 又称为文档树模型，把文档映射成树形结构，通过节点对象对其处理，处理的结果可以加入到当前的页面。</p>
+<ul>
+<li>文档：一个页面就是一个文档，DOM中使用document表示</li>
+<li>节点：网页中的所有内容，在文档树中都是节点（标签、属性、文本、注释等），使用node表示</li>
+<li>标签节点：网页中的所有标签，通常称为元素节点，又简称为“元素”，使用element表示</li>
+</ul>
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550732362134.png" class="" width="1550732362134">
+
+<h2 id="1-3-获取元素"><a href="#1-3-获取元素" class="headerlink" title="1.3. 获取元素"></a>1.3. 获取元素</h2><p>为什么要获取页面元素？</p>
+<p>例如：我们想要操作页面上的某部分(显示/隐藏，动画)，需要先获取到该部分对应的元素，再对其进行操作。</p>
+<h3 id="1-3-1-根据ID获取"><a href="#1-3-1-根据ID获取" class="headerlink" title="1.3.1. 根据ID获取"></a>1.3.1. 根据ID获取</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">语法：<span class="built_in">document</span>.getElementById(id)</span><br><span class="line">作用：根据ID获取元素对象</span><br><span class="line">参数：id值，区分大小写的字符串</span><br><span class="line">返回值：元素对象 或 <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">"time"</span>&gt;<span class="number">2019</span><span class="number">-9</span><span class="number">-9</span>&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 因为我们文档页面从上往下加载，所以先得有标签 所以我们script写到标签的下面</span></span><br><span class="line"><span class="regexp">        var timer = document.getElementById('time');</span></span><br><span class="line"><span class="regexp">        console.log(timer);</span></span><br><span class="line"><span class="regexp">        console.log(typeof timer);</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ console.dir 打印我们返回的元素对象 更好的查看里面的属性和方法</span></span><br><span class="line"><span class="regexp">        console.dir(timer);</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-2-根据标签名获取元素"><a href="#1-3-2-根据标签名获取元素" class="headerlink" title="1.3.2. 根据标签名获取元素"></a>1.3.2. 根据标签名获取元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">语法：document.getElementsByTagName(&#39;标签名&#39;) 或者 element.getElementsByTagName(&#39;标签名&#39;) </span><br><span class="line">作用：根据标签名获取元素对象</span><br><span class="line">参数：标签名</span><br><span class="line">返回值：元素对象集合（伪数组，数组元素是元素对象）</span><br></pre></td></tr></table></figure>
+
+<p><strong>案例代码</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;知否知否，应是等你好久<span class="number">11</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;知否知否，应是等你好久22&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;知否知否，应是等你好久<span class="number">33</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;知否知否，应是等你好久44&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;知否知否，应是等你好久<span class="number">55</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br><span class="line">    &lt;ul id=<span class="string">"nav"</span>&gt;</span><br><span class="line">        &lt;li&gt;生僻字&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;生僻字&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;生僻字&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;生僻字&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;生僻字&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="comment">// 1.返回的是 获取过来元素对象的集合 以伪数组的形式存储的</span></span><br><span class="line">        <span class="keyword">var</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(lis);</span><br><span class="line">        <span class="built_in">console</span>.log(lis[<span class="number">0</span>]);</span><br><span class="line">        <span class="comment">// 2. 我们想要依次打印里面的元素对象我们可以采取遍历的方式</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; lis.length; i++) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(lis[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 3. element.getElementsByTagName()  可以得到这个元素里面的某些标签</span></span><br><span class="line">        <span class="keyword">var</span> nav = <span class="built_in">document</span>.getElementById(<span class="string">'nav'</span>); <span class="comment">// 这个获得nav 元素</span></span><br><span class="line">        <span class="keyword">var</span> navLis = nav.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(navLis);</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550733441663.png" class="" width="1550733441663">
+
+
+<p>注意：getElementsByTagName()获取到是动态集合，即：当页面增加了标签，这个集合中也就增加了元素。</p>
+<h3 id="1-3-3-H5新增获取元素方式"><a href="#1-3-3-H5新增获取元素方式" class="headerlink" title="1.3.3. H5新增获取元素方式"></a>1.3.3. H5新增获取元素方式</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550733518278.png" class="" width="1550733518278">
+
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550733734425.png" class="" width="1550733734425">
+
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"box"</span>&gt;盒子<span class="number">1</span>&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div class="box"&gt;盒子2&lt;/</span>div&gt;</span><br><span class="line">    &lt;div id=<span class="string">"nav"</span>&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;首页&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li&gt;产品&lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="comment">// 1. getElementsByClassName 根据类名获得某些元素集合</span></span><br><span class="line">        <span class="keyword">var</span> boxs = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'box'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(boxs);</span><br><span class="line">        <span class="comment">// 2. querySelector 返回指定选择器的第一个元素对象  切记 里面的选择器需要加符号 .box  #nav</span></span><br><span class="line">        <span class="keyword">var</span> firstBox = <span class="built_in">document</span>.querySelector(<span class="string">'.box'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(firstBox);</span><br><span class="line">        <span class="keyword">var</span> nav = <span class="built_in">document</span>.querySelector(<span class="string">'#nav'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(nav);</span><br><span class="line">        <span class="keyword">var</span> li = <span class="built_in">document</span>.querySelector(<span class="string">'li'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(li);</span><br><span class="line">        <span class="comment">// 3. querySelectorAll()返回指定选择器的所有元素对象集合</span></span><br><span class="line">        <span class="keyword">var</span> allBox = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.box'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(allBox);</span><br><span class="line">        <span class="keyword">var</span> lis = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(lis);</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-4-获取特殊元素（body，html）"><a href="#1-3-4-获取特殊元素（body，html）" class="headerlink" title="1.3.4 获取特殊元素（body，html）"></a>1.3.4 获取特殊元素（body，html）</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550733794816.png" class="" width="1550733794816">
+
+<h2 id="1-4-事件基础"><a href="#1-4-事件基础" class="headerlink" title="1.4. 事件基础"></a>1.4. 事件基础</h2><h3 id="1-4-1-事件概述"><a href="#1-4-1-事件概述" class="headerlink" title="1.4.1. 事件概述"></a>1.4.1. 事件概述</h3><p>JavaScript 使我们有能力创建动态页面，而事件是可以被 JavaScript 侦测到的行为。</p>
+<p>简单理解： <strong>触发— 响应机制</strong>。</p>
+<p>​    网页中的每个元素都可以产生某些可以触发 JavaScript 的事件，例如，我们可以在用户点击某按钮时产生一个 事件，然后去执行某些操作。</p>
+<h3 id="1-4-2-事件三要素"><a href="#1-4-2-事件三要素" class="headerlink" title="1.4.2. 事件三要素"></a>1.4.2. 事件三要素</h3><ul>
+<li>事件源（谁）：触发事件的元素</li>
+<li>事件类型（什么事件）： 例如 click 点击事件</li>
+<li>事件处理程序（做啥）：事件触发后要执行的代码(函数形式)，事件处理函数</li>
+</ul>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="string">"btn"</span>&gt;唐伯虎&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 点击一个按钮，弹出对话框</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 1. 事件是有三部分组成  事件源  事件类型  事件处理程序   我们也称为事件三要素</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/(1) 事件源 事件被触发的对象   谁  按钮</span></span><br><span class="line"><span class="regexp">        var btn = document.getElementById('btn');</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/(2) 事件类型  如何触发 什么事件 比如鼠标点击(onclick) 还是鼠标经过 还是键盘按下</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/(3) 事件处理程序  通过一个函数赋值的方式 完成</span></span><br><span class="line"><span class="regexp">        btn.onclick = function() &#123;</span></span><br><span class="line"><span class="regexp">            alert('点秋香');</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-3-执行事件的步骤"><a href="#1-4-3-执行事件的步骤" class="headerlink" title="1.4.3. 执行事件的步骤"></a>1.4.3. 执行事件的步骤</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550734387056.png" class="" title="1550734387056.png">
+
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;<span class="number">123</span>&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 执行事件步骤</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 点击div 控制台输出 我被选中了</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 1. 获取事件源</span></span><br><span class="line"><span class="regexp">        var div = document.querySelector('div');</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 2.绑定事件 注册事件</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ div.onclick </span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 3.添加事件处理程序 </span></span><br><span class="line"><span class="regexp">        div.onclick = function() &#123;</span></span><br><span class="line"><span class="regexp">            console.log('我被选中了');</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-4-常见的鼠标事件"><a href="#1-4-4-常见的鼠标事件" class="headerlink" title="1.4.4. 常见的鼠标事件"></a>1.4.4. 常见的鼠标事件</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550734506084.png" class="" width="1550734506084">
+
+<h3 id="1-4-5-分析事件三要素"><a href="#1-4-5-分析事件三要素" class="headerlink" title="1.4.5. 分析事件三要素"></a>1.4.5. 分析事件三要素</h3><ul>
+<li><p>下拉菜单三要素</p>
+</li>
+<li><p>关闭广告三要素</p>
+</li>
+</ul>
+<h2 id="1-5-操作元素"><a href="#1-5-操作元素" class="headerlink" title="1.5. 操作元素"></a>1.5. 操作元素</h2><p>​    JavaScript的 DOM 操作可以改变网页内容、结构和样式，我们可以利用 DOM 操作元素来改变元素里面的内容、属性等。（注意：这些操作都是通过元素对象的属性实现的）</p>
+<h3 id="1-5-1-改变元素内容（获取或设置）"><a href="#1-5-1-改变元素内容（获取或设置）" class="headerlink" title="1.5.1. 改变元素内容（获取或设置）"></a>1.5.1. 改变元素内容（获取或设置）</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550735016756.png" class="" width="1550735016756">
+
+<p><strong>innerText改变元素内容</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;显示当前系统时间&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;某个时间&lt;/</span>div&gt;</span><br><span class="line">    &lt;p&gt;<span class="number">1123</span>&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 当我们点击了按钮，  div里面的文字会发生变化</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 1. 获取元素 </span></span><br><span class="line"><span class="regexp">        var btn = document.querySelector('button');</span></span><br><span class="line"><span class="regexp">        var div = document.querySelector('div');</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 2.注册事件</span></span><br><span class="line"><span class="regexp">        btn.onclick = function() &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ div.innerText = '2019-6-6';</span></span><br><span class="line"><span class="regexp">            div.innerHTML = getDate();</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        function getDate() &#123;</span></span><br><span class="line"><span class="regexp">            var date = new Date();</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 我们写一个 2019年 5月 1日 星期三</span></span><br><span class="line"><span class="regexp">            var year = date.getFullYear();</span></span><br><span class="line"><span class="regexp">            var month = date.getMonth() + 1;</span></span><br><span class="line"><span class="regexp">            var dates = date.getDate();</span></span><br><span class="line"><span class="regexp">            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];</span></span><br><span class="line"><span class="regexp">            var day = date.getDay();</span></span><br><span class="line"><span class="regexp">            return '今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day];</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>innerText和innerHTML的区别</strong></p>
+<ul>
+<li>获取内容时的区别：</li>
+</ul>
+<p>​    innerText会去除空格和换行，而innerHTML会保留空格和换行    </p>
+<ul>
+<li>设置内容时的区别：</li>
+</ul>
+<p>​    innerText不会识别html，而innerHTML会识别</p>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;</span></span><br><span class="line"><span class="regexp">        我是文字</span></span><br><span class="line"><span class="regexp">        &lt;span&gt;123&lt;/</span>span&gt;</span><br><span class="line">    &lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ innerText 和 innerHTML的区别 </span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 1. innerText 不识别html标签 非标准  去除空格和换行</span></span><br><span class="line"><span class="regexp">        var div = document.querySelector('div');</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ div.innerText = '&lt;strong&gt;今天是：&lt;/</span>strong&gt; <span class="number">2019</span><span class="string">';</span></span><br><span class="line"><span class="string">        // 2. innerHTML 识别html标签 W3C标准 保留空格和换行的</span></span><br><span class="line"><span class="string">        div.innerHTML = '</span>&lt;strong&gt;今天是：&lt;<span class="regexp">/strong&gt; 2019';</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 这两个属性是可读写的  可以获取元素里面的内容</span></span><br><span class="line"><span class="regexp">        var p = document.querySelector('p');</span></span><br><span class="line"><span class="regexp">        console.log(p.innerText);</span></span><br><span class="line"><span class="regexp">        console.log(p.innerHTML);</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-2-常用元素的属性操作"><a href="#1-5-2-常用元素的属性操作" class="headerlink" title="1.5.2. 常用元素的属性操作"></a>1.5.2. 常用元素的属性操作</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550735556297.png" class="" width="1550735556297">
+
+<p><strong>获取属性的值</strong></p>
+<blockquote>
+<p>元素对象.属性名</p>
+</blockquote>
+<p><strong>设置属性的值</strong></p>
+<blockquote>
+<p>元素对象.属性名 = 值</p>
+</blockquote>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="string">"ldh"</span>&gt;刘德华&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button id="zxy"&gt;张学友&lt;/</span>button&gt; <span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></span><br><span class="line">    &lt;img src="images/ldh.jpg" alt="" title="刘德华"&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 修改元素属性  src</span><br><span class="line">        // 1. 获取元素</span><br><span class="line">        var ldh = document.getElementById('ldh');</span><br><span class="line">        var zxy = document.getElementById('zxy');</span><br><span class="line">        var img = document.querySelector('img');</span><br><span class="line">        // 2. 注册事件  处理程序</span><br><span class="line">        zxy.onclick = function() &#123;</span><br><span class="line">            img.src = 'images/zxy.jpg';</span><br><span class="line">            img.title = '张学友思密达';</span><br><span class="line">        &#125;</span><br><span class="line">        ldh.onclick = function() &#123;</span><br><span class="line">            img.src = 'images/ldh.jpg';</span><br><span class="line">            img.title = '刘德华';</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-5-3-案例：分时问候"><a href="#1-5-3-案例：分时问候" class="headerlink" title="1.5.3. 案例：分时问候"></a>1.5.3. 案例：分时问候</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550735858049.png" class="" width="1550735858049">
+
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550735877145.png" class="" width="1550735877145">
+
+<h3 id="1-5-4-表单元素的属性操作"><a href="#1-5-4-表单元素的属性操作" class="headerlink" title="1.5.4. 表单元素的属性操作"></a>1.5.4. 表单元素的属性操作</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736039005.png" class="" width="1550736039005">
+
+<p><strong>获取属性的值</strong></p>
+<blockquote>
+<p>元素对象.属性名</p>
+</blockquote>
+<p><strong>设置属性的值</strong></p>
+<blockquote>
+<p>元素对象.属性名 = 值</p>
+<p>表单元素中有一些属性如：disabled、checked、selected，元素对象的这些属性的值是布尔型。</p>
+</blockquote>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;按钮&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;input type="text" value="输入内容"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 1. 获取元素</span></span><br><span class="line"><span class="regexp">        var btn = document.querySelector('button');</span></span><br><span class="line"><span class="regexp">        var input = document.querySelector('input');</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 2. 注册事件 处理程序</span></span><br><span class="line"><span class="regexp">        btn.onclick = function() &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 表单里面的值 文字内容是通过 value 来修改的</span></span><br><span class="line"><span class="regexp">            input.value = '被点击了';</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 如果想要某个表单被禁用 不能再点击 disabled  我们想要这个按钮 button禁用</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ btn.disabled = true;</span></span><br><span class="line"><span class="regexp">            this.disabled = true;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ this 指向的是事件函数的调用者 btn</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-5-案例：仿京东显示密码"><a href="#1-5-5-案例：仿京东显示密码" class="headerlink" title="1.5.5. 案例：仿京东显示密码"></a>1.5.5. 案例：仿京东显示密码</h3><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736330331.png" class="" width="1550736330331">
+
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736346822.png" class="" width="1550736346822">
+
+<h3 id="1-5-6-样式属性操作"><a href="#1-5-6-样式属性操作" class="headerlink" title="1.5.6. 样式属性操作"></a>1.5.6. 样式属性操作</h3><p>我们可以通过 JS 修改元素的大小、颜色、位置等样式。</p>
+<p><strong>常用方式</strong></p>
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736488634.png" class="" width="1550736488634">
+
+
+
+<h4 id="方式1：通过操作style属性"><a href="#方式1：通过操作style属性" class="headerlink" title="方式1：通过操作style属性"></a>方式1：通过操作style属性</h4><blockquote>
+<p>元素对象的style属性也是一个对象！</p>
+<p>元素对象.style.样式属性 = 值;</p>
+</blockquote>
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736620181.png" class="" width="1550736620181">
+
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 1. 获取元素</span></span><br><span class="line"><span class="regexp">        var div = document.querySelector('div');</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 2. 注册事件 处理程序</span></span><br><span class="line"><span class="regexp">        div.onclick = function() &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ div.style里面的属性 采取驼峰命名法 </span></span><br><span class="line"><span class="regexp">            this.style.backgroundColor = 'purple';</span></span><br><span class="line"><span class="regexp">            this.style.width = '250px';</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="案例：淘宝点击关闭二维码"><a href="#案例：淘宝点击关闭二维码" class="headerlink" title="案例：淘宝点击关闭二维码"></a>案例：淘宝点击关闭二维码</h4><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736843659.png" class="" width="1550736843659">
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736881832.png" class="" width="1550736881832">
+
+<h4 id="案例：循环精灵图背景"><a href="#案例：循环精灵图背景" class="headerlink" title="案例：循环精灵图背景"></a>案例：循环精灵图背景</h4><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736940082.png" class="" width="1550736940082">
+
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550736956754.png" class="" width="1550736956754">
+
+<h4 id="案例：显示隐藏文本框内容"><a href="#案例：显示隐藏文本框内容" class="headerlink" title="案例：显示隐藏文本框内容"></a>案例：显示隐藏文本框内容</h4><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550737006593.png" class="" width="1550737006593">
+
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550737019729.png" class="" width="1550737019729">
+
+<h4 id="方式2：通过操作className属性"><a href="#方式2：通过操作className属性" class="headerlink" title="方式2：通过操作className属性"></a>方式2：通过操作className属性</h4><blockquote>
+<p>元素对象.className = 值;</p>
+<p>因为class是关键字，所有使用className。</p>
+</blockquote>
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550737214510.png" class="" width="1550737214510">
+
+<p><strong>案例代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"first"</span>&gt;文本&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 1. 使用 element.style 获得修改元素样式  如果样式比较少 或者 功能简单的情况下使用</span></span><br><span class="line"><span class="regexp">        var test = document.querySelector('div');</span></span><br><span class="line"><span class="regexp">        test.onclick = function() &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ this.style.backgroundColor = 'purple';</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ this.style.color = '#fff';</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ this.style.fontSize = '25px';</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ this.style.marginTop = '100px';</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 2. 我们可以通过 修改元素的className更改元素的样式 适合于样式较多或者功能复杂的情况</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 3. 如果想要保留原先的类名，我们可以这么做 多类名选择器</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ this.className = 'change';</span></span><br><span class="line"><span class="regexp">            this.className = 'first change';</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="案例：密码框格式提示错误信息"><a href="#案例：密码框格式提示错误信息" class="headerlink" title="案例：密码框格式提示错误信息"></a>案例：密码框格式提示错误信息</h4><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550737269546.png" class="" width="1550737269546">
+<img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550737284218.png" class="" width="1550737284218">
+
+<h2 id="1-6-总结"><a href="#1-6-总结" class="headerlink" title="1.6. 总结"></a>1.6. 总结</h2><img src="/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/1550737354861.png" class="" width="1550737354861">
+
+      
+      <!-- reward 打赏按钮-->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyrights： </strong>
+              版权归作者所有。如需商业转载，请与作者联系以获得授权。非商业性转载请注明出处。
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2020/05/20/H5H5-API%E7%AC%94%E8%AE%B0-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/06/15/JQuery/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            JQuery
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/25/%E7%BB%99hexo%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8F%92%E4%BB%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">给hexo加一些小插件</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'IUPFYr9b7ardBDF78isygkav-gzGzoHsz',
+        app_key: 'SX7yhiWLzh7seYDtIzHyJOfH',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> ITaylorfan
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_black">鄂ICP备2020023396号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+      <li>
+       <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+      </li>
+    </ul>
+
+   
+   <!-- 统计网站运行时间 -->
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/23/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+	if(snum==60){
+	    snum=0;
+	  }
+
+	if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/TS-10-21-2.jpg" alt="ITaylorfan的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/hexo/">hexo</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%85%B6%E4%BB%96">其他</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/me">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WeChat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1815389717&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>

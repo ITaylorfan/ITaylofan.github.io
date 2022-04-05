@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Java" />
+   
+  <meta name="description" content="本站是ITaylorfan的个人博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Node爬虫笔记 |  ITaylorfan的博客
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/TS-10-21.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ITaylorfan的博客" type="application/atom+xml">
+</head>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-node爬虫笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Node爬虫笔记
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/02/19/node%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2021-02-19T12:36:59.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数:</span>
+            <span class="post-count">3.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长 ≈</span>
+            <span class="post-count">17 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="1-简单爬取电影数据"><a href="#1-简单爬取电影数据" class="headerlink" title="1.简单爬取电影数据"></a>1.简单爬取电影数据</h2><blockquote>
+<p>选择的网站是1905.com</p>
+</blockquote>
+<p><img src="https://img.imgdb.cn/item/601030f23ffa7d37b3b3d683.png" alt="1905电影网"></p>
+<a id="more"></a>
+
+<h3 id="重要：正则表达式"><a href="#重要：正则表达式" class="headerlink" title="重要：正则表达式"></a><strong>重要：正则表达式</strong></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匹配符合条件的a标签</span></span><br><span class="line"><span class="comment">//注意特殊字符的转义  . : () /</span></span><br><span class="line"><span class="comment">//igs 表示忽略大小写 全局匹配 不略过空格 换行符</span></span><br><span class="line">/<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript\:void\(0\);"</span> <span class="attr">onclick</span>=<span class="string">"location\.href='(.*?)';return false;"</span><span class="attr">.</span>*?&gt;</span>(.*?)<span class="tag">&lt;<span class="name">\</span>/<span class="attr">a</span>&gt;</span>/igs</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入第三方库axios</span></span><br><span class="line"><span class="keyword">let</span> axios = <span class="built_in">require</span>(<span class="string">"axios"</span>)</span><br><span class="line"><span class="keyword">let</span> fs=<span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="keyword">let</span> requestUrl = <span class="string">"https://www.1905.com/vod/list/n_1/o4p1.html"</span></span><br><span class="line"><span class="comment">//分类数据</span></span><br><span class="line"><span class="keyword">let</span> category = []</span><br><span class="line"><span class="comment">//所有电影</span></span><br><span class="line"><span class="keyword">let</span> allMovie=[]</span><br><span class="line">axios.get(requestUrl).then(<span class="function"><span class="params">success</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//设置正则 </span></span><br><span class="line">    <span class="comment">// 爬取分类信息</span></span><br><span class="line">    <span class="comment">// &lt;a href="javascript:void(0);" onclick="location.href='https://www.1905.com/vod/list/n_1_t_1/o4p1.html';return false;" &gt;</span></span><br><span class="line">    <span class="keyword">let</span> re = <span class="regexp">/&lt;a href="javascript\:void\(0\);" onclick="location\.href='(.*?)';return false;".*?&gt;(.*?)&lt;\/a&gt;/ig</span>s   <span class="comment">//i 表示忽略大小写 g 表示全局搜索 s 匹配换行符表示不忽略空格？</span></span><br><span class="line">    category=getCategoryData(re,success.data)</span><br><span class="line">    <span class="built_in">console</span>.log(category)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//提取当前页面的所有电影</span></span><br><span class="line">    <span class="comment">// &lt;div class="grid-2x grid-3x-md grid-6x-sm"&gt;</span></span><br><span class="line">    <span class="comment">// &lt;a class="pic-pack-outer" target="_blank" href="https://www.1905.com/vod/play/682663.shtml" title="霸王别姬"&gt;&lt;img alt="霸王别姬" src="https://image11.m1905.cn/uploadfile/2013/0816/thumb_1_150_203_20130816013533696.jpg"&gt;&lt;h3&gt;霸王别姬&lt;/h3&gt;&lt;i class="score"&gt;&lt;b&gt;9&lt;/b&gt;.6&lt;/i&gt;&lt;p&gt;张国荣主演经典作&lt;/p&gt;&lt;/a&gt;</span></span><br><span class="line">    <span class="comment">// &lt;/div&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//&lt;a class="pic-pack-outer" target="_blank" href="https://www.1905.com/vod/play/85676.shtml" title="举起手来"&gt;&lt;img alt="举起手来" src="https://image11.m1905.cn/uploadfile/2009/1106/thumb_1_150_203_20091106112357202.jpg"&gt;&lt;h3&gt;举起手来&lt;/h3&gt;&lt;i class="score"&gt;&lt;b&gt;9&lt;/b&gt;.4&lt;/i&gt;&lt;p&gt;潘长江爆笑歼鬼子&lt;/p&gt;&lt;/a&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> re2=<span class="regexp">/&lt;a class="pic-pack-outer" target="\_blank" href="(.*?)" title="(.*?)"&gt;&lt;img alt=".*?" src="(.*?)"&gt;&lt;h3&gt;.*?&lt;\/h3&gt;&lt;i class="score"&gt;(.*?)&lt;\/i&gt;&lt;p&gt;(.*?)&lt;\/p&gt;&lt;\/a&gt;/ig</span>s</span><br><span class="line">    allMovie=getAllMovieData(re2,success.data)</span><br><span class="line">    <span class="built_in">console</span>.log(allMovie)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据创建的内容生成目录</span></span><br><span class="line">    <span class="keyword">if</span>(!fs.existsSync(<span class="string">"./movies"</span>))&#123;</span><br><span class="line">        fs.mkdirSync(<span class="string">"./movies"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    allMovie.forEach(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line">        fs.writeFileSync(<span class="string">"./movies/"</span>+item.title+<span class="string">".json"</span>,<span class="built_in">JSON</span>.stringify(item))</span><br><span class="line">    &#125;)   </span><br><span class="line">&#125;, error =&gt; &#123;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//封装方法 获取分类数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCategoryData</span>(<span class="params">RE,data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//临时存放数据</span></span><br><span class="line">    <span class="keyword">let</span> myData=[]</span><br><span class="line">    <span class="comment">//执行正则</span></span><br><span class="line">    <span class="comment">//需要进行循环获取数据</span></span><br><span class="line">    <span class="keyword">while</span> (RE.exec(data)) &#123;</span><br><span class="line">        <span class="keyword">let</span> Data = RE.exec(data)</span><br><span class="line">        <span class="comment">//console.log(data)</span></span><br><span class="line">        <span class="comment">//console.log(data[1],data[2])     //每个(*.?)的内容都可以提取</span></span><br><span class="line">        <span class="keyword">let</span> obj = &#123;</span><br><span class="line">            categoryName: Data[<span class="number">2</span>],</span><br><span class="line">            url: Data[<span class="number">1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">        myData.push(obj)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回数据</span></span><br><span class="line">    <span class="keyword">return</span> myData</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//封装方法获取当前页面所有电影</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAllMovieData</span>(<span class="params">RE,data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//临时存放数据</span></span><br><span class="line">    <span class="keyword">let</span> myData=[]</span><br><span class="line">    <span class="comment">//执行正则</span></span><br><span class="line">    <span class="comment">//需要进行循环获取数据</span></span><br><span class="line">    <span class="keyword">while</span> (RE.exec(data)) &#123;</span><br><span class="line">        <span class="keyword">let</span> Data = RE.exec(data)</span><br><span class="line">        <span class="comment">//console.log(data)</span></span><br><span class="line">        <span class="comment">//console.log(data[1],data[2])     //每个(*.?)的内容都可以提取</span></span><br><span class="line">        <span class="keyword">let</span> obj = &#123;</span><br><span class="line">            title: Data[<span class="number">2</span>],</span><br><span class="line">            url: Data[<span class="number">1</span>],</span><br><span class="line">            img_url:Data[<span class="number">3</span>],</span><br><span class="line">            score:Data[<span class="number">4</span>].replace(<span class="regexp">/[^0-9]/ig</span>,<span class="string">""</span>),</span><br><span class="line">            info:Data[<span class="number">5</span>]</span><br><span class="line">        &#125;</span><br><span class="line">        myData.push(obj)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回数据</span></span><br><span class="line">    <span class="keyword">return</span> myData</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>爬取到的内容会自动生成json文件保存到movies文件夹中</strong></p>
+<p><img src="https://img.imgdb.cn/item/601030ee3ffa7d37b3b3d445.png" alt="爬取数据截图"></p>
+<h2 id="2-爬取表情包图片"><a href="#2-爬取表情包图片" class="headerlink" title="2.爬取表情包图片"></a>2.爬取表情包图片</h2><blockquote>
+<p>选择的网站是 <a href="https://www.doutula.com/" target="_blank" rel="noopener">https://www.doutula.com/</a></p>
+</blockquote>
+<p><img src="https://img.imgdb.cn/item/601031b43ffa7d37b3b433e4.jpg" alt="斗图啦"></p>
+<p><strong>这里使用cheerio 包代替复杂的正则表达式</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cheerio</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a><strong>代码：</strong></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入第三方 cheerio包 代替正则表达式简化爬取步骤</span></span><br><span class="line"><span class="comment">//cheerio 可以使用JQuery方法来提取爬取到的网页</span></span><br><span class="line"><span class="keyword">let</span> cheerio = <span class="built_in">require</span>(<span class="string">"cheerio"</span>)</span><br><span class="line"><span class="keyword">let</span> axios = <span class="built_in">require</span>(<span class="string">"axios"</span>)</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="keyword">let</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//首页链接</span></span><br><span class="line"><span class="keyword">let</span> RequestUrl = <span class="string">"https://www.doutula.com/article/list/?page=1"</span></span><br><span class="line"><span class="comment">//存放所有详情链接</span></span><br><span class="line"><span class="keyword">let</span> DetailUrl = []</span><br><span class="line"><span class="comment">//存放所有图片链接</span></span><br><span class="line"><span class="keyword">let</span> ImgUrl = []</span><br><span class="line"></span><br><span class="line"><span class="comment">//页码</span></span><br><span class="line"><span class="keyword">let</span> index = <span class="number">1</span></span><br><span class="line"><span class="comment">//最大页数</span></span><br><span class="line"><span class="keyword">let</span> maxPage = <span class="number">20</span></span><br><span class="line"><span class="comment">//主要函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mainF</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//爬取20页数据</span></span><br><span class="line">    <span class="comment">//使用延迟函数 减少压力</span></span><br><span class="line">    setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        axios.get(<span class="string">"https://www.doutula.com/article/list/?page="</span> + index).then(<span class="function"><span class="params">success</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">//console.log(success.data)</span></span><br><span class="line">            <span class="comment">//存放得到的页面详情数据</span></span><br><span class="line">            DetailUrl = [...DetailUrl, ...getPageDetailUrl(success.data)]</span><br><span class="line">            <span class="built_in">console</span>.log(DetailUrl)</span><br><span class="line">            <span class="comment">//调用创建文件夹方法</span></span><br><span class="line">            mkDir(DetailUrl)</span><br><span class="line"></span><br><span class="line">            <span class="comment">//根据得到详情链接获取详情页面中的数据</span></span><br><span class="line">            <span class="comment">//得到所有图片链接</span></span><br><span class="line">            <span class="comment">//ImgUrl=[...ImgUrl,...getDetailPageIamge(DetailUrl)]</span></span><br><span class="line">            <span class="comment">//console.log(ImgUrl)</span></span><br><span class="line">            getDetailPageIamge(DetailUrl)</span><br><span class="line">            <span class="keyword">if</span> (index &lt;= maxPage) index++</span><br><span class="line">        &#125;, error =&gt; &#123;</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;, <span class="number">2000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取页面中的详情链接</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPageDetailUrl</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> DetailUrl = []</span><br><span class="line">    <span class="comment">//加载页面内容</span></span><br><span class="line">    <span class="keyword">let</span> $ = cheerio.load(data)</span><br><span class="line">    <span class="comment">//获取页面中需要的 a标签 </span></span><br><span class="line">    $(<span class="string">"#home .row .col-sm-9&gt;a"</span>).each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">//item 需要转换成JQuery对象才能使用 attr()方法</span></span><br><span class="line">        <span class="keyword">let</span> obj = &#123;</span><br><span class="line">            title: $(item).find(<span class="string">".random_title"</span>).text(),</span><br><span class="line">            detailUrl: $(item).attr(<span class="string">"href"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        DetailUrl.push(obj)</span><br><span class="line">        <span class="comment">//console.log($(item).attr("href"))</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> DetailUrl</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取页面详情图片</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getDetailPageIamge</span>(<span class="params">Url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> imgUrl = []</span><br><span class="line">    <span class="comment">//对每个链接进行循环 获取详情页面的所有图片</span></span><br><span class="line">    Url.forEach(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//封装每个详情页面</span></span><br><span class="line">        <span class="keyword">let</span> OBJ = &#123;&#125;</span><br><span class="line">        <span class="keyword">let</span> res = <span class="keyword">await</span> axios.get(item.detailUrl)</span><br><span class="line">        <span class="keyword">let</span> $ = cheerio.load(res.data)</span><br><span class="line">        <span class="comment">//设置选择器</span></span><br><span class="line">        <span class="keyword">let</span> Dom3 = $(<span class="string">".container_ .container .row .col-sm-9 .list-group-item .pic-title&gt;div&gt;.glyphicon"</span>)</span><br><span class="line">        <span class="keyword">let</span> Dom1 = $(<span class="string">".container_ .container .row .col-sm-9 .list-group-item .pic-title&gt;h1&gt;a"</span>)</span><br><span class="line">        <span class="keyword">let</span> Dom2 = $(<span class="string">".container_ .container .row .col-sm-9 .list-group-item .pic-content&gt;.artile_des&gt;table&gt;tbody&gt;tr&gt;td&gt;a&gt;img"</span>)</span><br><span class="line">        OBJ.title = $(Dom1).text() + $(Dom3).text()</span><br><span class="line">        OBJ.img = []</span><br><span class="line">        Dom2.each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> obj = &#123;</span><br><span class="line">                img_Url: $(item).attr(<span class="string">"src"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            OBJ.img.push(obj)</span><br><span class="line">            <span class="comment">//console.log($(item).attr("src"))</span></span><br><span class="line">            <span class="comment">//console.log(obj)</span></span><br><span class="line">        &#125;)</span><br><span class="line">        downloadImage(OBJ)</span><br><span class="line">        imgUrl.push(OBJ)</span><br><span class="line">        <span class="comment">//console.log(imgUrl)       </span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建文件夹</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mkDir</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"正在创建文件夹..."</span>)</span><br><span class="line">    <span class="keyword">if</span> (!fs.existsSync(<span class="string">"./img"</span>)) &#123;</span><br><span class="line">        fs.mkdirSync(<span class="string">"./img"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    data.forEach(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!fs.existsSync(<span class="string">"./img/"</span> + item.title)) &#123;</span><br><span class="line">            <span class="keyword">let</span> error=<span class="keyword">await</span> fs.mkdir(<span class="string">"./img/"</span> + item.title)</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> err</span><br><span class="line">            i++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"创建所有文件夹成功,创建了"</span> + i + <span class="string">"个文件夹"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下载图片</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">downloadImage</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//console.log(data.title)</span></span><br><span class="line">    <span class="comment">//遍历每张图片</span></span><br><span class="line">    data.img.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//请求图片需要设置响应类型为 流</span></span><br><span class="line">        axios.get(item.img_Url, &#123; <span class="attr">responseType</span>: <span class="string">"stream"</span> &#125;).then(<span class="function"><span class="params">success</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> extN = path.extname(item.img_Url)</span><br><span class="line">            <span class="comment">//创建写入流</span></span><br><span class="line">            <span class="keyword">let</span> ws = fs.createWriteStream(<span class="string">"./img/"</span> + data.title + <span class="string">"/"</span> + data.title + <span class="string">"-"</span> + index + extN)</span><br><span class="line">            <span class="comment">//创建读取管道</span></span><br><span class="line">            success.data.pipe(ws)</span><br><span class="line">            <span class="comment">//console.log(success.data)</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"成功写入一张图片: "</span> + <span class="string">"./img/"</span> + data.title + <span class="string">"/"</span> + data.title + <span class="string">"-"</span> + index + extN)</span><br><span class="line">            <span class="comment">//关闭写入流</span></span><br><span class="line">            success.data.on(<span class="string">"close"</span>, () =&gt; &#123;</span><br><span class="line">                ws.close()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;, error =&gt; &#123;</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用主函数</span></span><br><span class="line">mainF()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.imgdb.cn/item/601032f33ffa7d37b3b4b723.jpg" alt="爬取到的表情包数据"></p>
+<h3 id="Bug："><a href="#Bug：" class="headerlink" title="Bug："></a>Bug：</h3><p><strong>当创建文件夹路径出错时会终止程序</strong></p>
+<p><img src="https://img.imgdb.cn/item/6010341a3ffa7d37b3b53be6.jpg" alt="报错"></p>
+<h2 id="3-爬取歌曲"><a href="#3-爬取歌曲" class="headerlink" title="3.爬取歌曲"></a>3.爬取歌曲</h2><blockquote>
+<p>爬取网易云音乐</p>
+</blockquote>
+<h3 id="3-1右键选择查看框架源代码"><a href="#3-1右键选择查看框架源代码" class="headerlink" title="3.1右键选择查看框架源代码"></a>3.1右键选择查看框架源代码</h3><p><img src="https://img.imgdb.cn/item/60117a9b3ffa7d37b342b152.png" alt="右键查看框架源代码"></p>
+<h3 id="3-2需要的数据都在这"><a href="#3-2需要的数据都在这" class="headerlink" title="3.2需要的数据都在这"></a>3.2<strong>需要的数据都在这</strong></h3><p><img src="https://img.imgdb.cn/item/60117b5a3ffa7d37b34302f6.png" alt="需要的数据"></p>
+<h3 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cheerio = <span class="built_in">require</span>(<span class="string">"cheerio"</span>)</span><br><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="keyword">let</span> axios = <span class="built_in">require</span>(<span class="string">"axios"</span>)</span><br><span class="line"><span class="keyword">let</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"><span class="comment">//存放获取到的歌曲信息</span></span><br><span class="line"><span class="keyword">let</span> songs = []</span><br><span class="line"></span><br><span class="line"><span class="comment">//爬取网易云音乐热歌榜单内容  https://music.163.com/#/discover/toplist?id=3778678</span></span><br><span class="line"><span class="comment">//下面榜单数据id可能会更换、以官网为准</span></span><br><span class="line"><span class="keyword">let</span> discover =[</span><br><span class="line">  &#123; <span class="attr">title</span>: <span class="string">'飙升榜'</span>, <span class="attr">id</span>: <span class="number">19723756</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">title</span>: <span class="string">'新歌榜'</span>, <span class="attr">id</span>: <span class="number">3779629</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">title</span>: <span class="string">'原创榜'</span>, <span class="attr">id</span>: <span class="number">2884035</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">title</span>: <span class="string">'热歌榜'</span>, <span class="attr">id</span>: <span class="number">3778678</span> &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">mainF</span>(<span class="params">query</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//爬取热歌榜</span></span><br><span class="line">    <span class="comment">//需要使用查看网页框架中的链接  去掉#符号</span></span><br><span class="line">    <span class="keyword">let</span> baseUrl = <span class="string">"https://music.163.com/discover/toplist?id="</span> + query[<span class="number">3</span>].id</span><br><span class="line">    <span class="comment">//设置请求头</span></span><br><span class="line">    <span class="comment">//let Header=&#123;"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3741.400 QQBrowser/10.5.3863.400"&#125;</span></span><br><span class="line">    <span class="keyword">let</span> res = <span class="keyword">await</span> axios.get(baseUrl)</span><br><span class="line">    <span class="keyword">let</span> $ = cheerio.load(res.data)</span><br><span class="line">    <span class="comment">// console.log(res.data)</span></span><br><span class="line">    <span class="comment">//获取a标签</span></span><br><span class="line">    <span class="keyword">let</span> dom = $(<span class="string">".f-hide&gt;li&gt;a"</span>)</span><br><span class="line">    dom.each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> obj = &#123;</span><br><span class="line">            title: $(item).text(),</span><br><span class="line">            url: $(item).attr(<span class="string">"href"</span>),</span><br><span class="line">            id: $(item).attr(<span class="string">"href"</span>).replace(<span class="regexp">/[^\d]/g</span>, <span class="string">""</span>)   <span class="comment">//使用正则去掉非数字</span></span><br><span class="line">        &#125;</span><br><span class="line">        songs.push(obj)</span><br><span class="line">        <span class="comment">// console.log(obj)</span></span><br><span class="line">    &#125;)</span><br><span class="line">    getSongs(songs)</span><br><span class="line">    <span class="comment">//console.log(res.data)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据获取到的歌曲id去请求歌曲资源  然后下载到本地</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSongs</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> num=<span class="number">0</span></span><br><span class="line">    <span class="comment">// http://music.163.com/song/media/outer/url?id=   在线播放音乐的链接</span></span><br><span class="line">    <span class="keyword">let</span> getSongsUrl = <span class="string">"http://music.163.com/song/media/outer/url?id="</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"一共有："</span>+data.length+<span class="string">"首歌曲"</span>)</span><br><span class="line">    <span class="comment">//方便调试 只爬10首</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        axios.get(getSongsUrl + data[i].id,&#123;<span class="attr">responseType</span>:<span class="string">"stream"</span>&#125;).then(<span class="function"><span class="params">success</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 创建文件夹 如果没有的话</span></span><br><span class="line">            <span class="keyword">if</span> (!fs.existsSync(<span class="string">"./songs"</span>)) &#123;</span><br><span class="line">                fs.mkdirSync(<span class="string">"./songs"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//创建写入流</span></span><br><span class="line">            <span class="keyword">let</span> ws = fs.createWriteStream(<span class="string">"./songs/"</span> + data[i].title + <span class="string">".mp3"</span>)</span><br><span class="line">            <span class="comment">//使用管道流生成文件</span></span><br><span class="line">            success.data.pipe(ws)</span><br><span class="line">            <span class="comment">//读取流关闭时执行下面操作</span></span><br><span class="line">            success.data.on(<span class="string">"close"</span>, () =&gt; &#123;</span><br><span class="line">                num++</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"写入成功"</span>+num+<span class="string">"首,歌曲名为："</span>+data[i].title+<span class="string">".mp3"</span>)</span><br><span class="line">                ws.close()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;, error =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"错误,歌曲名为："</span>+data[i].title+<span class="string">".mp3"</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用主函数</span></span><br><span class="line">mainF(discover)</span><br></pre></td></tr></table></figure>
+
+<p><strong>目录结构：</strong></p>
+ <div align=left><img  src="https://img.imgdb.cn/item/60117c7b3ffa7d37b3438b67.png"/></div>
+
+<p><strong>终端：</strong></p>
+ <div align=left><img  src="https://img.imgdb.cn/item/60117cce3ffa7d37b343aae8.png"/></div>
+
+
+
+<h2 id="4-使用前端神器puppeteer做爬虫"><a href="#4-使用前端神器puppeteer做爬虫" class="headerlink" title="4.使用前端神器puppeteer做爬虫"></a>4.使用前端神器puppeteer做爬虫</h2><blockquote>
+<p>Puppeteer 是一个控制 headless Chrome 的 Node.js API 。它是一个 Node.js 库，通过 <a href="https://chromedevtools.github.io/devtools-protocol/" target="_blank" rel="noopener">DevTools 协议</a>提供了一个高级的 API 来控制 <a href="https://developers.google.com/web/updates/2017/04/headless-chrome" target="_blank" rel="noopener">headless</a> Chrome。它还可以配置为使用完整的（非 headless）Chrome。</p>
+<p>在浏览器中手动完成的大多数事情都可以通过使用 Puppeteer 完成。</p>
+</blockquote>
+<p><strong>安装puppeteer库</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm instal puppeteer</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1爬取猫眼电影热映电影的数据"><a href="#4-1爬取猫眼电影热映电影的数据" class="headerlink" title="4.1爬取猫眼电影热映电影的数据"></a>4.1爬取猫眼电影热映电影的数据</h3><p><img src="https://img.imgdb.cn/item/6017eda93ffa7d37b3f46005.png" alt="正在热映"></p>
+<blockquote>
+<p>直接使用axios来爬取比较困难，此网站有滑块验证</p>
+<p>使用puppeteer中的鼠标事件 可以模拟拖动以破解验证码(此网站验证码缺口出现位置不是随机的比较简单)</p>
+</blockquote>
+<p><img src="https://img.imgdb.cn/item/6017ee1d3ffa7d37b3f4932d.png" alt="滑块验证"></p>
+<blockquote>
+<p>滑块的内容在iframe框架中，无法直接获取dom</p>
+</blockquote>
+<p><img src="https://img.imgdb.cn/item/6017ee973ffa7d37b3f4be9d.png" alt="iframe"></p>
+<h3 id="4-2代码"><a href="#4-2代码" class="headerlink" title="4.2代码"></a>4.2代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入puppeteer库</span></span><br><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">"puppeteer"</span>)</span><br><span class="line"><span class="comment">//导入自定义写入模块</span></span><br><span class="line"><span class="keyword">const</span> &#123; writeJson &#125; = <span class="built_in">require</span>(<span class="string">"./write"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//爬取猫眼电影 正在热映的电影数据</span></span><br><span class="line"><span class="keyword">const</span> baseUrl = <span class="string">"https://maoyan.com"</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">mainF</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> option = &#123;</span><br><span class="line">        <span class="comment">//是否开启无头浏览器模式</span></span><br><span class="line">        headless: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">//设置可视区域大小</span></span><br><span class="line">        defaultViewport: &#123;</span><br><span class="line">            width: <span class="number">1200</span>,</span><br><span class="line">            height: <span class="number">900</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 获取跨域iframe中的内容  关键</span></span><br><span class="line">        args: [</span><br><span class="line">            <span class="string">'--disable-web-security'</span>,</span><br><span class="line">            <span class="string">'--disable-features=IsolateOrigins,site-per-process'</span>, <span class="comment">// 很关键...</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">//放慢速度</span></span><br><span class="line">        <span class="comment">//   slowMo:100</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> bowser = <span class="keyword">await</span> puppeteer.launch(option)</span><br><span class="line">    <span class="keyword">let</span> page = <span class="keyword">await</span> bowser.newPage()</span><br><span class="line">    <span class="keyword">await</span> page.goto(baseUrl)</span><br><span class="line">    <span class="comment">//等待全部按钮加载完成</span></span><br><span class="line">    <span class="keyword">await</span> page.waitForSelector(<span class="string">".panel-header&gt;.panel-more&gt;a"</span>)</span><br><span class="line">    <span class="comment">//获取 全部 按钮 的dom</span></span><br><span class="line">    <span class="comment">//注意这里 的这个类被用到多次</span></span><br><span class="line">    <span class="keyword">let</span> btn = <span class="keyword">await</span> page.$$(<span class="string">".panel-header&gt;.panel-more"</span>)</span><br><span class="line">    <span class="comment">//跳转到正在热映的全部电影 2正在热映 3即将上映</span></span><br><span class="line">    <span class="keyword">await</span> btn[<span class="number">2</span>].click()</span><br><span class="line">    <span class="comment">//等待路由跳转完成</span></span><br><span class="line">    <span class="keyword">await</span> page.waitForNavigation()</span><br><span class="line">    <span class="comment">//等待电影区块加载完成</span></span><br><span class="line">    <span class="keyword">await</span> page.waitForSelector(<span class="string">".movie-list&gt;dd"</span>)</span><br><span class="line">    <span class="keyword">await</span> page.waitForSelector(<span class="string">".movie-list&gt;dd&gt;.movie-item.film-channel&gt;a&gt;.movie-poster&gt;img:last-child"</span>)  </span><br><span class="line">    <span class="comment">//存放所有数据</span></span><br><span class="line">    <span class="keyword">let</span> totalData = <span class="keyword">await</span> page.$$<span class="built_in">eval</span>(<span class="string">".movie-list&gt;dd"</span>, el =&gt; &#123;</span><br><span class="line">        <span class="comment">//回调函数中无法直接使用外部变量</span></span><br><span class="line">        <span class="keyword">let</span> totalData = []</span><br><span class="line">        el.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">//标题 </span></span><br><span class="line">            <span class="keyword">let</span> titleDom = item.querySelector(<span class="string">".channel-detail.movie-item-title"</span>)</span><br><span class="line">            <span class="comment">//评分</span></span><br><span class="line">            <span class="keyword">let</span> scoreDom = item.querySelector(<span class="string">".channel-detail.channel-detail-orange"</span>)</span><br><span class="line">            <span class="comment">//详情</span></span><br><span class="line">            <span class="keyword">let</span> detailDom = item.querySelector(<span class="string">".movie-item.film-channel&gt;a"</span>)</span><br><span class="line">            <span class="comment">//图片链接</span></span><br><span class="line">            <span class="keyword">let</span> imgDom = item.querySelector(<span class="string">".movie-item.film-channel&gt;a&gt;.movie-poster&gt;img:last-child"</span>)</span><br><span class="line">            <span class="keyword">let</span> obj = &#123;</span><br><span class="line">                title: titleDom.getAttribute(<span class="string">"title"</span>),</span><br><span class="line">                score: scoreDom.innerHTML === <span class="string">"暂无评分"</span> ? <span class="string">'暂无评分'</span> : scoreDom.innerHTML.replace(<span class="regexp">/\D/g</span>, <span class="string">""</span>),</span><br><span class="line">                <span class="comment">//图片属性 因为懒加载 所以链接属性会不同 src</span></span><br><span class="line">                img_Url: imgDom.getAttribute(<span class="string">"data-src"</span>),</span><br><span class="line">                detail_Url: detailDom.getAttribute(<span class="string">"href"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (obj.score !== <span class="string">"暂无评分"</span>) &#123;</span><br><span class="line">                obj.score = obj.score[<span class="number">0</span>] + <span class="string">"."</span> + obj.score[<span class="number">1</span>]</span><br><span class="line">            &#125;</span><br><span class="line">            totalData.push(obj)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> totalData</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(totalData.length)</span><br><span class="line">    <span class="comment">//关闭首页的浏览器</span></span><br><span class="line">    bowser.close()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//遍历获取到的所有内容 然后点击</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; totalData.length; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> bowser = <span class="keyword">await</span> puppeteer.launch(option)</span><br><span class="line">        <span class="keyword">let</span> page = <span class="keyword">await</span> bowser.newPage()</span><br><span class="line">        <span class="comment">//打开 详情页面 可能需要人机验证</span></span><br><span class="line">        <span class="keyword">await</span> page.goto(baseUrl + totalData[i].detail_Url)</span><br><span class="line"></span><br><span class="line">        <span class="comment">//处理滑块验证  验证区域加载的是iframe框架</span></span><br><span class="line">        <span class="keyword">let</span> url = page.url()</span><br><span class="line">        <span class="comment">//console.log(url)</span></span><br><span class="line">        <span class="comment">//表示跳转到了验证页面 破解滑块验证 只能破解有规律的 缺口出现位置差不多的 随机缺口未实现</span></span><br><span class="line">        <span class="keyword">if</span> (url.includes(<span class="string">"https://verify.maoyan.com/"</span>)) &#123;</span><br><span class="line">            <span class="comment">//等待框架</span></span><br><span class="line">            <span class="keyword">await</span> page.waitForSelector(<span class="string">"#tcaptcha_transform iframe"</span>)</span><br><span class="line">            <span class="comment">//获取框架</span></span><br><span class="line">            <span class="keyword">const</span> elementHandle = <span class="keyword">await</span> page.$(<span class="string">'#tcaptcha_transform iframe'</span>);</span><br><span class="line">            <span class="comment">//获取框架内容</span></span><br><span class="line">            <span class="keyword">const</span> frame = <span class="keyword">await</span> elementHandle.contentFrame();</span><br><span class="line">            <span class="comment">//等待框架跳转</span></span><br><span class="line">            <span class="keyword">await</span> frame.waitForNavigation()</span><br><span class="line">            <span class="comment">//获取滑块dom</span></span><br><span class="line">            <span class="keyword">let</span> thumb = <span class="keyword">await</span> frame.$(<span class="string">"#tcaptcha_drag_thumb"</span>)</span><br><span class="line">            <span class="comment">//获取滑块的位置信息</span></span><br><span class="line">            <span class="keyword">let</span> thumbPosInfo = <span class="keyword">await</span> thumb.boundingBox()</span><br><span class="line">            <span class="built_in">console</span>.log(thumbPosInfo.x, thumbPosInfo.y, thumbPosInfo.width, thumbPosInfo.height)</span><br><span class="line">            <span class="comment">//鼠标移动到此位置</span></span><br><span class="line">            <span class="keyword">await</span> page.mouse.move(thumbPosInfo.x + <span class="number">30</span>, thumbPosInfo.y);</span><br><span class="line">            <span class="comment">// 按下鼠标</span></span><br><span class="line">            <span class="keyword">await</span> page.mouse.down();</span><br><span class="line">            <span class="comment">//获取进度条宽度</span></span><br><span class="line">            <span class="keyword">let</span> track = <span class="keyword">await</span> frame.$(<span class="string">".tc-drag-track"</span>)</span><br><span class="line">            <span class="keyword">let</span> trackPosInfo = <span class="keyword">await</span> track.boundingBox()</span><br><span class="line">            <span class="built_in">console</span>.log(trackPosInfo.x, trackPosInfo.y, trackPosInfo.width, trackPosInfo.height)</span><br><span class="line">            <span class="comment">// 一点点移动鼠标</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; trackPosInfo.width - <span class="number">54</span> - thumbPosInfo.width; i++) &#123;</span><br><span class="line">                <span class="keyword">await</span> page.mouse.move(thumbPosInfo.x + <span class="number">30</span> + i, thumbPosInfo.y);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//松开鼠标</span></span><br><span class="line">            <span class="keyword">await</span> page.mouse.up();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//等待需要的内容加载</span></span><br><span class="line">        <span class="keyword">await</span> page.waitForSelector(<span class="string">".movie-brief-container&gt;.ename.ellipsis"</span>)</span><br><span class="line">        <span class="comment">//获取我们需要的内容</span></span><br><span class="line">        <span class="keyword">let</span> enName = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">".movie-brief-container&gt;.ename.ellipsis"</span>, el =&gt; el.innerHTML)</span><br><span class="line">        <span class="keyword">let</span> type = <span class="keyword">await</span> page.$$<span class="built_in">eval</span>(<span class="string">".movie-brief-container&gt;ul&gt;li&gt;a"</span>, el =&gt; &#123;</span><br><span class="line">            <span class="keyword">let</span> type = []</span><br><span class="line">            el.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">                type.push(item.innerHTML)</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">return</span> type</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">let</span> movieLength = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">".movie-brief-container&gt;ul&gt;li:nth-child(2)"</span>, el =&gt; el.innerText)</span><br><span class="line">        <span class="keyword">let</span> timeAndAdress = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">".movie-brief-container&gt;ul&gt;li:last-child"</span>, el =&gt; el.innerHTML)</span><br><span class="line">        <span class="keyword">let</span> synopsis = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">".mod-content&gt;.dra"</span>, el =&gt; el.innerHTML)</span><br><span class="line">        <span class="keyword">let</span> bigImg_Url = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">".celeInfo-left&gt;.avatar-shadow&gt;img"</span>, el =&gt; el.getAttribute(<span class="string">"src"</span>))</span><br><span class="line">        <span class="comment">//封装</span></span><br><span class="line">        <span class="keyword">let</span> obj = &#123;</span><br><span class="line">            enName,</span><br><span class="line">            type: type,</span><br><span class="line">            movieLength,</span><br><span class="line">            timeAndAdress,</span><br><span class="line">            synopsis,</span><br><span class="line">            bigImg_Url</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//合并对象</span></span><br><span class="line">        totalData[i] = &#123; ...totalData[i], ...obj &#125;</span><br><span class="line">        <span class="comment">//调用自定义写入模块 写入json</span></span><br><span class="line">        writeJson(totalData[i])</span><br><span class="line">        <span class="comment">//完成一个页面就关闭浏览器</span></span><br><span class="line">        bowser.close()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用主函数</span></span><br><span class="line">mainF()</span><br></pre></td></tr></table></figure>
+
+<p><strong>自定义json写入模块 write.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义 写入模块</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeJson</span>(<span class="params">myJsonData</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//如果存在就读取</span></span><br><span class="line">    <span class="keyword">if</span> (fs.existsSync(<span class="string">"./movie.json"</span>)) &#123;</span><br><span class="line">        jsonData = fs.readFileSync(<span class="string">"./movie.json"</span>)</span><br><span class="line">        <span class="comment">// console.log(jsonData)</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">JSON</span>.parse(jsonData) === <span class="string">"object"</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"是json"</span>)</span><br><span class="line">            jsonData = <span class="built_in">JSON</span>.parse(jsonData)   <span class="comment">//转成对象</span></span><br><span class="line">            jsonData = [...jsonData,myJsonData]  <span class="comment">//合并数据</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  <span class="comment">//为其他数据 或者空 直接覆盖</span></span><br><span class="line">            jsonData =[myJsonData]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;    <span class="comment">//不存在 就直接写入</span></span><br><span class="line">        jsonData =[myJsonData]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> i=jsonData.length</span><br><span class="line">    <span class="comment">//序列化</span></span><br><span class="line">    jsonData = <span class="built_in">JSON</span>.stringify(jsonData)</span><br><span class="line">    <span class="comment">//获取一个完成</span></span><br><span class="line">    fs.writeFileSync(<span class="string">"./movie.json"</span>, jsonData)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"写入json数据成功！"</span> + i + <span class="string">"个"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//抛出方法</span></span><br><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    writeJson</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3完成截图"><a href="#4-3完成截图" class="headerlink" title="4.3完成截图"></a>4.3完成截图</h3><p><img src="https://img.imgdb.cn/item/6017f05c3ffa7d37b3f572b2.jpg" alt="json截图"></p>
+<h3 id="4-4存在问题"><a href="#4-4存在问题" class="headerlink" title="4.4存在问题"></a>4.4存在问题</h3><p><strong>1.只能获取全部数据中的一页数据，如果有多页获取后面的数据未能获取</strong></p>
+<p><strong>2.json会写入重复数据，完成后需要去重</strong></p>
+<p><strong>去重代码：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs=<span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="comment">//直接使用 node 命令运行 进行去重</span></span><br><span class="line"><span class="comment">//对获取到的数据去重</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mainF</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fs.existsSync(<span class="string">"./movie.json"</span>))&#123;</span><br><span class="line">        <span class="keyword">let</span> jsonData=fs.readFileSync(<span class="string">"./movie.json"</span>)</span><br><span class="line">        jsonData=<span class="built_in">JSON</span>.parse(jsonData)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"去重前有"</span>+jsonData.length+<span class="string">"条数据"</span>)</span><br><span class="line">        jsonData=quchong(jsonData)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"去重后有"</span>+jsonData.length+<span class="string">"条数据"</span>)</span><br><span class="line">        jsonData=<span class="built_in">JSON</span>.stringify(jsonData)</span><br><span class="line">        fs.writeFileSync(<span class="string">"./movie.json"</span>,jsonData)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"去重完成！"</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"未找到源数据！"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quchong</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> array = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> isChage = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> z = <span class="number">0</span>; z &lt; array.length; z++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i][<span class="string">'title'</span>] == array[z][<span class="string">'title'</span>]) &#123;</span><br><span class="line">                isChage = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(isChage) &#123;</span><br><span class="line">            array.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用主函数</span></span><br><span class="line">mainF()</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward 打赏按钮-->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyrights： </strong>
+              版权归作者所有。如需商业转载，请与作者联系以获得授权。非商业性转载请注明出处。
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2021/02/19/node%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2021/02/23/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            node学习笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/01/22/uniapp%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E9%BB%91%E9%A9%AC%E8%B6%85%E5%B8%82%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">uniapp练手项目黑马超市的一些笔记</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'IUPFYr9b7ardBDF78isygkav-gzGzoHsz',
+        app_key: 'SX7yhiWLzh7seYDtIzHyJOfH',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> ITaylorfan
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_black">鄂ICP备2020023396号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+      <li>
+       <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+      </li>
+    </ul>
+
+   
+   <!-- 统计网站运行时间 -->
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/23/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+	if(snum==60){
+	    snum=0;
+	  }
+
+	if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/TS-10-21-2.jpg" alt="ITaylorfan的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/hexo/">hexo</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%85%B6%E4%BB%96">其他</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/me">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WeChat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1815389717&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>
