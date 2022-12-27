@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Java" />
+   
+  <meta name="description" content="本站是ITaylorfan的个人博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    HTML5多媒体技术 |  ITaylorfan的博客
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/TS-10-21.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ITaylorfan的博客" type="application/atom+xml">
+</head>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-HTML5多媒体技术" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  HTML5多媒体技术
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/10/21/HTML5%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="article-date">
+  <time datetime="2021-10-21T11:38:11.000Z" itemprop="datePublished">2021-10-21</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数:</span>
+            <span class="post-count">4.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长 ≈</span>
+            <span class="post-count">17 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="HTML5多媒体技术"><a href="#HTML5多媒体技术" class="headerlink" title="HTML5多媒体技术"></a>HTML5多媒体技术</h2><h3 id="音频Audio"><a href="#音频Audio" class="headerlink" title="音频Audio"></a>音频Audio</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">"./assets/19.mp3"</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 或 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">audio</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"./assets/30.mp3"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p><strong>属性</strong></p>
+<ol>
+<li><code>controls</code>是否在页面上面显示控制器，它是一个单属性</li>
+<li><code>autoplay</code>是否自动播放，它是一个单属性【当前属性在谷歌浏览器里面第一次使用无效】</li>
+<li><code>currentSrc</code>当前音频标签的<code>src</code>地址</li>
+<li><code>currentTime</code>当前音乐播放的进度时间，以秒为单位</li>
+<li><code>duration</code>当前音乐的总时长，以秒为单位</li>
+<li><code>ended</code>当前音频是否已经播放结束 ，它会触发<code>onended</code>事件</li>
+<li><code>loop</code>是否单曲循环，它是一个单属性，<code>true</code>代表开启单曲循环，<code>false</code>则不开启单曲循环</li>
+<li><code>muted</code>当前音频是否处于静音，它是一个单属性，<code>true</code>代表静音，<code>false</code>取消静音</li>
+<li><code>networkState</code>表示当前媒体的网络连接状态：0表示空，1表示正在加载，2表示 正在加载元数据，3表示已经加载了第一帧，4表示加载完成</li>
+<li><code>volume</code>代表当前音频的音量，它以数字为属性值 ，范围是<code>0~1</code>之间</li>
+<li><code>playbackRate</code>代表当前音频的播放速率，默认是1</li>
+<li><code>paused</code>代表当前音频是否处于暂停状态，它是一个单属性，<code>true</code>代表暂停，<code>false</code>代表播放状态</li>
+<li><code>readyState</code>表示当前音频的准备状态，媒体是否已经就绪（可以播放了）。0表示数据不可用，1表示可以显示当前帧，2表示可以开始播放，3表示媒体可以从头到尾播放</li>
+<li><code>preload</code>预先加载，三个属性值分别是<code>metadata</code>元数据，<code>none</code>不加载，<code>auto</code>自动</li>
+</ol>
+<p><strong>事件</strong></p>
+<p>音频标签所有的事件都支持0级事件与2级事件</p>
+<ol>
+<li><code>oncanplay</code>当音频已经在加载，并且可以开始播放的时候会触发这个事件</li>
+<li><code>onended</code>当前音频播放结束的时候触发，如果当前音频添加了<code>loop</code>单曲循环的属性，则永远不会触发这个事件</li>
+<li><code>onloadeddata</code>媒体第一帧在加载的时候触发 </li>
+<li><code>onplay</code>当音频播放的时候触发的事件</li>
+<li><code>onpause</code>当音频在暂停的时候触发的事件</li>
+<li><code>onratechange</code>当音频播放的速率发生变化的时候，就会触发这个事件</li>
+<li><code>ontimeupdate</code>当音频的播放时间更新的时候触发的事件，只要是处于播放状态，这个事件会一直触发</li>
+<li><code>volumechange</code>volume属性值或muted属性值已改变</li>
+<li><code>waiting</code>当播放网络音频的时候，网络情况比较差，需要等待加载的时候（通俗的说就是缓冲），就会触发这个事件</li>
+</ol>
+<p><strong>方法</strong></p>
+<ol>
+<li><code>play()</code>让当前音频播放</li>
+<li><code>pause()</code>让当前音频暂停</li>
+</ol>
+<h3 id="视频Video"><a href="#视频Video" class="headerlink" title="视频Video"></a>视频Video</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"./assets/01.mp4"</span> <span class="attr">id</span>=<span class="string">"v1"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"700px"</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6143dc472ab3f51d91373e71.png" alt="image-20210916183421976"></p>
+<p>当前这个标签能够支持的视频格式非常有限，如上图所示，最常见的格式就是mp4格式</p>
+<p>视频与音频非常相似，在属性与方法上面保持了一致，唯独多了一些的属性</p>
+<ol>
+<li><code>poster</code>视频的海报</li>
+<li><code>requestFullscreen()</code>视频全屏播放</li>
+<li><code>document.exitFullscreen()</code>视频退出全屏</li>
+<li><code>requestPictureInPicture()</code>视频开启画中画播放</li>
+<li><code>document.exitPictureInPicture()</code>退出画中画播放</li>
+</ol>
+<p>在工作当中我们一般会使用第三方的视频库来播放视频 ，它们的功能更齐全，使用更简单，目前主要使用的比较多的有两个</p>
+<ol>
+<li><p><code>videojs</code></p>
+</li>
+<li><p><code>aliplayer</code>这是阿里云的框架，它支持点播，直播以及多种模式</p>
+<p><a href="https://player.alicdn.com/aliplayer/index.html" target="_blank" rel="noopener">阿里云Aliplayer播放器 (alicdn.com)</a></p>
+<p><img src="https://pic.imgdb.cn/item/6143dc832ab3f51d91376b54.png" alt="image-20210916185001374"></p>
+</li>
+</ol>
+<hr>
+<h3 id="文件与base64"><a href="#文件与base64" class="headerlink" title="文件与base64"></a>文件与base64</h3><p>base64是一种加密的数据，它不可以直接阅读，常用于HTTP网络传输，在计算机当中所有的文件都可以使用<code>base64</code>去表示，但是它需要借用助于HTML5的新兴API，叫<code>FileReader</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"img1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">onchange</span>=<span class="string">"fileChange(this)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">fileChange</span><span class="params">(ele)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> img1 = <span class="built_in">document</span>.querySelector(<span class="string">".img1"</span>);</span></span><br><span class="line">        if (ele.files.length &gt; 0) &#123;</span><br><span class="line"><span class="actionscript">            <span class="comment">//说明它有文件</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> file = ele.files[<span class="number">0</span>];</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//判断一下是不是图片类型</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> reg = <span class="regexp">/^image\/(jpe?g|gif|png|bmp)$/</span>;</span></span><br><span class="line">            if (reg.test(file.type)) &#123;</span><br><span class="line"><span class="actionscript">                <span class="comment">//说明它是一个图片，然后将这个图片转换成base64格式</span></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// dataURL格式就是base64格式</span></span></span><br><span class="line">                fileReader.readAsDataURL(file);</span><br><span class="line"><span class="actionscript">                fileReader.onload = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(fileReader.result);</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">// result属性就是文件的读取结果</span></span></span><br><span class="line">                    img1.src = fileReader.result;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6143dc942ab3f51d91377886.png" alt="image-20210916195825017"></p>
+<p>在上面的代码里面， 我们使用了 type=”file” 来选择文件，但这个文件选择框不能设置样式，所以我们可以单独设置一个按钮去完成</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">audio</span> <span class="attr">id</span>=<span class="string">"bgm"</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"f1"</span><span class="attr">type</span>=<span class="string">"file"</span><span class="attr">style</span>=<span class="string">"display:none;"</span><span class="attr">onchange</span>=<span class="string">"fileChange(this)"</span>&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"chooseMusic()"</span>&gt;</span>选择音乐<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="function"><span class="keyword">function</span> <span class="title">chooseMusic</span><span class="params">()</span> </span>&#123;   <span class="comment">//点击按钮触发input:file的点击事件</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> f1 = <span class="built_in">document</span>.querySelector(<span class="string">"#f1"</span>);</span></span><br><span class="line"><span class="actionscript">    f1.click(); <span class="comment">//触发input的点击事件</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="function"><span class="keyword">function</span> <span class="title">fileChange</span><span class="params">(ele)</span> </span>&#123;</span></span><br><span class="line">    if (ele.files.length &gt; 0) &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> file = ele.files[<span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> reg = <span class="regexp">/^audio\/mpeg$/</span>;</span></span><br><span class="line">        if (reg.test(file.type)) &#123;</span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</span></span><br><span class="line">            fileReader.readAsDataURL(file);</span><br><span class="line"><span class="actionscript">            <span class="comment">// 文件读取完毕，会触发onload的就去</span></span></span><br><span class="line"><span class="actionscript">            fileReader.onload = <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> base64Str = fileReader.result;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> bgm = <span class="built_in">document</span>.querySelector(<span class="string">"#bgm"</span>);</span></span><br><span class="line"><span class="actionscript">                bgm.src = base64Str;   <span class="comment">//最后得到base64的字符串</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6143e0342ab3f51d913a3de9.jpg" alt=""></p>
+<p><strong>案例</strong><br>下面的案例就是一个最典型的图片上传的布局和封装过程</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"img-upload-box"</span> <span class="attr">onclick</span>=<span class="string">"this.children[1].click()"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"./img/upload.svg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">style</span>=<span class="string">"display: none;"</span> <span class="attr">onchange</span>=<span class="string">"fileChange(this)"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">fileChange</span><span class="params">(ele)</span> </span>&#123;</span></span><br><span class="line">        if (ele.files.length &gt; 0) &#123;</span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> file = ele.files[<span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> reg = <span class="regexp">/^image\/(jpe?g|png|gif|bmp|svg)$/</span>;</span></span><br><span class="line">            if (reg.test(file.type)) &#123;</span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</span></span><br><span class="line">                fileReader.readAsDataURL(file);</span><br><span class="line"><span class="actionscript">                fileReader.onload = <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">var</span> base64Str = fileReader.result;</span></span><br><span class="line">                    ele.previousElementSibling.src = base64Str;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">上传前</th>
+<th align="center">上传后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://pic.imgdb.cn/item/6143e21f2ab3f51d913bb41b.jpg" alt=""></td>
+<td align="center"><img src="https://pic.imgdb.cn/item/6143e2422ab3f51d913bcdd6.jpg" alt=""></td>
+</tr>
+</tbody></table>
+<h3 id="摄像头"><a href="#摄像头" class="headerlink" title="摄像头"></a>摄像头</h3><blockquote>
+<p>赋值给<code>srcObject</code>不是<code>src</code></p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"v1"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"500"</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">onclick</span>=<span class="string">"openCamera()"</span>&gt;</span>打开摄像头<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">openCamera</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line">        navigator.getUserMedia(&#123;</span><br><span class="line"><span class="actionscript">            <span class="comment">// video代表视频</span></span></span><br><span class="line"><span class="actionscript">            video: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="comment">// audio代表音频</span></span></span><br><span class="line"><span class="actionscript">            audio: <span class="literal">false</span></span></span><br><span class="line"><span class="actionscript">        &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(stream)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//成功回调函数</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"成功了"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(stream);</span></span><br><span class="line"><span class="actionscript">            <span class="comment">/** @type &#123;HTMLVideoElement&#125;*/</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> v1 = <span class="built_in">document</span>.querySelector(<span class="string">"#v1"</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">            <span class="comment">//将这个流赋值给视频标签v1的srcObject</span></span></span><br><span class="line">            v1.srcObject = stream;</span><br><span class="line">            v1.play();</span><br><span class="line"></span><br><span class="line"><span class="actionscript">        &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(error)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//失败的回调函数</span></span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"失败了"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(error);</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="画布"><a href="#画布" class="headerlink" title="画布"></a>画布</h3><p>画布是HTML5 新出的一个标签，它指在让用户能够在页面上面完成任何绘画的效果，它有2D平面绘画 ，还有3D的立体绘画。我们前端程序员更喜欢把画布看成是一个模拟的屏幕，这个屏幕上面可以显示任何东西</p>
+<h4 id="画布的创建"><a href="#画布的创建" class="headerlink" title="画布的创建"></a>画布的创建</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 画布canvas不能通过CSS来设置宽度高度 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"c1"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>：画布不能在CSS里面设置width/height，如果要设置宽度与高度，只能在HTML标签里面设置宽度与高度</p>
+</blockquote>
+<p>画布的创建非常简单，它只是一个标签，但是如果我们想在画布上面绘画东西，则需要一个画布对象，这个对象们叫<strong>绘画上下文对象</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@type<span class="type">&#123;HTMLCanvasElement&#125;</span></span></span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line"><span class="keyword">var</span> c1 = <span class="built_in">document</span>.querySelector(<span class="string">"#c1"</span>);</span><br><span class="line"><span class="comment">//得到画笔，画笔也叫绘画上下文</span></span><br><span class="line"><span class="keyword">var</span> ctx = c1.getContext(<span class="string">"2d"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在上面我们通过方法<code>getContext(&quot;2d&quot;)</code>来获取了当前画布的2D绘画上下文，有了画布及画笔以后，我们就可以开始绘画了</p>
+<p>在绘画之前一定分清楚两个事情，在2D绘画上下文里面，绘画的行为只有两种</p>
+<ol>
+<li>描边<code>stroke</code>，描边出来的东西是一个空心的</li>
+<li>填充<code>fill</code>，填充出来的东西一定是一个实心的</li>
+</ol>
+<h4 id="常用属性及方法"><a href="#常用属性及方法" class="headerlink" title="常用属性及方法"></a>常用属性及方法</h4><ol>
+<li><p><code>font</code>用于设置字体的大小及样式</p>
+</li>
+<li><p><code>strokeStyle</code>设置描边的颜色</p>
+</li>
+<li><p><code>fillStyle</code>设置填充的颜色</p>
+</li>
+<li><p><code>beginPath()</code>开始一个新路径，相当于提笔的一个操作过程</p>
+</li>
+<li><p><code>moveTo(x,y)</code>将笔移动到某一个坐标，不画线</p>
+</li>
+<li><p><code>lineTo(x,y)</code>画一条线到某一个地方</p>
+</li>
+<li><p><code>lineWidth</code>描边线条的宽度</p>
+</li>
+<li><p><code>lineCap</code>线条末端的形状，<code>butt</code>方头，<code>round</code>代表圆头，<code>square</code></p>
+</li>
+<li><p><code>closePath()</code>闭合路径，把开始的点和结束的点连接起来</p>
+</li>
+<li><p><code>stroke()</code>描边的方法，可以将一个路径进行描边</p>
+</li>
+<li><p><code>fill()</code>填充的方法，将内部进行填充</p>
+</li>
+<li><p><code>arc(x,y,radius,start,end,direction)</code>画一个圆</p>
+<p>画圆的时候，它是以弧度单位在画，是从3点的钟的方向开始，默认是顺时针画</p>
+</li>
+</ol>
+<p><strong>案例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    /** </span><br><span class="line">     * @type&#123;HTMLCanvasElement&#125;</span><br><span class="line">     * */</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> c1 = <span class="built_in">document</span>.querySelector(<span class="string">"#c1"</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> ctx = c1.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//第一步：笔架上先拿一支笔</span></span></span><br><span class="line">    ctx.beginPath();</span><br><span class="line"><span class="actionscript">    <span class="comment">//第二步：将笔移动到画布的左上角</span></span></span><br><span class="line">    ctx.moveTo(0,0);</span><br><span class="line"><span class="actionscript">    <span class="comment">//第三步：画第一条线</span></span></span><br><span class="line">    ctx.lineTo(100,100);</span><br><span class="line"><span class="actionscript">    <span class="comment">//第四步：描边</span></span></span><br><span class="line">    ctx.stroke();</span><br><span class="line"><span class="actionscript">    <span class="comment">//第五步：拿一个粗一点笔</span></span></span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    ctx.lineWidth = 5;</span><br><span class="line"><span class="actionscript">    ctx.strokeStyle = <span class="string">"#ff0000"</span>;</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//第六步：将笔移动到100,100的位置</span></span></span><br><span class="line">    ctx.moveTo(100,100);</span><br><span class="line"><span class="actionscript">    <span class="comment">//第七步：画一条线</span></span></span><br><span class="line">    ctx.lineTo(200,100);</span><br><span class="line"><span class="actionscript">    <span class="comment">//第八步：描边</span></span></span><br><span class="line">    ctx.stroke();</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="https://pic.imgdb.cn/item/6144873e2ab3f51d9115cc02.png" alt="image-20210917093131498" style="zoom:50%;" />
+
+<p>上面的案例其实就很形象的说明了这几个方法的作用</p>
+<h4 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h4><ol>
+<li><code>rect(x,y,width,height)</code>方法，描边一个矩形路径，然后再调用<code>stroke()</code>描边或<code>fill()</code>来填充</li>
+<li><code>strokeRect(x,y,width,height)</code>方法，描边一个矩形，一次成型</li>
+<li><code>fillRect(x,y,width,height)</code>方法，填充一个矩形，一次成型</li>
+<li><code>clearRect(x,y,width,height)</code>方法，清除某一个矩形区域</li>
+</ol>
+<h4 id="绘制图像"><a href="#绘制图像" class="headerlink" title="绘制图像"></a>绘制图像</h4><p>在画布里面绘画图片分为静态图片的绘制与动态图片的绘制</p>
+<p>绘制图片使用的是<code>drawImage(img,x,y,width,height)</code>方法</p>
+<p><strong>静态绘制</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"img1"</span> <span class="attr">src</span>=<span class="string">"./img/w04.jpg"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 画布canvas不能通过CSS来设置宽度高度 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"c1"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    /** </span><br><span class="line">     * @type&#123;HTMLCanvasElement&#125;</span><br><span class="line">     * */</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> c1 = <span class="built_in">document</span>.querySelector(<span class="string">"#c1"</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> ctx = c1.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//静态绘制</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> img1 = <span class="built_in">document</span>.querySelector(<span class="string">"#img1"</span>);</span></span><br><span class="line"><span class="actionscript">    img1.onload = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//图片加载成功以后，我们就可以使用这一张图片绘画</span></span></span><br><span class="line">        ctx.drawImage(img1, 50, 50, 200, 250);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li>静态绘制是页面上面已经存在这个图片，然后我们获取这个图片以后，使用<code>drawImage()</code>方法来绘制图片</li>
+<li>绘制图片的时候一定要等图片的onload事件完成（也就是图片加载完成以后再进行）</li>
+</ol>
+</blockquote>
+<p><span style="color:red;font-weight:bold;">重点</span>：静态绘制最重要的一个点就是可以实现视频的屏幕</p>
+<p><strong>案例一：使用静态绘制实现视频截图并下载</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>静态绘制就是绘制一个已经存在的东西<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"v1"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">controls</span> <span class="attr">src</span>=<span class="string">"./assets/bgg.mp4"</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"c1"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"takePhoto()"</span>&gt;</span>截图<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    /**</span><br><span class="line">     * @type &#123;HTMLVideoElement&#125;</span><br><span class="line">     */</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> v1 = <span class="built_in">document</span>.querySelector(<span class="string">"#v1"</span>);</span></span><br><span class="line">    /**</span><br><span class="line">     * @type &#123;HTMLCanvasElement&#125;</span><br><span class="line">     */</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> c1 = <span class="built_in">document</span>.querySelector(<span class="string">"#c1"</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> ctx = c1.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">takePhoto</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//将视频里面的东西画到的画布上面</span></span></span><br><span class="line">        ctx.drawImage(v1, 0, 0, 400, 400);</span><br><span class="line"><span class="actionscript">        <span class="comment">//将画布面的信息转换成base64,dataURL格式就是base64格式</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> base64Str = c1.toDataURL(<span class="string">"image/png"</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//使用a标签进行下载</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span></span><br><span class="line">        a.href = base64Str;</span><br><span class="line"><span class="actionscript">        a.download = <span class="string">"标哥的截图.png"</span>;</span></span><br><span class="line">        a.click();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li><code>drawImage()</code>这个方法里面不仅可以绘制图片，还可以在以一个<code>video</code>视频为素材去绘制</li>
+<li>上面的代码当中，我们还有一个功能就是下载，下载使用的是<code>a</code>标签在下载</li>
+<li>我们刚刚还使用了一个方法<code>canvas.toDataURL()</code>，它是将<code>canvas</code>画布上面的数据转换成<code>base64</code>格式</li>
+</ol>
+</blockquote>
+<p><strong>案例二：摄像头照相截图</strong></p>
+<p>之前在讲视频<code>video</code>标签的时候顺带着讲了一下浏览器摄像头的使用，我们可以将摄像头的视频信息显示在<code>video</code>标签里面，再结合今天的<code>canvas</code> 就可以实现视频截图照相</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"v1"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"c1"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"openCamera()"</span>&gt;</span>打开摄像头<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"takePhoto()"</span>&gt;</span>拍照<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    /**</span><br><span class="line">     * @type &#123;HTMLVideoElement&#125;</span><br><span class="line">     */</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> v1 = <span class="built_in">document</span>.querySelector(<span class="string">"#v1"</span>);</span></span><br><span class="line">    /**</span><br><span class="line">     * @type &#123;HTMLCanvasElement&#125;</span><br><span class="line">     */</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> c1 = <span class="built_in">document</span>.querySelector(<span class="string">"#c1"</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> ctx = c1.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">openCamera</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line">        navigator.getUserMedia(&#123;</span><br><span class="line"><span class="actionscript">            video: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">            audio: <span class="literal">false</span></span></span><br><span class="line"><span class="actionscript">        &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(stream)</span> </span>&#123;</span></span><br><span class="line">            v1.srcObject = stream;</span><br><span class="line">            v1.play();</span><br><span class="line"><span class="actionscript">        &#125;, <span class="function"><span class="keyword">function</span> <span class="params">(error)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(error);</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">takePhoto</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line">        ctx.drawImage(v1, 0, 0, 400, 400);</span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> base64Str = c1.toDataURL(<span class="string">"image/png"</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span></span><br><span class="line">        a.href = base64Str;</span><br><span class="line"><span class="actionscript">        a.download = <span class="string">"摄像头截图.png"</span>;</span></span><br><span class="line">        a.click();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/61448ac22ab3f51d911ab5d4.png" alt=""></p>
+<p><strong>动态绘制</strong></p>
+<p>它是实时的创建我们需要绘制的素材，然后再去绘制</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@type <span class="type">&#123;HTMLCanvasElement&#125;</span></span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> c1 = <span class="built_in">document</span>.querySelector(<span class="string">"#c1"</span>);</span><br><span class="line"><span class="keyword">var</span> ctx = c1.getContext(<span class="string">"2d"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// var img = document.createElement("img");</span></span><br><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.src = <span class="string">"./img/w04.jpg"</span>;</span><br><span class="line">img.addEventListener(<span class="string">"load"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    ctx.drawImage(img, <span class="number">50</span>, <span class="number">50</span>, <span class="number">200</span>, <span class="number">250</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li>在上面的代码当中，我们动态的创建了一个图片，然后将这个图片<code>onload</code>以后去绘制</li>
+<li>我们图片的创建可以使用<code>document.createElement(&quot;img&quot;)</code>也可以使用<code>new Image()</code>来完成（只有媒体标签可以）</li>
+</ol>
+</blockquote>
+<h4 id="渐变设置"><a href="#渐变设置" class="headerlink" title="渐变设置"></a>渐变设置</h4><p>渐变在之前的CSS里面我们就已经接触过了，现在canvas里面也有渐变，它主要是线性渐变和径向渐变</p>
+<h5 id="使用线性渐变"><a href="#使用线性渐变" class="headerlink" title="使用线性渐变"></a>使用线性渐变</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeRect(<span class="number">100</span>, <span class="number">100</span>, <span class="number">300</span>, <span class="number">50</span>);</span><br><span class="line"><span class="comment">//创建一个线性渐变</span></span><br><span class="line"><span class="keyword">var</span> gradient = ctx.createLinearGradient(<span class="number">100</span>, <span class="number">100</span>, <span class="number">400</span>, <span class="number">150</span>);</span><br><span class="line">gradient.addColorStop(<span class="number">0</span>,<span class="string">"red"</span>);</span><br><span class="line">gradient.addColorStop(<span class="number">0.5</span>,<span class="string">"orange"</span>);</span><br><span class="line">gradient.addColorStop(<span class="number">1</span>,<span class="string">"blue"</span>);</span><br><span class="line">ctx.fillStyle = gradient;</span><br><span class="line">ctx.fillRect(<span class="number">100</span>, <span class="number">100</span>, <span class="number">250</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果图</strong></p>
+<img src="https://pic.imgdb.cn/item/61448b462ab3f51d911b6d82.png" alt="image-20210917103503263" style="zoom:50%;" />
+
+<h5 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建径向渐变</span></span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.strokeRect(<span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line"><span class="keyword">var</span> gradient2 = ctx.createRadialGradient(<span class="number">200</span>, <span class="number">300</span>, <span class="number">50</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">100</span>);</span><br><span class="line">gradient2.addColorStop(<span class="number">0</span>, <span class="string">"red"</span>);</span><br><span class="line">gradient2.addColorStop(<span class="number">1</span>, <span class="string">"blue"</span>)</span><br><span class="line">ctx.fillStyle = gradient2;</span><br><span class="line">ctx.fillRect(<span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果图</strong></p>
+<img src="https://pic.imgdb.cn/item/61448d2a2ab3f51d911e4a68.png" alt="image-20210917104151686" style="zoom:50%;" />
+
+<h4 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h4><ol>
+<li><code>strokeText(text,x,y,maxWidth?)</code>描边一个文字</li>
+<li><code>fillText(text,x,y,maxWidth?)</code>填充一个文字</li>
+<li><code>textAlign</code>设置文字的水平对齐方式，它有<code>start/center/end</code>三个位置</li>
+<li><code>textBaseline</code>设置文字的垂直对齐，默认是基线，它还有<code>top/middle/bottom</code>三个位置</li>
+</ol>
+<h4 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h4><ol>
+<li><code>translate(x,y)</code>移动画布的起点位置</li>
+<li><code>rotate(angle)</code>它以<strong>弧度</strong>为单位，对画布进行旋转</li>
+</ol>
+<h4 id="配置的保存与还原"><a href="#配置的保存与还原" class="headerlink" title="配置的保存与还原"></a>配置的保存与还原</h4><ol>
+<li><code>save()</code>将当前的配置保存起来，配置进行入栈操作</li>
+<li><code>restore()</code>将配置栈里面的配置进行出栈操作，还原设置</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@type <span class="type">&#123;HTMLCanvasElement&#125;</span></span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> c1 = <span class="built_in">document</span>.querySelector(<span class="string">"#c1"</span>);</span><br><span class="line"><span class="keyword">var</span> ctx = c1.getContext(<span class="string">"2d"</span>);</span><br><span class="line"></span><br><span class="line">ctx.font = <span class="string">"32px 微软雅黑"</span>;</span><br><span class="line">ctx.fillStyle = <span class="string">"black"</span>;</span><br><span class="line">ctx.fillText(<span class="string">"第一次"</span>,<span class="number">0</span>,<span class="number">50</span>);</span><br><span class="line">ctx.save();     <span class="comment">//保存之前的配置，配置入栈</span></span><br><span class="line"></span><br><span class="line">ctx.font = <span class="string">"16px 宋体"</span>;</span><br><span class="line">ctx.fillStyle = <span class="string">"#FF0000"</span>;</span><br><span class="line">ctx.fillText(<span class="string">"第二次"</span>,<span class="number">0</span>,<span class="number">100</span>);</span><br><span class="line">ctx.save();     <span class="comment">//保存之前的配置，配置入栈</span></span><br><span class="line"></span><br><span class="line">ctx.font = <span class="string">"48px 华文行楷"</span>;</span><br><span class="line">ctx.fillStyle = <span class="string">"#0000FF"</span>;</span><br><span class="line">ctx.fillText(<span class="string">"第三次"</span>,<span class="number">0</span>,<span class="number">150</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//---------------------------------------</span></span><br><span class="line">ctx.restore();   <span class="comment">//将之前的配置出栈</span></span><br><span class="line">ctx.fillText(<span class="string">"第四次"</span>,<span class="number">0</span>,<span class="number">250</span>);</span><br><span class="line"></span><br><span class="line">ctx.restore();   <span class="comment">//将之前的配置出栈</span></span><br><span class="line">ctx.fillText(<span class="string">"第五次"</span>,<span class="number">0</span>,<span class="number">300</span>);</span><br><span class="line"></span><br><span class="line">ctx.restore();</span><br><span class="line">ctx.fillText(<span class="string">"第六次"</span>,<span class="number">0</span>,<span class="number">350</span>);</span><br></pre></td></tr></table></figure>
+
+<img src="https://pic.imgdb.cn/item/61448e1e2ab3f51d911fc165.png" alt="image-20210917144625819" style="zoom:50%;" />
+
+<h4 id="使用图像数据"><a href="#使用图像数据" class="headerlink" title="使用图像数据"></a>使用图像数据</h4><p>在canvas的画布上面，图像的数据是可以转变成<code>base64</code>的，但是还可以使用另一种数值去表示 ，这个数值就是<code>rgba</code>,我们可以通过画布来获取画布的上面的原始数据（rgba数据）</p>
+<ol>
+<li><code>ctx.getImageData()</code>在画布上面获取图像数据</li>
+<li><code>ctx.putImageData()</code>将一个图像数据放置在画布上面</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"img1"</span> <span class="attr">src</span>=<span class="string">"./img/w06.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"c1"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    /**</span><br><span class="line">     * @type &#123;HTMLCanvasElement&#125;</span><br><span class="line">     */</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> c1 = <span class="built_in">document</span>.querySelector(<span class="string">"#c1"</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> ctx = c1.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> img1 = <span class="built_in">document</span>.querySelector(<span class="string">"#img1"</span>);</span></span><br><span class="line"><span class="actionscript">    img1.addEventListener(<span class="string">"load"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span></span><br><span class="line">        c1.height = img1.clientHeight;</span><br><span class="line">        ctx.drawImage(img1, 0, 0, img1.clientWidth, img1.clientHeight);</span><br><span class="line"><span class="actionscript">        <span class="comment">// 开始获取 图像数据</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> imageData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, c1.width, c1.height);</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; imageData.data.length; i += <span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> r = imageData.data[i];</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> g = imageData.data[i + <span class="number">1</span>];</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> b = imageData.data[i + <span class="number">2</span>];</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> avg = <span class="built_in">parseInt</span>((r + g + b) / <span class="number">3</span>);</span></span><br><span class="line">            imageData.data[i] = avg;</span><br><span class="line">            imageData.data[i + 1] = avg;</span><br><span class="line">            imageData.data[i + 2] = avg;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="comment">//将改好以后的【数据】重新放到画布里面去</span></span></span><br><span class="line">        ctx.putImageData(imageData, 0, 0);</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>效果图</strong></p>
+<p><img src="https://pic.imgdb.cn/item/61448e902ab3f51d912070ef.png" alt="image-20210917171750021"></p>
+<blockquote>
+<p>上面的代码就是将我们的彩色图片使用图你数据片以后，变成了一个灰色图片</p>
+</blockquote>
+<p><img src="https://pic.imgdb.cn/item/61448ec22ab3f51d9120bc04.png" alt="image-20210917171846739"></p>
+<p>上图就是我们所获取到的<code>ImageData</code>里面的数据，它是使用<code>rgba</code>来表示的</p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p><img src="https://pic.imgdb.cn/item/6146c26e2ab3f51d915d0eae.png" alt="image-20210918110832866"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ctx = c.getContext(<span class="string">"2d"</span>);    <span class="comment">//c 是 canvas的dom</span></span><br><span class="line"><span class="comment">// ctx.clearRect(e.offsetX, e.offsetY, 20, 20);</span></span><br><span class="line"><span class="comment">// 使用新方法</span></span><br><span class="line">ctx.globalCompositeOperation = <span class="string">"destination-out"</span>; <span class="comment">//相交变透明</span></span><br><span class="line">ctx.arc(e.offsetX, e.offsetY, <span class="number">5</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>); <span class="comment">//画圆</span></span><br><span class="line">ctx.fill(); <span class="comment">//填充</span></span><br></pre></td></tr></table></figure>
+
+
+
+      
+      <!-- reward 打赏按钮-->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyrights： </strong>
+              版权归作者所有。如需商业转载，请与作者联系以获得授权。非商业性转载请注明出处。
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2021/10/21/HTML5%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2022/04/05/puppeteer%E7%88%AC%E5%8F%96ins%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            puppeteer爬取ins图片路径
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/10/21/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">正则表达式</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'IUPFYr9b7ardBDF78isygkav-gzGzoHsz',
+        app_key: 'SX7yhiWLzh7seYDtIzHyJOfH',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> ITaylorfan
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_black">鄂ICP备2020023396号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+      <li>
+       <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+      </li>
+    </ul>
+
+   
+   <!-- 统计网站运行时间 -->
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/23/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+	if(snum==60){
+	    snum=0;
+	  }
+
+	if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/TS-10-21-2.jpg" alt="ITaylorfan的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/hexo/">hexo</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%85%B6%E4%BB%96">其他</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/me">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WeChat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1835283134&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Java" />
+   
+  <meta name="description" content="本站是ITaylorfan的个人博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    vue-cli书城项目的一些笔记 |  ITaylorfan的博客
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/TS-10-21.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ITaylorfan的博客" type="application/atom+xml">
+</head>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-vue-cli书城项目的一些笔记" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  vue-cli书城项目的一些笔记
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/09/03/vue-cli%E4%B9%A6%E5%9F%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-09-03T07:35:33.000Z" itemprop="datePublished">2020-09-03</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数:</span>
+            <span class="post-count">1.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长 ≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="Vue书城项目的一些笔记"><a href="#Vue书城项目的一些笔记" class="headerlink" title="Vue书城项目的一些笔记"></a>Vue书城项目的一些笔记</h1><h2 id="1-Vuecli项目创建"><a href="#1-Vuecli项目创建" class="headerlink" title="1.Vuecli项目创建"></a>1.Vuecli项目创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vue create vue-imooc-ebook --通过vue-cli创建项目</span><br><span class="line">npm run serve --本地运行服务</span><br><span class="line">cnpm run build  --打包</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="2-开发环境和生产环境的配置"><a href="#2-开发环境和生产环境的配置" class="headerlink" title="2.开发环境和生产环境的配置"></a>2.开发环境和生产环境的配置</h2><p>打包后 直接打开index.html 会报错–找不到路径<br>在根目录添加配置文件  <strong>vue.config.js</strong></p>
+<p>配置文件代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    <span class="comment">//禁用ESlint</span></span><br><span class="line">    lintOnSave: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 根据环境更改路径名</span></span><br><span class="line">    publicPath:process.env.NODE_ENV ===<span class="string">"production"</span> ? <span class="string">"./"</span>:<span class="string">"/"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-导入epubjs包"><a href="#3-导入epubjs包" class="headerlink" title="3.导入epubjs包"></a>3.导入epubjs包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i --save epubjs</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-在-eslintrc-js-中的rules-加入-指令’indent’-‘off’-以关闭缩进判断"><a href="#4-在-eslintrc-js-中的rules-加入-指令’indent’-‘off’-以关闭缩进判断" class="headerlink" title="4. 在 .eslintrc.js 中的rules 加入 指令’indent’: ‘off’  以关闭缩进判断"></a>4. 在 .eslintrc.js 中的rules 加入 指令’indent’: ‘off’  以关闭缩进判断</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rules: &#123;</span><br><span class="line">    <span class="string">'no-console'</span>: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'warn'</span> : <span class="string">'off'</span>,</span><br><span class="line">    <span class="string">'no-debugger'</span>: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'warn'</span> : <span class="string">'off'</span>,</span><br><span class="line">    <span class="string">'indent'</span>: <span class="string">'off'</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-安装sass"><a href="#5-安装sass" class="headerlink" title="5.安装sass"></a>5.安装sass</h2><p>-dev 可以把sass放在”devDependencies”中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i --save-dev node-sass sass-loader</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-rem适配"><a href="#6-rem适配" class="headerlink" title="6.rem适配"></a>6.rem适配</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基准值 html 的 fontSize 最大设置为50px</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>,()=&gt;&#123;</span><br><span class="line">  <span class="keyword">const</span> html=<span class="built_in">document</span>.querySelector(<span class="string">"html"</span>);</span><br><span class="line">  <span class="keyword">let</span> fontSize=<span class="built_in">window</span>.innerWidth/<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//设置fontSize上限为50px</span></span><br><span class="line">  fontSize=fontSize &gt; <span class="number">50</span>? <span class="number">50</span>:fontSize; </span><br><span class="line">  html.style.fontSize=fontSize+<span class="string">"px"</span>;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//子项目字体设置rem单位</span></span><br><span class="line">$ratio: <span class="number">375</span>/<span class="number">10</span>;</span><br><span class="line">@<span class="function"><span class="keyword">function</span> <span class="title">px2rem</span>(<span class="params">$px</span>)</span>&#123;</span><br><span class="line">    @<span class="keyword">return</span> $px / $ratio+rem;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//$px 为px单位的字体大小 转换为rem</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-安装vue远程调试工具"><a href="#7-安装vue远程调试工具" class="headerlink" title="7.安装vue远程调试工具"></a>7.安装vue远程调试工具</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i -g @vue&#x2F;devtools</span><br></pre></td></tr></table></figure>
+
+<p>启动工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue-devtools</span><br></pre></td></tr></table></figure>
+
+<p>然后根据提示在index.html中引入script文件</p>
+<h2 id="8-配置NGINX服务器"><a href="#8-配置NGINX服务器" class="headerlink" title="8.配置NGINX服务器"></a>8.配置NGINX服务器</h2><blockquote>
+<p>nginx指令<br>需要在cmd下执行<br>nginx   运行<br>nginx -t 验证配置文件是否正确<br>nginx -s stop 停止</p>
+</blockquote>
+<p><strong>在根目录下的 conf文件夹中的nginx.conf 中配置</strong></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置自己的服务</span></span><br><span class="line"> server&#123;</span><br><span class="line">	<span class="attribute">listen</span> <span class="number">8081</span>;    <span class="comment">#端口号</span></span><br><span class="line">	<span class="attribute">server_name</span> resource;   <span class="comment">#服务器名</span></span><br><span class="line">	<span class="attribute">root</span> ../resource;    <span class="comment">#放置静态文件</span></span><br><span class="line">	<span class="attribute">autoindex</span> <span class="literal">on</span>;     <span class="comment">#获取文件下标</span></span><br><span class="line">	<span class="attribute">location</span> / &#123;</span><br><span class="line">		<span class="attribute">add_header</span> Access-Control-Allow-Origin *;  <span class="comment">#支持跨域</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="attribute">add_header</span> Cache-Control <span class="string">"no-cache, must-revalidate"</span>;   <span class="comment">#禁用缓存</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="9-环境变量配置"><a href="#9-环境变量配置" class="headerlink" title="9.环境变量配置"></a>9.环境变量配置</h2><blockquote>
+<p>在根目录下创建 .env.development 文件<br>VUE_APP_RES_URL=<a href="http://192.168.X.X:8081" target="_blank" rel="noopener">http://192.168.X.X:8081</a><br>需要以VUE_APP_开头</p>
+<p>使用时: process.env.VUE_APP_RES_URL</p>
+</blockquote>
+<p><strong>配置完成后 需要重启项目</strong></p>
+<h2 id="10-使用localStorage库缓存信息"><a href="#10-使用localStorage库缓存信息" class="headerlink" title="10.使用localStorage库缓存信息"></a>10.使用localStorage库缓存信息</h2><p><strong>安装localstorage库</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i --save web-storage-cache</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用：</strong></p>
+<blockquote>
+<p>在utils文件夹中创建 localstorage.js<br>//导入<br>import Storage from “web-storage-cache”</p>
+<p>//实例化<br>const localStorage=new Storage()</p>
+</blockquote>
+<h2 id="11-安装i18n多国语言插件"><a href="#11-安装i18n多国语言插件" class="headerlink" title="11.安装i18n多国语言插件"></a>11.安装i18n多国语言插件</h2><p><strong>安装插件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i --save vue-i18n</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用</strong></p>
+<blockquote>
+<p>在html中插值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;$t(&quot;book.selectFont&quot;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>获取i18n的 当前设定语言</p>
+</blockquote>
+<p><code>this.$i18n.locale</code></p>
+<h2 id="12-CSS小技巧"><a href="#12-CSS小技巧" class="headerlink" title="12.CSS小技巧"></a>12.CSS小技巧</h2><p><strong>文字上方有一片空白</strong><br><strong>可以给最大的父容器设置 font-size:0</strong><br><strong>就可以清除空白</strong></p>
+<h2 id="13-对文本超出的处理"><a href="#13-对文本超出的处理" class="headerlink" title="13.对文本超出的处理"></a>13.对文本超出的处理</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>;  <span class="comment">/*弹性盒子布局的老式写法*/</span></span><br><span class="line"><span class="selector-tag">box-orient</span><span class="selector-pseudo">:vertical</span> ;  <span class="comment">/*子元素垂直排列*/</span></span><br><span class="line"><span class="selector-tag">line-clamp</span>: 2;   <span class="comment">/*设置显示文本行数 需要结合 其他属性 display: -webkit-box; box-orient；*/</span> <span class="selector-tag">text-overflow</span>；</span><br><span class="line"></span><br><span class="line"> <span class="selector-tag">white-space</span>: <span class="selector-tag">normal</span>;  <span class="comment">/*空白处理 默认自动换行*/</span></span><br><span class="line"><span class="selector-tag">word-break</span>: <span class="selector-tag">keep-all</span>;  <span class="comment">/*设置文本换行处  保留完整单词*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="14-树形结构拆成一维数组"><a href="#14-树形结构拆成一维数组" class="headerlink" title="14.树形结构拆成一维数组"></a>14.树形结构拆成一维数组</h2><p><strong>运用 扩展运算符…  合并运算函数 concat</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [].concat(...array.map(<span class="function"><span class="params">item</span>=&gt;</span>[].concat(item,...flatten(item.subitems))))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="15-二维数组降维"><a href="#15-二维数组降维" class="headerlink" title="15.二维数组降维"></a>15.二维数组降维</h2><p><strong>二维数组降维方法：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两个数组合并</span></span><br><span class="line"><span class="keyword">const</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> b=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log([].concat(a,b))  <span class="comment">//成功合并两个数组</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c=[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]  <span class="comment">//将二维数组拆分为一维数组</span></span><br><span class="line"><span class="built_in">console</span>.log([].concat.apply([],c))  <span class="comment">//  完成</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="16-Vue事件修饰符"><a href="#16-Vue事件修饰符" class="headerlink" title="16.Vue事件修饰符"></a>16.Vue事件修饰符</h2><blockquote>
+<p>vue修饰符<br>.exact  严格限定<br><strong>@keyup.enter.exact=”函数名” 只有按下enter键触发 组合键不触发</strong></p>
+</blockquote>
+<p><strong>不允许点击  @click.prevent</strong></p>
+<h2 id="17-Vue的触摸事件"><a href="#17-Vue的触摸事件" class="headerlink" title="17.Vue的触摸事件"></a>17.Vue的触摸事件</h2><p><strong>触摸事件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@touchmove&#x3D;&quot;move&quot; @touchend&#x3D;&quot;moveEnd&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="18-Vue监听事件"><a href="#18-Vue监听事件" class="headerlink" title="18.Vue监听事件"></a>18.Vue监听事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;vue 监听 需要监听的变量名为函数名</span><br><span class="line">watch:&#123;   </span><br><span class="line">      变量名(val)&#123;</span><br><span class="line"></span><br><span class="line">       &#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="19-用css画一个三角形"><a href="#19-用css画一个三角形" class="headerlink" title="19.用css画一个三角形"></a>19.用css画一个三角形</h2><p><strong>把宽高设为0 边框宽度放大</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 0;</span><br><span class="line">   <span class="selector-tag">height</span>: 0;</span><br><span class="line">   <span class="selector-tag">border-width</span>: <span class="selector-tag">px2rem</span>(50) <span class="selector-tag">px2rem</span>(10) <span class="selector-tag">px2rem</span>(10) <span class="selector-tag">px2rem</span>(10);</span><br><span class="line">   <span class="selector-tag">border-style</span>: <span class="selector-tag">solid</span>;</span><br><span class="line">   <span class="selector-tag">border-color</span>: <span class="selector-tag">rgb</span>(0, 0, 0) <span class="selector-tag">rgb</span>(0, 0, 0) <span class="selector-tag">transparent</span> <span class="selector-tag">rgb</span>(0, 0, 0);</span><br></pre></td></tr></table></figure>
+
+<h2 id="20-正则表达式"><a href="#20-正则表达式" class="headerlink" title="20.正则表达式"></a>20.正则表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;!.*&#x2F;   表示匹配!后面的所有内容</span><br><span class="line">&#x2F;.*!&#x2F;   表示匹配!前面的所有内容</span><br><span class="line">&#x2F;\)$&#x2F;  以)号结尾</span><br><span class="line">^ 限定开始位置</span><br></pre></td></tr></table></figure>
+
+<h2 id="21-用于JS计算真实像素-自适应"><a href="#21-用于JS计算真实像素-自适应" class="headerlink" title="21.用于JS计算真实像素  自适应"></a>21.用于JS计算真实像素  自适应</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">realPx</span>(<span class="params">px</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">const</span> maxWidth = <span class="built_in">window</span>.innerWidth &gt; <span class="number">500</span> ? <span class="number">500</span> : <span class="built_in">window</span>.innerWidth  <span class="comment">//最大值为500 是因为app.vue中 缩放为最大50px</span></span><br><span class="line">   <span class="keyword">return</span> px * (maxWidth / <span class="number">375</span>)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="22-鼠标适配"><a href="#22-鼠标适配" class="headerlink" title="22.鼠标适配"></a>22.鼠标适配</h2><blockquote>
+<p>适配移动端<br>用鼠标事件</p>
+<p>鼠标按下事件<br>@mousedown.left=”onMouseEnter”    .left 限定只能按鼠标左键<br>鼠标移动事件<br>@mousemove.left=”onMouseMove”<br>鼠标松开事件<br>@mouseup.left=”onMouseEnd”</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.-鼠标进入</span></span><br><span class="line"><span class="comment">//2.-鼠标进入后的移动</span></span><br><span class="line"><span class="comment">//3.-鼠标从移动状态松手</span></span><br><span class="line"><span class="comment">//4.-鼠标还原</span></span><br><span class="line">onMouseEnter(e)&#123;</span><br><span class="line">    <span class="comment">//console.log("enter",e)</span></span><br><span class="line">    <span class="keyword">this</span>.mouseState=<span class="number">1</span>   <span class="comment">//标记状态</span></span><br><span class="line">    <span class="keyword">this</span>.mouseStartTime=e.timeStamp   <span class="comment">//记录点击时间</span></span><br><span class="line">    e.preventDefault()  <span class="comment">//组织默认事件</span></span><br><span class="line">    e.stopPropagation()	<span class="comment">//组织冒泡</span></span><br><span class="line">&#125;,</span><br><span class="line">onMouseMove(e)&#123;</span><br><span class="line">    <span class="comment">//鼠标一进入内容区就会触发move事件           </span></span><br><span class="line">    <span class="comment">//处理不同状态 只对2状态进行操作</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.mouseState===<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.mouseState=<span class="number">2</span></span><br><span class="line">        <span class="comment">//console.log("move",e)</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.mouseState===<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> offsetY=<span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.firstOffsetY)&#123;</span><br><span class="line">            offsetY=e.clientY-<span class="keyword">this</span>.firstOffsetY</span><br><span class="line">            <span class="keyword">this</span>.setOffsetY(offsetY)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.firstOffsetY=e.clientY</span><br><span class="line">        &#125;</span><br><span class="line">        e.preventDefault()</span><br><span class="line">        e.stopPropagation()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">onMouseEnd(e)&#123;</span><br><span class="line">    <span class="comment">//console.log("end",e)</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.mouseState===<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.setOffsetY(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">this</span>.firstOffsetY=<span class="literal">null</span></span><br><span class="line">        <span class="keyword">this</span>.mouseState=<span class="number">3</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;  <span class="comment">//表示按下去 没有滑动直接松开了</span></span><br><span class="line">        <span class="keyword">this</span>.mouseState=<span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> time=e.timeStamp-<span class="keyword">this</span>.mouseStartTime  <span class="comment">//计算点击开始和结束的时间间隔</span></span><br><span class="line">    <span class="keyword">if</span>(time&lt;<span class="number">100</span>)&#123;</span><br><span class="line">        <span class="comment">//忽略掉小移动</span></span><br><span class="line">        <span class="keyword">this</span>.mouseState=<span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">    e.preventDefault()</span><br><span class="line">    e.stopPropagation()</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="23-Vue-template注意点"><a href="#23-Vue-template注意点" class="headerlink" title="23.Vue template注意点"></a>23.Vue template注意点</h2><p><strong>在模板 template中引入 别的组件时，组件外层必须有个div</strong></p>
+<h2 id="24-异步更新DOM-this-nextTick-方法"><a href="#24-异步更新DOM-this-nextTick-方法" class="headerlink" title="24.异步更新DOM  this.$nextTick( )方法"></a>24.异步更新DOM  this.$nextTick( )方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在DOM渲染完成后 执行回调</span></span><br><span class="line"><span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">//调用子组件 HotSeachList.vue的reset()方法</span></span><br><span class="line">      <span class="keyword">this</span>.$refs.hotSearch.reset()</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="25-CSS小技巧：绝对定位居中"><a href="#25-CSS小技巧：绝对定位居中" class="headerlink" title="25.CSS小技巧：绝对定位居中"></a>25.CSS小技巧：绝对定位居中</h2><blockquote>
+<p>position:absolute 也可以使用 margin:auto来设置居中</p>
+</blockquote>
+<p><strong>只需设置:</strong>  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 0;</span><br><span class="line"><span class="selector-tag">left</span>: 0;</span><br><span class="line"><span class="selector-tag">right</span>: 0;</span><br><span class="line"><span class="selector-tag">bottom</span>: 0;</span><br><span class="line"><span class="selector-tag">margin</span>: <span class="selector-tag">auto</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="26-CSS翻转动画特效"><a href="#26-CSS翻转动画特效" class="headerlink" title="26.CSS翻转动画特效"></a>26.CSS翻转动画特效</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transform-orgin:left    //设置元素基点 即设置旋转轴在左边</span><br><span class="line">backface-visibility: hidden;  //背面隐藏 360度旋转时到背面会隐藏</span><br></pre></td></tr></table></figure>
+
+<h2 id="27-在Sass中使用for循环"><a href="#27-在Sass中使用for循环" class="headerlink" title="27.在Sass中使用for循环"></a>27.在Sass中使用for循环</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> to length(<span class="variable">$moves</span>)&#123;</span><br><span class="line">     &amp;<span class="selector-pseudo">:nth-child</span>(#&#123;<span class="variable">$i</span>&#125;)&#123;</span><br><span class="line">     <span class="keyword">@include</span> move(<span class="variable">$i</span>)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="28-Mock-js代替原生XMLRequest"><a href="#28-Mock-js代替原生XMLRequest" class="headerlink" title="28.Mock.js代替原生XMLRequest"></a>28.Mock.js代替原生XMLRequest</h2><p>安装 <code>cnpm i mockjs  --save-dev</code>   </p>
+<p>简写 <code>cnpm i mockjs --D</code></p>
+<p><strong>在main.js中引入mockjs</strong></p>
+<p><strong>注意点：mock 不支持blob对象  支持txt文本</strong></p>
+<h2 id="29-安装axios"><a href="#29-安装axios" class="headerlink" title="29.安装axios"></a>29.安装axios</h2><p><code>cnpm i axios --save</code></p>
+<h2 id="30-Vue路由跳转"><a href="#30-Vue路由跳转" class="headerlink" title="30.Vue路由跳转"></a>30.Vue路由跳转</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">this.$router.push(&#123;</span><br><span class="line">    path:&quot;&#x2F;store&#x2F;deatil&quot;,        &#x2F;&#x2F;路径</span><br><span class="line">    query:&#123;  		       &#x2F;&#x2F;参数</span><br><span class="line">    fileName:book.fileName,</span><br><span class="line">    category:book.category</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;back()方法  router返回上一级</span><br><span class="line">this.$router.go(-1)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;指定跳转</span><br><span class="line">this.$router.push(&quot;&#x2F;store&#x2F;shelf&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="31-对原本有的方法进行扩展"><a href="#31-对原本有的方法进行扩展" class="headerlink" title="31.对原本有的方法进行扩展"></a>31.对原本有的方法进行扩展</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.pushWithoutDuplicate =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">        <span class="keyword">const</span> arg=<span class="built_in">arguments</span>[i]</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.indexOf(arg)===<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>.push(arg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。</span></span><br><span class="line"><span class="comment">//不匹配返回-1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="32-安装create-api"><a href="#32-安装create-api" class="headerlink" title="32.安装create-api"></a>32.安装create-api</h2><p><strong>安装</strong></p>
+<p><code>cnpm i -S vue-create-api</code></p>
+<p><strong>配置</strong></p>
+<p><strong>1.在utils文件夹中创建相应js文件</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import CreateAPI from &quot;vue-create-api&quot;</span><br><span class="line">import Vue from &quot;vue&quot;</span><br><span class="line">import Toast from &quot;..&#x2F;components&#x2F;common&#x2F;Toast&quot;</span><br><span class="line"></span><br><span class="line">Vue.use(CreateAPI)</span><br><span class="line"></span><br><span class="line">Vue.createAPI(Toast,true)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.在main.js中导入创建的js文件</strong></p>
+<p><strong>3.使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$createToast(&#123;</span><br><span class="line">     $props:&#123;</span><br><span class="line">     text:<span class="string">"hello imooc"</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;).show()</span><br></pre></td></tr></table></figure>
+
+<p><strong>tip：如果报错 需要添加name属性  可以在组件中添加name属性</strong><br><strong>或者 Vue.createAPI(Vue,Toast)</strong></p>
+<h2 id="33-安装-localforage-库"><a href="#33-安装-localforage-库" class="headerlink" title="33.安装 localforage 库"></a>33.安装 localforage 库</h2><p><strong>开源的 对indexDB操作的一个库</strong></p>
+<p><code>cnpm i -S localforage</code></p>
+<h2 id="34-分页算法"><a href="#34-分页算法" class="headerlink" title="34.分页算法"></a>34.分页算法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//钩子函数  异步调用</span></span><br><span class="line"><span class="keyword">this</span>.book.ready.then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line"><span class="comment">//分页算法 750字一页根据页面宽度 和字体大小 加字减字                         </span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.book.locations.generate(<span class="number">750</span>*(<span class="built_in">window</span>.innerWidth/<span class="number">375</span>*(getFontSize(<span class="keyword">this</span>.fileName)/<span class="number">16</span>))</span><br><span class="line">&#125;).then(<span class="function"><span class="params">locations</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(locations)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward 打赏按钮-->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyrights： </strong>
+              版权归作者所有。如需商业转载，请与作者联系以获得授权。非商业性转载请注明出处。
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2020/09/03/vue-cli%E4%B9%A6%E5%9F%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/09/12/Ala%E5%B0%8F%E5%8C%BA%E7%BB%83%E6%89%8B%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Ala小区练手项目的一些笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/08/27/vue-cli%E4%B9%A6%E5%9F%8E%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">vue-cli书城项目准备</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'IUPFYr9b7ardBDF78isygkav-gzGzoHsz',
+        app_key: 'SX7yhiWLzh7seYDtIzHyJOfH',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> ITaylorfan
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_black">鄂ICP备2020023396号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+      <li>
+       <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+      </li>
+    </ul>
+
+   
+   <!-- 统计网站运行时间 -->
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/23/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+	if(snum==60){
+	    snum=0;
+	  }
+
+	if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/TS-10-21-2.jpg" alt="ITaylorfan的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/hexo/">hexo</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%85%B6%E4%BB%96">其他</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/me">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WeChat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1835283134&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>

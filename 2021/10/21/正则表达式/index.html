@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Java" />
+   
+  <meta name="description" content="本站是ITaylorfan的个人博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    正则表达式 |  ITaylorfan的博客
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/TS-10-21.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ITaylorfan的博客" type="application/atom+xml">
+</head>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-正则表达式" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  正则表达式
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/10/21/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
+  <time datetime="2021-10-21T11:26:27.000Z" itemprop="datePublished">2021-10-21</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数:</span>
+            <span class="post-count">4.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长 ≈</span>
+            <span class="post-count">17 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p> 正则表达式并不是JavaScript里面独有的技术，基本上所有的编程语言都支持这个技术。</p>
+<p>正则表达式有以下几个特点【它的特点也可以认为是它的使用场景】</p>
+<ol>
+<li>正则表达式只对字符串进行操作</li>
+<li>正则表达式做的是根据你所设定的<strong>规则</strong>对字符串进行“验证”，“提取”，“搜索”，“替换”等操作</li>
+<li>JavaScript中的正则表达式是一个内置对象，它可以直接使用，它使用<code>RegExp</code>构造函数来创建，或直接使用字面量表示法<code>/正则规则/</code></li>
+</ol>
+<a id="more"></a>
+
+<p>正则表达式分为三个部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[正则表达式 ]--&gt;B[模式规则]</span><br><span class="line">A--&gt;C[修饰符]</span><br><span class="line">A--&gt;D[方法]</span><br></pre></td></tr></table></figure>
+
+<h3 id="正则表达式的创建"><a href="#正则表达式的创建" class="headerlink" title="正则表达式的创建"></a>正则表达式的创建</h3><p>正则表达式它是一个对象，我们要使用对象的方法去创建它的，它的构造函数是<code>RegExp</code>,它的语法如下</p>
+<p><strong>第一种创建方式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(pattern: string | <span class="built_in">RegExp</span>, flags?: string): <span class="built_in">RegExp</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的pattern代表的是规则，后面的flags代表的是修饰符</p>
+</blockquote>
+<p>所以根所据上面的语法要求，我们可以偿试着去创建一个正则</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"爱"</span>);   <span class="comment">//这就是最基本的正则表达式创建</span></span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">""</span>,<span class="string">"g"</span>);	<span class="comment">//这里就添加了一个修饰符</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第二种创建方式</strong></p>
+<p>这一种创建方式我们叫字面量创建，它直接使用<code>/规则/</code>这种方式来创建</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/爱/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg2);    <span class="comment">//  /爱/</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> reg2);  <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
+
+<p>上面就是正则表达式的创建过程，在学习正则表达式的过程当中，我们先了解正则表达式的两个方法</p>
+<ol>
+<li><code>test()</code>方法，用于验证某个字符串是否符合这个正则表达式规则(返回true或false)</li>
+<li><code>exec()</code>方法，用于根据正则表达式去字符串中提取符合要求的字符</li>
+</ol>
+<p>同时要注意，正则表达式在创建的过程当中，它还可以添加修饰符<code>flags</code>，主要的修饰符有3个</p>
+<ol>
+<li><code>g</code>代表全局<code>global</code>的意思</li>
+<li><code>i</code>代表<code>ignore</code>忽略大小写</li>
+<li><code>m</code>代表<code>multipleline</code>多行的意思，也就是可以换行查找</li>
+</ol>
+<h3 id="正则表达式的规则"><a href="#正则表达式的规则" class="headerlink" title="正则表达式的规则"></a>正则表达式的规则</h3><h4 id="一元符"><a href="#一元符" class="headerlink" title="一元符"></a>一元符</h4><table>
+<thead>
+<tr>
+<th align="left">元字符</th>
+<th align="left">对应说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.</td>
+<td align="left">匹配除换行符之外的任意字符</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">匹配字母数字下划线，等同于：[a-zA-Z0-9_]</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">匹配任意空白符</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td align="left">匹配数字，等同于[0-9]</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">匹配单词边界</td>
+</tr>
+<tr>
+<td align="left">|</td>
+<td align="left">或匹配，如 /x|y/ 正则可匹配x或y两个字符</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">匹配字符串的开始</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">匹配字符串的结束</td>
+</tr>
+</tbody></table>
+<h4 id="原子表与原子组"><a href="#原子表与原子组" class="headerlink" title="原子表与原子组"></a>原子表与原子组</h4><p><strong>原子表</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//现在我希望匹配以下的东西杨标，陈标，张标</span></span><br><span class="line"><span class="comment">// 原子表指的是[]</span></span><br><span class="line"><span class="comment">// 原子组指的是()</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^[杨陈张]标$/</span>;</span><br><span class="line">reg.test(<span class="string">"杨标"</span>);		<span class="comment">//true</span></span><br><span class="line">reg.test(<span class="string">"陈标"</span>);		<span class="comment">//true</span></span><br><span class="line">reg.test(<span class="string">"张标"</span>);		<span class="comment">//true</span></span><br><span class="line">reg.test(<span class="string">"李标"</span>);     <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<p>原子表是以中括号的形式存在，它会从这个表中拿一个出来进行匹配</p>
+<p>在原子表里面，还可以写区间范围</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/[a-z]/</span>;  <span class="comment">//代表小写字母</span></span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/[A-Z]/</span>;  <span class="comment">//代表大写字母</span></span><br><span class="line"><span class="keyword">var</span> reg3 = <span class="regexp">/[0-9]/</span>;  <span class="comment">//代表数字，相当于\d</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：<strong>原子表中的范围不能倒着写，写反了会报错</strong></p>
+<p><strong>原子组</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//现在我希望匹配以下的东西杨标，陈标，张标</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/杨标|陈标|张标/</span>;</span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/[杨陈张]标/</span>;</span><br><span class="line"><span class="comment">//上面的正则表达式是符合要求的，但是很繁琐</span></span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/(杨|陈|张)标/</span>;</span><br><span class="line"><span class="comment">//如果是用小括号包起来，就是原子组</span></span><br></pre></td></tr></table></figure>
+
+<p>原子组后期的优点非常多</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"大家好，今天是2021-01-06 14:48:30,今天天气不好，有点冷"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;) (\d&#123;2&#125;):(\d&#123;2&#125;):(\d&#123;2&#125;)/</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = reg.exec(str);   <span class="comment">//通过正则表达式提取的结果</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的案例就是通过原子组来进行的二次提取操作</p>
+</blockquote>
+<h4 id="反义字符"><a href="#反义字符" class="headerlink" title="反义字符"></a>反义字符</h4><table>
+<thead>
+<tr>
+<th align="left">反义字符</th>
+<th align="left">对应说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">[^x]</td>
+<td align="left">匹配除“x”之外的所有字符，其中“x”可以为任意字符</td>
+</tr>
+<tr>
+<td align="left">[^xyz]</td>
+<td align="left">同上，匹配除“x、y、z”之外的任意字符</td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td align="left">匹配除了字母、数字、下划线之外的所有字符，等同于：<code>[^\w]</code></td>
+</tr>
+<tr>
+<td align="left">\S</td>
+<td align="left">匹配除空白符之外的任意字符，等同于：<code>[^\s]</code></td>
+</tr>
+<tr>
+<td align="left">\B</td>
+<td align="left">匹配不是单词边界的字符，等同于：<code>[^\b]</code></td>
+</tr>
+<tr>
+<td align="left">\D</td>
+<td align="left">匹配不是数字的所有字符，等同于：<code>[^\d]</code></td>
+</tr>
+</tbody></table>
+<h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><table>
+<thead>
+<tr>
+<th align="left">转义字符</th>
+<th align="left">对应说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\xnn</td>
+<td align="left">匹配十六进制数</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">匹配换页符，等同于：\x0c</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">匹配换行符，等同于：\x0a</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">匹配回车符，等同于：\x0d</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">匹配水平制表符，等同于：\x09</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">匹配垂直制表符，等同于：\x0b</td>
+</tr>
+<tr>
+<td align="left">\unnnn</td>
+<td align="left">匹配Unicode字符，如：\u00A0</td>
+</tr>
+</tbody></table>
+<p>正则表达式里面一些特殊的东西是需要转义的，如<code>[,],/,.{,},+,*,?</code>等，转义需要使用<code>\</code>表示</p>
+<h4 id="重复匹配"><a href="#重复匹配" class="headerlink" title="重复匹配"></a>重复匹配</h4><table>
+<thead>
+<tr>
+<th align="left">匹配字符</th>
+<th align="left">对应说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*</td>
+<td align="left">重复出现零次或多次</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">重复出现一次或多次</td>
+</tr>
+<tr>
+<td align="left">？</td>
+<td align="left">重复出现零次或一次</td>
+</tr>
+<tr>
+<td align="left">{n}</td>
+<td align="left">重复出现n次</td>
+</tr>
+<tr>
+<td align="left">{n,}</td>
+<td align="left">至少重复出现n次</td>
+</tr>
+<tr>
+<td align="left">{m,n}</td>
+<td align="left">重复重现m到n次，其中，m&lt;n</td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我们希望验证一个字符串，它是a开始，以c结束。中间有4个英文字母怎么办呢</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a[a-zA-Z]c$/</span>;</span><br><span class="line"><span class="comment">//第一种写法，直接写4次，这是笨办法</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/^a[a-zA-Z]&#123;4&#125;c$/</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//验证一个字符串，它是a开始，c结束，中间有4~6个数字，怎么办</span></span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/^a\d&#123;4,6&#125;c$/</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//验证一个字符串，它是a开始，c结束，中间有至少4个数字，怎么办</span></span><br><span class="line"><span class="keyword">var</span> reg3 = <span class="regexp">/^a\d&#123;4,&#125;c$/</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最多有四个数字</span></span><br><span class="line"><span class="keyword">var</span> reg4 = <span class="regexp">/^a\d&#123;0,4&#125;c$/</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的写法是我们的<code>m-n</code>的写法，还有一些特殊的写法</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//验证一个字符串，以a开始,c结束，中间可以有1个或多个数字</span></span><br><span class="line"><span class="keyword">var</span> reg4= <span class="regexp">/^a\d&#123;1,&#125;c$/</span>;</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line"><span class="keyword">var</span> reg5 = <span class="regexp">/^a\d+c$/</span>;   <span class="comment">//+号代表1次多或次</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//验证一个字符串，以a开始，以c结束，中间有0次或多次出数字</span></span><br><span class="line"><span class="keyword">var</span> reg6= <span class="regexp">/^a\d*c$/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//有一个姓名，它以杨开始，以标结束，中间可以有一个或0个字符，怎么办呢</span></span><br><span class="line"><span class="keyword">var</span> reg =  <span class="regexp">/^杨.?标$/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="贪婪与惰性"><a href="#贪婪与惰性" class="headerlink" title="贪婪与惰性"></a>贪婪与惰性</h4><table>
+<thead>
+<tr>
+<th align="left">相关字符</th>
+<th align="left">对应说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*?</td>
+<td align="left">重复任意次，但尽可能少的重复</td>
+</tr>
+<tr>
+<td align="left">+?</td>
+<td align="left">重复一次或多次，但尽可能少的重复</td>
+</tr>
+<tr>
+<td align="left">??</td>
+<td align="left">重复零次或一次，但尽可能少的重复</td>
+</tr>
+<tr>
+<td align="left">{m,n}?</td>
+<td align="left">重复m到n次，但尽可能少的重复</td>
+</tr>
+<tr>
+<td align="left">{n,}?</td>
+<td align="left">重复n次以上，但尽可能少的重复</td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"cbcertydiouycesdfsertd"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//我的要求，提取以c开始,d结束,中间是任何长度的英文字母</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/c[a-z]*d/</span>;</span><br><span class="line"><span class="comment">// 这个时候的正则是有问题的，*处理贪婪模式，它会贪式，（*代表0次到多次，它会贪多次）</span></span><br><span class="line"><span class="comment">//如果我们直接以reg为标准去匹配，我们会发现，它会从头匹配到尾，但是字符串中间是是有符合要求的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/c[a-z]*?d/g</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/613f3e6544eaada73957a0ee.png" alt="image-20210106162113155"></p>
+<ul>
+<li>贪婪模式：尽可能的选取多个【婪多个】</li>
+<li>惰性模式：尽可能少取以个【懒惰】</li>
+</ul>
+<p>在禁止贪婪模式以后，就会变成惰性模式，它会尽可能的少重复</p>
+<h4 id="原子组编号"><a href="#原子组编号" class="headerlink" title="原子组编号"></a>原子组编号</h4><p>在我们之前学习原子组的时候我们学过，可以将规则通过<code>()</code>来形成一个分组，其实在形成分组的时候，默认会形成一个分组编号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"&lt;div&gt;&lt;/div&gt;"</span>;</span><br><span class="line"><span class="comment">//现在希望编写一个正则去验证HTML的标签</span></span><br><span class="line"><span class="comment">//初步的思维</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/&lt;[a-zA-Z0-9]+&gt;&lt;\/[a-zA-Z0-9]+&gt;/</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的正则表达式当中，我们表面看起来是已经完成了功能，但是有隐患，如果我们的字符串是<code>&lt;div&gt;&lt;/span&gt;</code>这个时候它也会验证成功，这是不符合要求的</p>
+<p>我们要求的是开始标签名与结束标签名保持一致。我开始匹配的内容<code>[a-zA-Z0-9]+</code>要与后面匹配的<code>[a-zA-Z0-9]+</code>保持一致，这怎么办呢，这个时候就要使用到原子组编号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/&lt;([a-zA-Z0-9]+)&gt;&lt;\/\1&gt;/</span>;</span><br></pre></td></tr></table></figure>
+
+<p>后面正则表达式所出现的<code>\1</code>代表的是匹配出来的第1个分组内容</p>
+<p>我们还可以通过下面的案例来学习分组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"fdafffdaaklfjklja"</span>;</span><br><span class="line"><span class="comment">//现在要求找出字符串中连续重复的字符串</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1+/g</span>;</span><br><span class="line">str.match(reg);  <span class="comment">//这样就可以得到结果了</span></span><br></pre></td></tr></table></figure>
+
+<p>当然原子组的编号不仅仅只有1个，可以实现多个组的编号，如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str =<span class="string">"ababcdefaceced1212rtioio4ybyb"</span>;</span><br><span class="line"><span class="comment">//在里面找出那些有规律的两个一起重复的字符串</span></span><br><span class="line"><span class="keyword">var</span> reg =<span class="regexp">/(\w)(\w)\1\2/g</span>;</span><br><span class="line">str.match(reg);</span><br></pre></td></tr></table></figure>
+
+<p><strong>分组不产生原子组编号</strong></p>
+<blockquote>
+<p>()分组产生分组号</p>
+<p>(?:)分组不产生原子组编号</p>
+</blockquote>
+<p>在正常情况下，原子组当中只要有了小括号就会在提取的时候产生编号，如下所示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"今天是9月10日，唉呀！今天又跑到香港去玩了，买了好多东西，购物花了我￥346.77元，结果吃饭只能用美元，花了我$34.78元,坐港铁花了￥11元。"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(?&lt;=[\$￥])\d+(\.\d+)?/g</span>;</span><br><span class="line">reg.exec(str);</span><br><span class="line"><span class="comment">//得到结果如下</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/613f3f8144eaada73959570e.png" alt="image-20210913141612135"></p>
+<p>但是在这里，我们不需要这个编号，只是仅仅希望它们保持一个分组，所以就希望有一个技术是<strong>分组不编号</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(?&lt;=[\$￥])\d+(?:\.\d+)?/g</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/613f3fa344eaada739599204.png" alt="image-20210913142248589"></p>
+<h4 id="前瞻后顾"><a href="#前瞻后顾" class="headerlink" title="前瞻后顾"></a>前瞻后顾</h4><p>在弄清楚之个东西之前，先要让同学们知道什么是正则表达式的前后关系</p>
+<blockquote>
+<p>在学习这个地方之前，还一定要弄清楚，</p>
+<ol>
+<li>你的匹配条件是什么？</li>
+<li>你的限制条件是什么？</li>
+</ol>
+<p>例如：李强要找一个女朋友 ，但是限定条件是这个女的要有钱，漂亮，身高170CM以上</p>
+<ol>
+<li>匹配条件：女</li>
+<li>限定条件：有钱，漂亮，身高170CM</li>
+</ol>
+</blockquote>
+<h5 id="前瞻"><a href="#前瞻" class="headerlink" title="前瞻"></a>前瞻</h5><p>前瞻(Look ahead positive): 匹配的是A,限制条件是A前面是B。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A(?&#x3D;B)</span><br></pre></td></tr></table></figure>
+
+<p>如<strong>想要匹配abc并且abc的前面是123的表达式，应该这样</strong></p>
+<img src="https://pic.imgdb.cn/item/613f40cf44eaada7395b79b6.png" alt="image-20210106172004702" style="zoom:80%;" />
+
+<h5 id="负前瞻"><a href="#负前瞻" class="headerlink" title="负前瞻"></a>负前瞻</h5><p>负前瞻(Look ahead negative): 顾名思义，该正则匹配A，限制条件是A前面不是B</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A(?!B)</span><br></pre></td></tr></table></figure>
+
+<p>想要<strong>匹配abc并且abc的前面不是123的表达式，应该这样：</strong></p>
+<img src="https://pic.imgdb.cn/item/613f417044eaada7395c6fdd.png" alt="image-20210106172148524" style="zoom:80%;" />
+
+<h5 id="后顾"><a href="#后顾" class="headerlink" title="后顾"></a>后顾</h5><p>后顾(Look behind positive ): 匹配表达式A，限制条件A的后面是B</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?&lt;&#x3D;B)A</span><br></pre></td></tr></table></figure>
+
+<p>想要<strong>匹配abc并且abc的后面是123的表达式</strong></p>
+<img src="https://pic.imgdb.cn/item/613f419444eaada7395cac75.png" alt="image-20210106172636353" style="zoom:80%;" />
+
+<h5 id="负后顾"><a href="#负后顾" class="headerlink" title="负后顾"></a>负后顾</h5><p>负后顾(Look behind negative ): 匹配表达式A,限制条件是A的后面不是B</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?&lt;!B)A</span><br></pre></td></tr></table></figure>
+
+<p>想要<strong>匹配abc并且abc的后面不是123的表达式</strong>，应该这样：</p>
+<img src="https://pic.imgdb.cn/item/613f41cd44eaada7395d0756.png" alt="image-20210106172754076" style="zoom:80%;" />
+
+<h3 id="正则表达式的操作方法"><a href="#正则表达式的操作方法" class="headerlink" title="正则表达式的操作方法"></a>正则表达式的操作方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String.prototype.replace()</td>
+<td>字符串替换</td>
+</tr>
+<tr>
+<td>String.prototype.search()</td>
+<td>字符串查找</td>
+</tr>
+<tr>
+<td>String.prototype.match()</td>
+<td>字符串匹配提取</td>
+</tr>
+<tr>
+<td>String.prototype.split()</td>
+<td>字符串根据正则表达式分割</td>
+</tr>
+<tr>
+<td>RegExp.prototype.test()</td>
+<td>根据正则规则验证字符串</td>
+</tr>
+<tr>
+<td>RegExp.prototype.exec()</td>
+<td>根据正则表达式规则提取字符串</td>
+</tr>
+</tbody></table>
+<h4 id="test-验证"><a href="#test-验证" class="headerlink" title="test()验证"></a>test()验证</h4><p>这是<strong>正则表达式的一个方法</strong>，用于验证一个字符串是否符合正则的要求，如果符合就返回<code>true</code>，不符合就返回<code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正则表达式的验证是test方法，它是正则对象的方法</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证用户名，必须字母或下划线开头，后面接任意非空字符，总长度在6~10位</span></span><br><span class="line"><span class="comment">     * 验证年龄：必须是正整数</span></span><br><span class="line"><span class="comment">     * 验证性别：必须是男或女</span></span><br><span class="line"><span class="comment">     * 验证爱好：必须是 看书，睡觉，玩游戏三者之顺选择，可以选多个</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/^[a-z]\S&#123;5,9&#125;$/i</span>;</span><br><span class="line">reg1.test(<span class="string">"a123abd"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/^\d+$/</span>;</span><br><span class="line">reg2.test(<span class="string">"12"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg3 = <span class="regexp">/^[男女]$/</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这个正则要去掉重复的情况</span></span><br><span class="line"><span class="keyword">var</span> reg4 = <span class="regexp">/(看书|睡觉|玩游戏)+/</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="exec-提取"><a href="#exec-提取" class="headerlink" title="exec()提取"></a>exec()提取</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str =<span class="string">"今天是9月10日，唉呀！今天又跑到香港去玩了，买了好多东西，购物花了我￥346.77元，结果吃饭只能用美元，花了我$34.78元,坐港铁花了￥10元。"</span>;</span><br><span class="line"><span class="comment">//在上面的字符串里面，我们要提取所有的金额（美圆和人民币）</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第一种方式的操作：手动操作</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在上面的字符串里面，我们要提取所有的金额（美圆和人民币）</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"今天是9月10日，唉呀！今天又跑到香港去玩了，买了好多东西，购物花了我￥346.77元，结果吃饭只能用美元，花了我$34.78元,坐港铁花了￥11元。"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(?&lt;=[\$￥])\d+(\.\d+)?/g</span>;</span><br><span class="line"><span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line"><span class="comment">//第一次提取						//346.77</span></span><br><span class="line">result = reg.exec(str);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br><span class="line"><span class="comment">//第二次提取						//34.78</span></span><br><span class="line">result = reg.exec(str);		</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br><span class="line"><span class="comment">//第三次提取						//11</span></span><br><span class="line">result = reg.exec(str);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br><span class="line"><span class="comment">//第四次提取						//null</span></span><br><span class="line">result = reg.exec(str);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二种方式的操作：使用循环</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">while</span> ((result = reg.exec(str)) != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/613f3f8144eaada73959570e.png" alt="image-20210913141612135"></p>
+<blockquote>
+<p>这一种正则表达式的提取是一种非常高级的提取方法，我们可以在复杂操作里面使用这个方法，但是一般简单的提取操作，我们会使用更简单的方法</p>
+</blockquote>
+<hr>
+<h4 id="match-提取"><a href="#match-提取" class="headerlink" title="match()提取"></a>match()提取</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//match方法不是正则表达式对象的方法，它是字符串对象的方法</span></span><br><span class="line"><span class="comment">//match方法是匹配的意思，根据正则表达式来匹配</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"今天是9月10日，唉呀！今天又跑到香港去玩了，买了好多东西，购物花了我￥346.77元，结果吃饭只能用美元，花了我$34.78元,坐港铁花了￥11元。"</span>;</span><br><span class="line"><span class="comment">//在上面的字符串里面，我们要提取所有的金额（美圆和人民币）</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(?&lt;=[\$￥])\d+(?:\.\d+)?/g</span>;</span><br><span class="line"><span class="comment">//以前是使用正则表达式为主体，去操作字符串</span></span><br><span class="line"><span class="comment">//现在是以字符串为主体，去匹配正则</span></span><br><span class="line"><span class="keyword">var</span> result = str.match(reg);   <span class="comment">//['346.77', '34.78', '11']</span></span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码里面，我们可以看到，<code>match</code>方法与正则表达式对象里面的<code>exec</code>方法都是用于提取符要求的字符的，但是<code>exec</code>可以做到原子组的提取，而<code>match</code>则不行，如下所示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"我的身份证号是425789199011150105,张三的身份证号是12355420050405233x"</span>;</span><br><span class="line">    <span class="comment">//写一个正则，提取字符串，并提取每个人性别组成对象</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        [&#123;</span></span><br><span class="line"><span class="comment">            IDCard:"425789199011150105",</span></span><br><span class="line"><span class="comment">            birthday:"1990-11-15",</span></span><br><span class="line"><span class="comment">            sex:"女"</span></span><br><span class="line"><span class="comment">        &#125;,&#123;</span></span><br><span class="line"><span class="comment">            IDCard:"12355420050405233x",</span></span><br><span class="line"><span class="comment">            birthday:"2005-05-05",</span></span><br><span class="line"><span class="comment">            sex:"男"</span></span><br><span class="line"><span class="comment">        &#125;]</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> reg1 = <span class="regexp">/\d&#123;17&#125;[\dx]/g</span>;</span><br><span class="line">    <span class="keyword">var</span> result1 = str.match(reg1); <span class="comment">//['425789199011150105', '12355420050405233x']</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//上面明显不是最好的处理办法</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> reg2 = <span class="regexp">/\d&#123;6&#125;(\d&#123;4&#125;)(\d&#123;2&#125;)(\d&#123;2&#125;)\d&#123;2&#125;(\d&#123;1&#125;)[\dx]/g</span>;</span><br><span class="line">    <span class="keyword">var</span> result2 = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">while</span> ((result2 = reg2.exec(str)) != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> obj = &#123;</span><br><span class="line">            IDCard: result2[<span class="number">0</span>],</span><br><span class="line">            <span class="comment">// birthday:result2.slice(1,4).join("-"),</span></span><br><span class="line">            birthday: result2[<span class="number">1</span>] + <span class="string">"-"</span> + result2[<span class="number">2</span>] + <span class="string">"-"</span> + result2[<span class="number">3</span>],</span><br><span class="line">            sex: result2[<span class="number">4</span>] % <span class="number">2</span> == <span class="number">0</span> ? <span class="string">"女"</span> : <span class="string">"男"</span></span><br><span class="line">        &#125;</span><br><span class="line">        arr.push(obj);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>：无论是<code>exec()</code>还是<code>match()</code> 在目前阶段进行提取操作的时候，最后是加一个全局修饰符<code>g</code></p>
+</blockquote>
+<h4 id="split-分割"><a href="#split-分割" class="headerlink" title="split()分割"></a>split()分割</h4><p>字符串的split方法之前我们已经讲过了，它是通过某一个特定的字符去拆分字符串形成数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"get-element-by-id"</span>;</span><br><span class="line"><span class="keyword">var</span> arr = str.split(<span class="string">"-"</span>);   <span class="comment">//["get", "element", "by", "id"];</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">"我们是123club组合我们的的年龄是19岁身高都在170公分以上"</span>;</span><br><span class="line"><span class="comment">//希望通过中间在数字去拆分 ["我们是","club组合哈组合我们的的年龄是","岁身高都在","公分以上"];</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/\d+/</span>;</span><br><span class="line"><span class="keyword">var</span> arr1 = str1.split(reg1);</span><br></pre></td></tr></table></figure>
+
+<h4 id="search-搜索"><a href="#search-搜索" class="headerlink" title="search()搜索"></a>search()搜索</h4><p>之前在字符串里面，我们可以通过<code>search</code>查找某个字符串的索引位置，只是那个时候使用是<code>indexOf</code></p>
+<p><strong>以前的情况下面</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">"大家好,我是人见人爱的张三，我的身高是170CM!"</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">"大家好，我是高富帅李四，我的身高是186CM!"</span>;</span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">"大家好，我是美女西施，我的身高是169CM!"</span>;</span><br><span class="line"><span class="keyword">var</span> str4 = <span class="string">"大家好，我是古典成熟高质量男性小乐乐，我的身高是178CM!"</span>;</span><br><span class="line"><span class="comment">//在上面的字符串当中，找所有的数字的位置</span></span><br><span class="line">str1.indexOf(<span class="string">"170"</span>);</span><br><span class="line">str2.indexOf(<span class="string">"186"</span>);</span><br><span class="line">str3.indexOf(<span class="string">"169"</span>);</span><br><span class="line">str4.indexOf(<span class="string">"178"</span>);</span><br><span class="line"><span class="comment">//这个参数在变化，如果这里有100个变量，我就有可能要写100句话</span></span><br><span class="line">str1.search(<span class="regexp">/\d+/g</span>);</span><br><span class="line">str2.search(<span class="regexp">/\d+/g</span>);</span><br><span class="line">str3.search(<span class="regexp">/\d+/g</span>);</span><br><span class="line">str4.search(<span class="regexp">/\d+/g</span>);</span><br><span class="line"><span class="comment">//这个时候的参数就固定成了一个正则表达式</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="replace-替换"><a href="#replace-替换" class="headerlink" title="replace()替换"></a>replace()替换</h4><p>它是字符串的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"我爱你，你爱我吗？"</span>;</span><br><span class="line"><span class="keyword">var</span> str1 = str.replace(<span class="string">"爱"</span>,<span class="string">"恨"</span>);  <span class="comment">//"我恨你，你爱我吗？"；</span></span><br></pre></td></tr></table></figure>
+
+<p>replace方法默认情况下只会替换第一个匹配项，不会全局匹配，所以如果要全局匹配，则只能使用正则</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"我爱你，你爱我吗？"</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = str.replace(<span class="regexp">/爱/g</span>,<span class="string">"恨"</span>);		<span class="comment">//"我恨你，你恨我吗";</span></span><br></pre></td></tr></table></figure>
+
+<p>当我们所查找替换的元素一旦是通过正则匹配的，则<code>replace()</code>第二个参数就变了，它变成了一个回调函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"我爱你，你爱我吗？"</span>;</span><br><span class="line">str.replace(<span class="regexp">/爱/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">p</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 第一个参数：p代表正册表达式的匹配项</span></span><br><span class="line">    <span class="built_in">console</span>.log(p);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>当正则表达式里面有原子组的时候</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"大家好，今天是2021-01-06 14:48:30,今天天气不好，有点冷"</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d&#123;4&#125;-(\d&#123;2&#125;)-\d&#123;2&#125;\s(\d&#123;2&#125;):\d&#123;2&#125;:\d&#123;2&#125;/g</span>;</span><br><span class="line">str.replace(reg, <span class="function"><span class="keyword">function</span> (<span class="params">p,g1,g2</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 第一个参数：正则匹配的结果</span></span><br><span class="line">    <span class="comment">// 第后面开始的参数则代表原子组编号 group1   group2</span></span><br><span class="line">    <span class="built_in">console</span>.log(p);</span><br><span class="line">    <span class="built_in">console</span>.log(g1);</span><br><span class="line">    <span class="built_in">console</span>.log(g2);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/613f450f44eaada739626a89.png" alt="image-20210913152135000"></p>
+<p>上面的<code>01</code>就是原子组1的结果，<code>02</code>就是原子组2的结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给一个连字符串例如：get-element-by-id转化成驼峰形（推荐使用正则表达式+replace的方式完成）</span></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">"get-element-by-id"</span>;</span><br><span class="line"><span class="comment">//getElementById;</span></span><br><span class="line"><span class="keyword">var</span> str2 = str1.replace(<span class="regexp">/-([a-z])/g</span>,<span class="function"><span class="keyword">function</span>(<span class="params">p,g1</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// console.log(p,g1);</span></span><br><span class="line">    <span class="keyword">return</span> g1.toUpperCase();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>正则只对字符串进行操作</li>
+<li>正则的创建方式要弄清楚</li>
+<li>正则的规则<ul>
+<li>一元符</li>
+<li>原子组与原子表</li>
+<li>重复匹配</li>
+<li>原子组编号</li>
+<li>前瞻后顾</li>
+</ul>
+</li>
+<li>使用到正则的地方目前你们所接触只有<code>String</code>对象与<code>RegExp</code>对象</li>
+</ol>
+
+      
+      <!-- reward 打赏按钮-->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright 版权声明-->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyrights： </strong>
+              版权归作者所有。如需商业转载，请与作者联系以获得授权。非商业性转载请注明出处。
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://itaylorfan.github.io/2021/10/21/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2021/10/21/HTML5%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            HTML5多媒体技术
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/03/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%89%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">计算机三级数据库笔记</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'IUPFYr9b7ardBDF78isygkav-gzGzoHsz',
+        app_key: 'SX7yhiWLzh7seYDtIzHyJOfH',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2022
+        <i class="ri-heart-fill heart_icon"></i> ITaylorfan
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+        <li>
+          <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_black">鄂ICP备2020023396号</a>
+        </li>
+        
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+      <li>
+       <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+      </li>
+    </ul>
+
+   
+   <!-- 统计网站运行时间 -->
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("04/23/2020 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+	if(snum==60){
+	    snum=0;
+	  }
+
+	if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/TS-10-21-2.jpg" alt="ITaylorfan的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/hexo/">hexo</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%89%8D%E7%AB%AF">前端</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%85%B6%E4%BB%96">其他</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/me">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/WeChat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1835283134&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+  <script src="/live2d-widget/autoload.js"></script>
+</body>
+
+</html>
